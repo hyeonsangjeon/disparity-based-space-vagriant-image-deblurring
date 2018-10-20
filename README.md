@@ -57,18 +57,20 @@ PSF estimated from the whole image can not guarantee a stable result when the im
 Assuming that the blurring of the image depends on the spatial location to object.
 Segmentation of blurred image by block, PSF estimation and image restoration by each region[2].
 
-![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/block_based_deblurring.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/block_based_deblurring.png?raw=true)
 
 Stable PSF estimation is impossible in the case of a block including a content including a sudden change in the amount of motion of the subject.
 The PSF estimation and substitution method considering only the entropy of the neighboring block [2] does not consider the amount of blurring according to the amount of movement of the subject.
 
-![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/block_based_deblurring_psf.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/block_based_deblurring_psf.png?raw=true)
 
 ---------------------------------------
 ### Proposed Image Deblurring Method
 Image Segmentation Space Variable Algorithm Based on the Motion Amount of Images.
-![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/Proposed_deblurring_diagram.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Proposed_deblurring_diagram.png?raw=true)
 
-![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
 
 
