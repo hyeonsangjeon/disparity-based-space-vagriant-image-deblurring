@@ -1,4 +1,4 @@
-# disparity-based-space-vagriant-image-deblurring
+# Disparity-based-space-vagriant-image-deblurring
 ![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Abstract.png?raw=true)
 
 ## Abstract 
@@ -14,7 +14,7 @@ blurred image into sufficiently many regions based on color, and then merges adj
 results show the effectiveness of the proposed method.
 - Keywords: Image deblurring, space-variant deblurring, disparity, segmentation, point spread function, deconvolution
 ## Contents
-1. Blur modeling in camera image
+1. Blur modeling in convolution-based images
 2. Introduction and problem of existing deblurring method using multiple images
 - &nbsp; Spatial invariant de-blurring method using multiple images
 - &nbsp; Block-based spatial variable debloring method using multiple images
@@ -24,3 +24,9 @@ results show the effectiveness of the proposed method.
 - &nbsp; image restoration method by disparity of space variant using multiple images
 4. Algorithm result and comparison with existing method
 5. Conclusion
+
+---------------------------------------
+
+### Blur modeling in convolution-based images
+The blurred image is modeled as a linear combination of PSF, which is the trajectory of camera shake and sharp image.
+
