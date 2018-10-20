@@ -30,3 +30,10 @@ results show the effectiveness of the proposed method.
 ### Blur modeling in convolution-based images
 The blurred image is modeled as a linear combination of PSF, which is the trajectory of camera shake and sharp image.
 ![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Blurred_model_of_convolution-based_images.png?raw=true)
+
+Blind deconvolution is illposed problem
+* The problem of general image blurring should be estimated by PSF and latent image.
+* The problem with image restoration is that there is not enough information compared to the solution of the function.
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/The_necessity_of_a_method_of_deblurring_using_multiple_images_in_a_camera.png?raw=true)
+
+
