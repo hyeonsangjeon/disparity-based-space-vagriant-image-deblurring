@@ -49,7 +49,7 @@ It is assumed that the blurring of the image is independent of the spatial posit
 The blurred of a typical real image differs spatially in the amount of blur.
 PSF estimated from the whole image can not guarantee a stable result when the image is restored because different spreading degree according to the space is not considered.
 ![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/Issue_of_Space_Invariant_Deblurring.png?raw=true)
-![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/.png?raw=true)
+
 
 
 
