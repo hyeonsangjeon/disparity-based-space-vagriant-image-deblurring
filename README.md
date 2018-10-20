@@ -69,8 +69,55 @@ The PSF estimation and substitution method considering only the entropy of the n
 Image Segmentation Space Variable Algorithm Based on the Motion Amount of Images.
 ![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Proposed_deblurring_diagram.png?raw=true)
 
-![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
-![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
-![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
 
 
+#### Disparity-Based Image Segmentation
+The distances to the moving distance of the acquisition time difference between the blurred image and the noise image are calculated. 
+
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Harris_corner_calculattion_disparity.png?raw=true)
+
+The disparity distance result of feature point of blurred image and noise image.
+Movement amount differs depending on the position of the subject in the image.
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Disparity_distance_result.png?raw=true)
+
+Approximate content-based initial segmentation using graph cut method [4].
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Init_segmentation_graph_cut.png?raw=true)
+
+Then, Assigning the feature points corresponding to the initial partition using the graph cut to each area.
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/graph_cut_feature_point_distribution.png?raw=true)
+
+Compute the median of the disparity distance of minutiae by partition and then substitute the median value of the partition value. 
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Split_value_replaced_median_disparity_distance.png?raw=true)
+
+Merge division value in error by setting error of substituted disparity distance.
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Merge_division_value.png?raw=true)
+
+---------------------------------------
+### Proposed Regional PSF Estimation 
+Estimation of PSF considering the amount of spatial variable spreading by segment depth according to image depth.
+* Estimation method used by Tikhonov method [1].
+  * PSF estimation uses x and y differential images of the segmented region.
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/PSF_Estimation.png?raw=true)
+
+In the masked partial differential image, the block with the largest absolute value of the edge is scanned and the PSF is estimated.
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Block_Scanning_PSF_Estimation.png?raw=true)
+
+PSF estimation result of segmented edge image by contents
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Estimated_PSF.png?raw=true)
+
+
+Partial images with relatively coarse-grained distributions filter the PSF below a certain threadhold by the distribution of PSF using kurtosis and replace with the PSF of the most similar depth information. 
+The general PSF has a very high kurtosis distribution and the kurtosis of PSFs that fail to estimate is relatively low.
+* Kurtosis low threshold=20 / high threshold=300
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Kurtosis_filter.png?raw=true)
+
+
+ ---------------------------------------
+
+## Image Reconstruction method by disparity area
+
+
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/.png?raw=true)
