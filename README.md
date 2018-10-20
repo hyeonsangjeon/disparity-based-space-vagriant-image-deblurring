@@ -1,6 +1,6 @@
 # disparity-based-space-vagriant-image-deblurring
 
-##Abstract 
+## Abstract 
 Obtaining a good-quality image requires exposure to light for an appropriate amount of time. If there is camera or object motion
 during the exposure time, the image is blurred. To remove the blur, some recent image deblurring methods effectively estimate
 a point spread function (PSF) by acquiring a noisy image additionally, and restore a clear latent image with the PSF. Since the
