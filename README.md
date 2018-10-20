@@ -44,3 +44,12 @@ Assuming that the edge distribution of the noise image is similar to the edge di
 
 It is assumed that the blurring of the image is independent of the spatial position or the amount of movement of the subject and causes the same blurring.  
 ![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/General_Method_In_space_invariant.png?raw=true)
+
+##### Issue of Space Invariant Deblurring Method
+The blurred of a typical real image differs spatially in the amount of blur.
+PSF estimated from the whole image can not guarantee a stable result when the image is restored because different spreading degree according to the space is not considered.
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/Issue_of_Space_Invariant_Deblurring.png?raw=true)
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/.png?raw=true)
+
+
+
