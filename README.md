@@ -36,4 +36,11 @@ Blind deconvolution is illposed problem
 * The problem with image restoration is that there is not enough information compared to the solution of the function.
 ![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/The_necessity_of_a_method_of_deblurring_using_multiple_images_in_a_camera.png?raw=true)
 
+---------------------------------------
+### Introduction to existing methods
 
+##### General Method to Eliminate Space Invariant Blur using Multiple Images
+Assuming that the edge distribution of the noise image is similar to the edge distribution of the clear image, PSF estimate.
+
+It is assumed that the blurring of the image is independent of the spatial position or the amount of movement of the subject and causes the same blurring.  
+![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/General_Method_In_space_invariant.png?raw=true)
