@@ -1,4 +1,4 @@
-# Disparity-based-space-vagriant-image-deblurring
+# Disparity-based space-vagriant image deblurring
 ![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Abstract.png?raw=true)
 
 ## Abstract 
