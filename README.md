@@ -26,7 +26,8 @@ results show the effectiveness of the proposed method.
 5. Conclusion
 ---------------------------------------
 
-- citation count : 10 (from ~ 2018.10.22 now)  
+## citation count : 10 (from ~ 2018.10.22 now)
+  
 ### Blur modeling in convolution-based images
 The blurred image is modeled as a linear combination of PSF, which is the trajectory of camera shake and sharp image.
 ![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Blurred_model_of_convolution-based_images.png?raw=true)
