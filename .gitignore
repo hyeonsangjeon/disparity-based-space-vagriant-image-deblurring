@@ -118,3 +118,24 @@ local.properties
 # Code Recommenders
 .recommenders/
 
+# Python reference reconstruction
+.venv/
+*.py[cod]
+*.egg-info/
+dist/
+output/
+
+# Never publish private benchmark inputs, historical outputs, RAW captures, or HPO caches.
+benchmarks/private-output/
+benchmarks/private-cache/
+benchmarks/private-*/
+showcase/benchmark/.cache/
+data/private/
+data/raw/
+raw/
+**/*.raw
+**/*.dng
+**/*.nef
+**/*.cr2
+**/*.arw
+**/hpo-output/

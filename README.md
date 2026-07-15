@@ -1,5 +1,58 @@
-# Disparity-based space-vagriant image deblurring
+# Disparity-based Space-Variant Image Deblurring
 ![screenshot](https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/readme_pic/Abstract.png?raw=true)
+
+## Project status
+
+This repository preserves three distinct records:
+
+* **Published 2013 paper.** The original paper remains available at [Disparity_Based_Space_Variant_Image_Deblurring.pdf](Disparity_Based_Space_Variant_Image_Deblurring.pdf).
+* **Historical 2009–2011 figures and evidence.** The figures below are retained at their original `readme_pic/` paths as historical research evidence. They are not a newly generated benchmark.
+* **2026 modern reference reconstruction.** `src/disparity_deblur` is a clean, reproducible reference implementation inspired by the paper. It is **not** the exact deleted original implementation and is not bit-identical to historical outputs.
+
+## Quickstart
+
+Python 3.11+ and [uv](https://docs.astral.sh/uv/) are required.
+
+```sh
+uv sync
+uv run disparity-deblur \
+  --blurred benchmarks/public-assets/gopro-flower/blurred.png \
+  --noisy benchmarks/public-assets/gopro-flower/noisy.png \
+  --output-dir output/gopro-flower
+```
+
+Reproduce the public manifest-driven showcase in a separate output directory:
+
+```sh
+uv run disparity-deblur-benchmark \
+  --manifest benchmarks/manifests/public.json \
+  --dataset-root benchmarks/public-assets \
+  --output-dir output/showcase
+```
+
+## Reproducibility and public benchmark gallery
+
+The committed public showcase was generated from `benchmarks/manifests/public.json`; its `benchmark.json` records relative asset paths, checksums, selected HPO configuration, and metrics without recording local dataset paths. Comparisons are ordered **blurred + noisy -> restored -> reference**.
+
+| Public dataset | PSNR | SSIM | Objective (full-resolution) |
+| --- | ---: | ---: | ---: |
+| Derived GOPRO_Large Flower | 26.3248 | 0.8998 | 0.713320 |
+| Project-owned procedural depth | 15.6261 | 0.4389 | 0.375687 |
+
+See [showcase/benchmark/SUMMARY.md](showcase/benchmark/SUMMARY.md), [showcase/benchmark/benchmark.json](showcase/benchmark/benchmark.json), and the framework-free [GitHub Pages site](docs/index.html) for the complete public gallery. These results are reference-reconstruction measurements, not claims about the deleted historical code.
+
+## Data and licenses
+
+The code is available under the [MIT License](LICENSE). The small public asset subset in `benchmarks/public-assets/` is licensed separately under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). It contains only:
+
+* a 384 px derivative of the GOPRO_Large Flower example, credited to Seungjun Nah, Tae Hyun Kim, and Kyoung Mu Lee; and
+* project-owned procedural-depth artwork.
+
+`benchmarks/ATTRIBUTION.json` records official source URLs, the CC BY 4.0 license, the CVPR 2017 citation, original and derived SHA-256 checksums, downscaling, and deterministic noisy-auxiliary seed and sigma. The original GOPRO_Large images remain third-party material; this project does not claim ownership of them. Do not add private, RAW, or large source datasets to this repository.
+
+## Citation
+
+Use [CITATION.cff](CITATION.cff) to cite this software reconstruction. For the historical work, cite the preserved [2013 paper PDF](Disparity_Based_Space_Variant_Image_Deblurring.pdf).
 
 ## Abstract 
 Obtaining a good-quality image requires exposure to light for an appropriate amount of time. If there is camera or object motion
@@ -203,4 +256,3 @@ useful for images with high variation of disparity.
 - ...
 - `[32].`C. Wang, Z. Liu, Total variation for image restoration with smooth area protection, J. Signal Process. Syst. 61 (2010) 271–277.
 - `[33].`A. Polesel, G. Ramponi, V. Mathews, Image enhancement via adaptive unsharp masking, Image Processing, IEEE Transactions on 9 (2000) 505–510.
-
