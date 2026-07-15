@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, replace
+from dataclasses import asdict, dataclass, fields, replace
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -35,6 +35,9 @@ class Dataset:
     noisy: InputFile
     reference: InputFile | None = None
     source_hashes: Mapping[str, str] | None = None
+    noisy_label: str | None = None
+    input_processing: Mapping[str, object] | None = None
+    config_overrides: Mapping[str, object] | None = None
 
 
 @dataclass(frozen=True)
@@ -95,6 +98,9 @@ def load_manifest(path: str | Path) -> BenchmarkManifest:
                     else None
                 ),
                 source_hashes=source_hashes,
+                noisy_label=_optional_string(raw, "noisy_label"),
+                input_processing=_optional_mapping(raw, identifier, "input_processing"),
+                config_overrides=_parse_config_overrides(raw, identifier),
             )
         )
     return BenchmarkManifest(schema_version=1, datasets=tuple(datasets))
@@ -281,7 +287,10 @@ class BenchmarkRunner:
         final_blurred, final_noisy, final_reference = _resize_triplet(
             blurred, noisy, reference, self.output_max_dimension
         )
-        final_config = _fit_config_to_image(best.config, final_blurred.shape)
+        final_config = replace(
+            _fit_config_to_image(best.config, final_blurred.shape),
+            **dict(dataset.config_overrides or {}),
+        )
         _validate_public_reference_config(dataset, final_config)
         started = perf_counter()
         result = self.processor(final_blurred, final_noisy, final_config)
@@ -299,7 +308,13 @@ class BenchmarkRunner:
         write_png(dataset_dir / "result.png", result)
         if final_reference is not None:
             write_png(dataset_dir / "reference.png", final_reference)
-        comparison = _comparison(final_blurred, final_noisy, result, final_reference)
+        comparison = _comparison(
+            final_blurred,
+            final_noisy,
+            result,
+            final_reference,
+            noisy_label=dataset.noisy_label or "Noisy",
+        )
         _write_webp(dataset_dir / "comparison.webp", comparison)
         _write_webp(dataset_dir / "thumbnail.webp", _thumbnail(comparison))
         assets: dict[str, str | None] = {
@@ -347,6 +362,12 @@ class BenchmarkRunner:
             "assets": assets,
             "asset_checksums": asset_checksums,
         }
+        if dataset.noisy_label is not None:
+            record["noisy_label"] = dataset.noisy_label
+        if dataset.input_processing is not None:
+            record["input_processing"] = dict(dataset.input_processing)
+        if dataset.config_overrides is not None:
+            record["config_overrides"] = dict(dataset.config_overrides)
         _write_json(dataset_dir / "run.json", record)
         return record
 
@@ -466,6 +487,39 @@ def _optional_string(raw: Mapping[str, object], key: str) -> str | None:
     return value
 
 
+def _optional_mapping(
+    raw: Mapping[str, object],
+    identifier: str,
+    key: str,
+) -> Mapping[str, object] | None:
+    value = raw.get(key)
+    if value is None:
+        return None
+    if not isinstance(value, dict):
+        raise ValueError(f"{identifier}: {key} must be an object")
+    return dict(value)
+
+
+def _parse_config_overrides(
+    raw: Mapping[str, object],
+    identifier: str,
+) -> Mapping[str, object] | None:
+    value = _optional_mapping(raw, identifier, "config_overrides")
+    if value is None:
+        return None
+    valid_fields = {field.name for field in fields(PipelineConfig)}
+    unknown = sorted(set(value) - valid_fields)
+    if unknown:
+        raise ValueError(
+            f"{identifier}: unknown PipelineConfig override(s): {', '.join(unknown)}"
+        )
+    try:
+        replace(PipelineConfig(), **dict(value))
+    except (TypeError, ValueError) as error:
+        raise ValueError(f"{identifier}: invalid config_overrides: {error}") from error
+    return value
+
+
 def _is_sha256(value: object) -> bool:
     return (
         isinstance(value, str)
@@ -511,14 +565,17 @@ def _coarse_overrides() -> tuple[dict[str, float], ...]:
 
 
 def _validate_public_reference_config(dataset: Dataset, config: PipelineConfig) -> None:
-    if (
-        dataset.visibility == "public"
-        and dataset.reference is not None
-        and config.input_detail_blend > 0.25
-    ):
+    if dataset.visibility != "public" or dataset.reference is None:
+        return
+    if config.input_detail_blend > 0.25:
         raise ValueError(
             "public reference-backed benchmarks cannot replace regional deconvolution "
             "with an input-detail blend above 0.25"
+        )
+    if config.noisy_structure_blend > 0.25:
+        raise ValueError(
+            "public reference-backed benchmarks cannot replace regional deconvolution "
+            "with a noisy-structure blend above 0.25"
         )
 
 
@@ -586,11 +643,15 @@ def _comparison(
     noisy: np.ndarray,
     result: np.ndarray,
     reference: np.ndarray | None,
+    *,
+    noisy_label: str = "Noisy",
 ) -> np.ndarray:
     images = [blurred, noisy, result]
     if reference is not None:
         images.append(reference)
-    labels = ["Blurred", "Noisy", "Result"] + (["Reference"] if reference is not None else [])
+    labels = ["Blurred", noisy_label, "Result"] + (
+        ["Reference"] if reference is not None else []
+    )
     labeled = []
     for image, label in zip(images, labels, strict=True):
         preview = np.rint(np.clip(image, 0.0, 1.0) * 255.0).astype(np.uint8)

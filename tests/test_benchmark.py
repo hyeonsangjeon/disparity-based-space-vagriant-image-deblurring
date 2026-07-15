@@ -74,6 +74,18 @@ class BenchmarkTest(unittest.TestCase):
                 for dataset in historical
             )
         )
+        self.assertEqual(
+            manifest.datasets[1].noisy_label,
+            "Noisy (deterministic noise boost)",
+        )
+        self.assertEqual(
+            manifest.datasets[1].input_processing["noisy"]["sigma"],
+            0.02,
+        )
+        self.assertEqual(
+            manifest.datasets[3].config_overrides["noisy_structure_blend"],
+            0.65,
+        )
 
     def test_noise_is_repeatable_and_seeded(self) -> None:
         image = np.full((12, 12, 3), 0.5, dtype=np.float32)
@@ -102,6 +114,47 @@ class BenchmarkTest(unittest.TestCase):
                     input_detail_blend=0.26,
                 ),
             )
+        with self.assertRaisesRegex(ValueError, "above 0.25"):
+            _validate_public_reference_config(
+                dataset,
+                PipelineConfig(
+                    kernel_size=7,
+                    patch_size=32,
+                    noisy_structure_blend=0.26,
+                ),
+            )
+
+    def test_manifest_rejects_unknown_config_override(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "manifest.json"
+            path.write_text(
+                json.dumps(
+                    {
+                        "schema_version": 1,
+                        "datasets": [
+                            {
+                                "id": "invalid-override",
+                                "description": "invalid override fixture",
+                                "visibility": "private",
+                                "blurred": {
+                                    "path": "blurred.png",
+                                    "sha256": "0" * 64,
+                                },
+                                "noisy": {
+                                    "path": "noisy.png",
+                                    "sha256": "0" * 64,
+                                },
+                                "config_overrides": {
+                                    "not_a_pipeline_field": 0.5,
+                                },
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "unknown PipelineConfig"):
+                load_manifest(path)
 
     def test_hpo_selection_uses_objective(self) -> None:
         base = PipelineConfig(kernel_size=7, patch_size=32)
@@ -148,6 +201,9 @@ class BenchmarkTest(unittest.TestCase):
                                     "path": "reference.png",
                                     "sha256": _digest(assets / "reference.png"),
                                 },
+                                "config_overrides": {
+                                    "noisy_structure_blend": 0.2,
+                                },
                             }
                         ],
                     }
@@ -173,6 +229,8 @@ class BenchmarkTest(unittest.TestCase):
             self.assertEqual(record["objective_type"], "reference")
             self.assertEqual(record["hpo"]["max_dimension"], 64)
             self.assertIn("baseline_metrics", record)
+            self.assertEqual(record["selected_config"]["noisy_structure_blend"], 0.2)
+            self.assertEqual(record["config_overrides"]["noisy_structure_blend"], 0.2)
             self.assertIn("asset_checksums", record)
             for role, checksum in record["asset_checksums"].items():
                 self.assertEqual(checksum, _digest(output / record["assets"][role]))

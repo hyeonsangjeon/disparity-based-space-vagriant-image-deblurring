@@ -43,6 +43,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -59,7 +62,7 @@
           "objective": 0.6509865394673353,
           "reference_available": false
         },
-        "runtime_seconds": 0.32547862495994195
+        "runtime_seconds": 0.3596793750184588
       },
       {
         "config": {
@@ -86,6 +89,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -102,7 +108,7 @@
           "objective": 0.6614578915753471,
           "reference_available": false
         },
-        "runtime_seconds": 0.31680037500336766
+        "runtime_seconds": 0.38339195802109316
       },
       {
         "config": {
@@ -129,6 +135,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -145,7 +154,7 @@
           "objective": 0.6768737836340418,
           "reference_available": false
         },
-        "runtime_seconds": 0.32040179101750255
+        "runtime_seconds": 0.6048444170155562
       }
     ],
     "fine": [
@@ -174,6 +183,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -190,7 +202,7 @@
           "objective": 0.6779606881615939,
           "reference_available": false
         },
-        "runtime_seconds": 0.31357154197758064
+        "runtime_seconds": 0.4240901669836603
       },
       {
         "config": {
@@ -217,6 +229,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -233,7 +248,7 @@
           "objective": 0.6825899741766348,
           "reference_available": false
         },
-        "runtime_seconds": 0.31257391697727144
+        "runtime_seconds": 0.8056299580493942
       }
     ],
     "max_dimension": 256,
@@ -261,7 +276,7 @@
     "width": 512
   },
   "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-  "runtime_seconds": 0.8206727920332924,
+  "runtime_seconds": 1.7621420419891365,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
@@ -286,6 +301,9 @@
     "max_regions": 4,
     "minimum_disparity_features": 1,
     "minimum_region_fraction": 0.01,
+    "noisy_structure_blend": 0.0,
+    "noisy_structure_sigma": 3.0,
+    "noisy_structure_tolerance": 0.12,
     "patch_size": 128,
     "random_seed": 20260715,
     "ransac_threshold": 2.5,

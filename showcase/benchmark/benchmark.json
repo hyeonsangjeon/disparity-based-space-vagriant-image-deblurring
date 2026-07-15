@@ -51,6 +51,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -68,7 +71,7 @@
               "reference_available": true,
               "ssim": 0.9125754613668374
             },
-            "runtime_seconds": 0.33005154196871445
+            "runtime_seconds": 0.42157800000859424
           },
           {
             "config": {
@@ -95,6 +98,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -112,7 +118,7 @@
               "reference_available": true,
               "ssim": 0.9037800184952562
             },
-            "runtime_seconds": 0.24028366600396112
+            "runtime_seconds": 0.2633425000240095
           },
           {
             "config": {
@@ -139,6 +145,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -156,7 +165,7 @@
               "reference_available": true,
               "ssim": 0.8813576264870657
             },
-            "runtime_seconds": 0.2508271670085378
+            "runtime_seconds": 0.2623045839718543
           }
         ],
         "fine": [
@@ -185,6 +194,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -202,7 +214,7 @@
               "reference_available": true,
               "ssim": 0.9194181030691152
             },
-            "runtime_seconds": 0.23772154102334753
+            "runtime_seconds": 0.2560536250239238
           },
           {
             "config": {
@@ -229,6 +241,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -246,7 +261,7 @@
               "reference_available": true,
               "ssim": 0.91102319675768
             },
-            "runtime_seconds": 0.3941999999806285
+            "runtime_seconds": 0.24257104203570634
           }
         ],
         "max_dimension": 256,
@@ -276,7 +291,7 @@
         "width": 384
       },
       "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
-      "runtime_seconds": 0.6493751659872942,
+      "runtime_seconds": 0.4745227500097826,
       "selected_config": {
         "beta_max": 24.0,
         "boundary_padding": null,
@@ -301,6 +316,9 @@
         "max_regions": 4,
         "minimum_disparity_features": 1,
         "minimum_region_fraction": 0.01,
+        "noisy_structure_blend": 0.0,
+        "noisy_structure_sigma": 3.0,
+        "noisy_structure_tolerance": 0.12,
         "patch_size": 128,
         "random_seed": 20260715,
         "ransac_threshold": 2.5,
@@ -319,10 +337,10 @@
     {
       "asset_checksums": {
         "blurred": "56e4227ea344b3feba80bcdc2ec95b927e38ab7d67f3cc787f09646a893044c3",
-        "comparison": "7a69de4d06859dd85800bf88a5e1c3383a11f9b68fb422c36e5c345161ecf620",
-        "noisy": "8ea1955cf8570711ca02c07be97b5d692845fb764d979a787d2f60f03378725e",
-        "result": "7589d02d675e58cf8ca2bdb7b7108a2cdf91da60f2cf5c9b34f48540e33b7347",
-        "thumbnail": "88c984386a6edb8f14e3d23c3bba4ea35fa56b2ef0106140c32951e2a31cdbb7"
+        "comparison": "10377ddc8c8754f4124003e088bc64cbed1cc7d73de4266d965b6720b350ea73",
+        "noisy": "e147c50227ac588d99a2f5053d7fa044883f9a0ec1facb9e05d593d9860cde4a",
+        "result": "65b78b9fc296987e601dc90d21eaaa35ca3a92272e49d62f9ba101bdd5c134ed",
+        "thumbnail": "84a55233a250432ff92746b4fc5088eddf9ce036d14862b920f19ec1770948d5"
       },
       "assets": {
         "blurred": "01_df2_object_motion/blurred.png",
@@ -333,7 +351,7 @@
         "thumbnail": "01_df2_object_motion/thumbnail.webp"
       },
       "baseline_metrics": null,
-      "description": "Historical photograph by Hyeon Sang Jeon: object-motion pair.",
+      "description": "Historical photograph by Hyeon Sang Jeon: object-motion pair with an explicitly labeled deterministic noise-amplified auxiliary.",
       "hpo": {
         "coarse": [
           {
@@ -361,6 +379,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -371,13 +392,13 @@
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 0.0065979003906250005,
-              "detail_gain": 0.07259264463421783,
-              "deviation_from_blurred": 0.022332875063960533,
-              "objective": 0.6407443809631169,
+              "artifact_penalty": 0.006615193684895833,
+              "detail_gain": 0.07090425019125712,
+              "deviation_from_blurred": 0.022530100353332375,
+              "objective": 0.6415601003491714,
               "reference_available": false
             },
-            "runtime_seconds": 0.4212471670471132
+            "runtime_seconds": 0.4715968749951571
           },
           {
             "config": {
@@ -404,6 +425,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -414,13 +438,13 @@
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 0.0074320475260416675,
-              "detail_gain": 0.11567035826358252,
-              "deviation_from_blurred": 0.02450547458750965,
-              "objective": 0.649504927480509,
+              "artifact_penalty": 0.0073944091796875,
+              "detail_gain": 0.11393106499873595,
+              "deviation_from_blurred": 0.02448293529950067,
+              "objective": 0.6494241872016956,
               "reference_available": false
             },
-            "runtime_seconds": 0.41393370897276327
+            "runtime_seconds": 0.43258520803647116
           },
           {
             "config": {
@@ -447,6 +471,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -457,13 +484,13 @@
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 0.0080810546875,
-              "detail_gain": 0.15074537702320878,
-              "deviation_from_blurred": 0.0267451883256212,
-              "objective": 0.6586099155494634,
+              "artifact_penalty": 0.008153279622395834,
+              "detail_gain": 0.15038456985821086,
+              "deviation_from_blurred": 0.02695588712840491,
+              "objective": 0.6594625485005152,
               "reference_available": false
             },
-            "runtime_seconds": 0.38268729200353846
+            "runtime_seconds": 0.46760358300525695
           }
         ],
         "fine": [
@@ -492,6 +519,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -502,13 +532,13 @@
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 0.008506266276041667,
-              "detail_gain": 0.15598340104352082,
-              "deviation_from_blurred": 0.0273873733967403,
-              "objective": 0.6611368626231368,
+              "artifact_penalty": 0.008412679036458334,
+              "detail_gain": 0.15439999834883694,
+              "deviation_from_blurred": 0.027269360264957368,
+              "objective": 0.660677896774562,
               "reference_available": false
             },
-            "runtime_seconds": 0.39411187497898936
+            "runtime_seconds": 0.5855950420373119
           },
           {
             "config": {
@@ -535,6 +565,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -545,30 +578,40 @@
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 0.008302815755208333,
-              "detail_gain": 0.16005207959081225,
-              "deviation_from_blurred": 0.027474289521532136,
-              "objective": 0.6615702208253944,
+              "artifact_penalty": 0.008394368489583333,
+              "detail_gain": 0.1599224187522582,
+              "deviation_from_blurred": 0.02759383870120587,
+              "objective": 0.662036298950337,
               "reference_available": false
             },
-            "runtime_seconds": 0.3685441669658758
+            "runtime_seconds": 0.509818708000239
           }
         ],
         "max_dimension": 256,
-        "selected_objective": 0.6615702208253944
+        "selected_objective": 0.662036298950337
       },
       "id": "01_df2_object_motion",
       "input_checksums": {
         "blurred": "5609ebfe7fa73a6cb71d9519fff3e489a6f6df38798bd050f250f2c343af083c",
-        "noisy": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
+        "noisy": "e147c50227ac588d99a2f5053d7fa044883f9a0ec1facb9e05d593d9860cde4a"
+      },
+      "input_processing": {
+        "noisy": {
+          "operation": "deterministic zero-mean RGB Gaussian noise augmentation",
+          "seed": 20260715,
+          "sigma": 0.02,
+          "source": "01_df2_object_motion/noisy-original.png",
+          "source_sha256": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
+        }
       },
       "metrics": {
-        "artifact_penalty": 0.0048405965169270836,
-        "detail_gain": 0.09211791030588562,
-        "deviation_from_blurred": 0.020109052997605854,
-        "objective": 0.6320935120424332,
+        "artifact_penalty": 0.004873148600260417,
+        "detail_gain": 0.09271851067076808,
+        "deviation_from_blurred": 0.020245223912771476,
+        "objective": 0.6326494976264567,
         "reference_available": false
       },
+      "noisy_label": "Noisy (deterministic noise boost)",
       "objective_type": "no-reference-proxy",
       "original_size": {
         "height": 512,
@@ -579,7 +622,7 @@
         "width": 512
       },
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 1.8783872919739224,
+      "runtime_seconds": 2.8053742079646327,
       "selected_config": {
         "beta_max": 24.0,
         "boundary_padding": null,
@@ -604,6 +647,9 @@
         "max_regions": 4,
         "minimum_disparity_features": 1,
         "minimum_region_fraction": 0.01,
+        "noisy_structure_blend": 0.0,
+        "noisy_structure_sigma": 3.0,
+        "noisy_structure_tolerance": 0.12,
         "patch_size": 128,
         "random_seed": 20260715,
         "ransac_threshold": 2.5,
@@ -613,7 +659,9 @@
         "unsharp_sigma": 1.0,
         "unsharp_threshold": 0.0
       },
-      "source_hashes": {},
+      "source_hashes": {
+        "historical_noisy_original.png": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
+      },
       "visibility": "public"
     },
     {
@@ -661,6 +709,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -677,7 +728,7 @@
               "objective": 0.6509865394673353,
               "reference_available": false
             },
-            "runtime_seconds": 0.32547862495994195
+            "runtime_seconds": 0.3596793750184588
           },
           {
             "config": {
@@ -704,6 +755,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -720,7 +774,7 @@
               "objective": 0.6614578915753471,
               "reference_available": false
             },
-            "runtime_seconds": 0.31680037500336766
+            "runtime_seconds": 0.38339195802109316
           },
           {
             "config": {
@@ -747,6 +801,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -763,7 +820,7 @@
               "objective": 0.6768737836340418,
               "reference_available": false
             },
-            "runtime_seconds": 0.32040179101750255
+            "runtime_seconds": 0.6048444170155562
           }
         ],
         "fine": [
@@ -792,6 +849,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -808,7 +868,7 @@
               "objective": 0.6779606881615939,
               "reference_available": false
             },
-            "runtime_seconds": 0.31357154197758064
+            "runtime_seconds": 0.4240901669836603
           },
           {
             "config": {
@@ -835,6 +895,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -851,7 +914,7 @@
               "objective": 0.6825899741766348,
               "reference_available": false
             },
-            "runtime_seconds": 0.31257391697727144
+            "runtime_seconds": 0.8056299580493942
           }
         ],
         "max_dimension": 256,
@@ -879,7 +942,7 @@
         "width": 512
       },
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 0.8206727920332924,
+      "runtime_seconds": 1.7621420419891365,
       "selected_config": {
         "beta_max": 24.0,
         "boundary_padding": null,
@@ -904,6 +967,9 @@
         "max_regions": 4,
         "minimum_disparity_features": 1,
         "minimum_region_fraction": 0.01,
+        "noisy_structure_blend": 0.0,
+        "noisy_structure_sigma": 3.0,
+        "noisy_structure_tolerance": 0.12,
         "patch_size": 128,
         "random_seed": 20260715,
         "ransac_threshold": 2.5,
@@ -919,10 +985,10 @@
     {
       "asset_checksums": {
         "blurred": "62fe98fc30b6c18bd612ecaf0acf8f2fcf6424b48f52e505a30ef9e661691275",
-        "comparison": "8c1ad7cdc389efe4aeea57c52aa8fbc394ec561f8f320378b97e2539d705a5fb",
+        "comparison": "84407c9c91d15ce682de4d7f88917427647046bf81dcef82e8c3a6bf961c3e08",
         "noisy": "a5ce9a6513d2a485512800180483cf148c9edf7e4e471bceb92cdecd99099e12",
-        "result": "bb7928274c42496744ba85744d610c2e2d46445fd462834c7bf807285ad5e0ab",
-        "thumbnail": "b34987e08f4595dba87a05b7fad34ae889d38fc4214ac6fc1fdf918a75a455b7"
+        "result": "4c81e5915b1c227a6d2a113c09aad0d80a42ce62ea626cebd876fec5857d6917",
+        "thumbnail": "c654b64362e47e77d7bdcd4ef708b1ee30541b686c3f0dc5ba572a6525b12809"
       },
       "assets": {
         "blurred": "05_new1_parking/blurred.png",
@@ -933,6 +999,12 @@
         "thumbnail": "05_new1_parking/thumbnail.webp"
       },
       "baseline_metrics": null,
+      "config_overrides": {
+        "detail_denoise_strength": 7.0,
+        "noisy_structure_blend": 0.65,
+        "noisy_structure_sigma": 3.0,
+        "noisy_structure_tolerance": 0.16
+      },
       "description": "Historical photograph by Hyeon Sang Jeon: parking scene pair.",
       "hpo": {
         "coarse": [
@@ -961,6 +1033,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -977,7 +1052,7 @@
               "objective": 0.6951282021969443,
               "reference_available": false
             },
-            "runtime_seconds": 0.4275100830127485
+            "runtime_seconds": 0.602970666019246
           },
           {
             "config": {
@@ -1004,6 +1079,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -1020,7 +1098,7 @@
               "objective": 0.7012735496515679,
               "reference_available": false
             },
-            "runtime_seconds": 0.4019748750142753
+            "runtime_seconds": 0.7384811659576371
           },
           {
             "config": {
@@ -1047,6 +1125,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -1063,7 +1144,7 @@
               "objective": 0.7086241082638723,
               "reference_available": false
             },
-            "runtime_seconds": 0.3848564590443857
+            "runtime_seconds": 0.7013469999656081
           }
         ],
         "fine": [
@@ -1092,6 +1173,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -1108,7 +1192,7 @@
               "objective": 0.7132620463367817,
               "reference_available": false
             },
-            "runtime_seconds": 0.44700045802164823
+            "runtime_seconds": 0.497152250027284
           },
           {
             "config": {
@@ -1135,6 +1219,9 @@
               "max_regions": 4,
               "minimum_disparity_features": 1,
               "minimum_region_fraction": 0.01,
+              "noisy_structure_blend": 0.0,
+              "noisy_structure_sigma": 3.0,
+              "noisy_structure_tolerance": 0.12,
               "patch_size": 128,
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
@@ -1151,7 +1238,7 @@
               "objective": 0.7137720786094272,
               "reference_available": false
             },
-            "runtime_seconds": 0.40201245801290497
+            "runtime_seconds": 0.42836433299817145
           }
         ],
         "max_dimension": 256,
@@ -1163,10 +1250,10 @@
         "noisy": "ed091cf035beed202c4e44966b2a7a81dfc93002d9b3f8215603efe01e56aa73"
       },
       "metrics": {
-        "artifact_penalty": 0.01418126424153646,
-        "detail_gain": 0.06321845512294894,
-        "deviation_from_blurred": 0.04924614512051617,
-        "objective": 0.7502288288509464,
+        "artifact_penalty": 0.0024884541829427085,
+        "detail_gain": 0.044574796877946965,
+        "deviation_from_blurred": 0.038128077189375616,
+        "objective": 0.7079960293250351,
         "reference_available": false
       },
       "objective_type": "no-reference-proxy",
@@ -1179,13 +1266,13 @@
         "width": 512
       },
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 2.9829340410069562,
+      "runtime_seconds": 3.7159926670137793,
       "selected_config": {
         "beta_max": 24.0,
         "boundary_padding": null,
         "color_labels": 8,
         "data_weight": 345.0,
-        "detail_denoise_strength": 5.0,
+        "detail_denoise_strength": 7.0,
         "detail_fusion_amount": 0.05,
         "detail_fusion_sigma": 1.5,
         "detail_fusion_threshold": 0.015,
@@ -1204,6 +1291,9 @@
         "max_regions": 4,
         "minimum_disparity_features": 1,
         "minimum_region_fraction": 0.01,
+        "noisy_structure_blend": 0.65,
+        "noisy_structure_sigma": 3.0,
+        "noisy_structure_tolerance": 0.16,
         "patch_size": 128,
         "random_seed": 20260715,
         "ransac_threshold": 2.5,

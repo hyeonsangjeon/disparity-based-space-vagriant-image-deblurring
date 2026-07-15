@@ -55,13 +55,13 @@ feather sigma 12, unsharp amount 0.3, and guided detail-fusion amount 0.5.
 
 ## Reproducibility and public benchmark gallery
 
-The committed public showcase was generated from `benchmarks/manifests/public.json`; its `benchmark.json` records relative asset paths, checksums, selected HPO configuration, and metrics without recording local dataset paths. Comparisons are ordered **blurred + noisy -> restored -> reference**.
+The committed public showcase was generated from `benchmarks/manifests/public.json`; its `benchmark.json` records relative asset paths, checksums, selected HPO configuration, input processing, and metrics without recording local dataset paths. Comparisons are ordered **blurred + noisy -> restored -> reference**. The DF2 card explicitly uses a deterministic σ=0.02 noise-amplified auxiliary while preserving the historical original, and the parking result uses a disclosed confidence-guided noisy-structure blend to suppress ringing.
 
 | Public dataset | Metric type | PSNR | SSIM | Objective (full-resolution) |
 | --- | --- | ---: | ---: | ---: |
-| Hyeon Sang Jeon historical: object motion | no-reference proxy | N/A | N/A | 0.632094 |
+| Hyeon Sang Jeon historical: object motion | no-reference proxy | N/A | N/A | 0.632649 |
 | Hyeon Sang Jeon historical: low-light building | no-reference proxy | N/A | N/A | 0.640904 |
-| Hyeon Sang Jeon historical: parking | no-reference proxy | N/A | N/A | 0.750229 |
+| Hyeon Sang Jeon historical: parking | no-reference proxy | N/A | N/A | 0.707996 |
 | External GoPro-derived benchmark | reference-backed | 25.3705 | 0.8816 | 0.694603 |
 
 See [showcase/benchmark/SUMMARY.md](showcase/benchmark/SUMMARY.md), [showcase/benchmark/benchmark.json](showcase/benchmark/benchmark.json), and the framework-free [GitHub Pages site](docs/index.html) for the complete public gallery. These results are reference-reconstruction measurements, not claims about the deleted historical code.

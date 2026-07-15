@@ -4,6 +4,7 @@ import numpy as np
 
 from disparity_deblur.postprocessing import (
     guided_noisy_detail_fusion,
+    guided_noisy_structure_fusion,
     luminance_unsharp,
 )
 
@@ -42,6 +43,40 @@ class PostprocessingTest(unittest.TestCase):
                 tolerance=0.08,
                 threshold=0.015,
             )
+
+    def test_noisy_structure_fusion_reduces_high_frequency_ringing(self) -> None:
+        yy, xx = np.mgrid[:48, :48]
+        base = np.stack(
+            (
+                0.3 + 0.4 * xx / 47.0,
+                0.25 + 0.35 * yy / 47.0,
+                0.35 + 0.2 * (xx + yy) / 94.0,
+            ),
+            axis=-1,
+        ).astype(np.float32)
+        oscillation = np.where(xx % 2 == 0, 1.0, -1.0)[..., None].astype(
+            np.float32
+        )
+        restored = np.clip(base + 0.16 * oscillation, 0.0, 1.0)
+        noisy = np.clip(base + 0.03 * oscillation, 0.0, 1.0)
+
+        fused = guided_noisy_structure_fusion(
+            restored,
+            noisy,
+            np.ones((48, 48), dtype=np.float32),
+            denoise_strength=0.0,
+            sigma=2.0,
+            amount=0.75,
+            tolerance=1.0,
+        )
+
+        self.assertLess(
+            np.mean(np.abs(fused - base)),
+            np.mean(np.abs(restored - base)),
+        )
+        self.assertTrue(np.isfinite(fused).all())
+        self.assertGreaterEqual(float(fused.min()), 0.0)
+        self.assertLessEqual(float(fused.max()), 1.0)
 
 
 if __name__ == "__main__":

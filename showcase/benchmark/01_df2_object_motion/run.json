@@ -1,10 +1,10 @@
 {
   "asset_checksums": {
     "blurred": "56e4227ea344b3feba80bcdc2ec95b927e38ab7d67f3cc787f09646a893044c3",
-    "comparison": "7a69de4d06859dd85800bf88a5e1c3383a11f9b68fb422c36e5c345161ecf620",
-    "noisy": "8ea1955cf8570711ca02c07be97b5d692845fb764d979a787d2f60f03378725e",
-    "result": "7589d02d675e58cf8ca2bdb7b7108a2cdf91da60f2cf5c9b34f48540e33b7347",
-    "thumbnail": "88c984386a6edb8f14e3d23c3bba4ea35fa56b2ef0106140c32951e2a31cdbb7"
+    "comparison": "10377ddc8c8754f4124003e088bc64cbed1cc7d73de4266d965b6720b350ea73",
+    "noisy": "e147c50227ac588d99a2f5053d7fa044883f9a0ec1facb9e05d593d9860cde4a",
+    "result": "65b78b9fc296987e601dc90d21eaaa35ca3a92272e49d62f9ba101bdd5c134ed",
+    "thumbnail": "84a55233a250432ff92746b4fc5088eddf9ce036d14862b920f19ec1770948d5"
   },
   "assets": {
     "blurred": "01_df2_object_motion/blurred.png",
@@ -15,7 +15,7 @@
     "thumbnail": "01_df2_object_motion/thumbnail.webp"
   },
   "baseline_metrics": null,
-  "description": "Historical photograph by Hyeon Sang Jeon: object-motion pair.",
+  "description": "Historical photograph by Hyeon Sang Jeon: object-motion pair with an explicitly labeled deterministic noise-amplified auxiliary.",
   "hpo": {
     "coarse": [
       {
@@ -43,6 +43,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -53,13 +56,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.0065979003906250005,
-          "detail_gain": 0.07259264463421783,
-          "deviation_from_blurred": 0.022332875063960533,
-          "objective": 0.6407443809631169,
+          "artifact_penalty": 0.006615193684895833,
+          "detail_gain": 0.07090425019125712,
+          "deviation_from_blurred": 0.022530100353332375,
+          "objective": 0.6415601003491714,
           "reference_available": false
         },
-        "runtime_seconds": 0.4212471670471132
+        "runtime_seconds": 0.4715968749951571
       },
       {
         "config": {
@@ -86,6 +89,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -96,13 +102,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.0074320475260416675,
-          "detail_gain": 0.11567035826358252,
-          "deviation_from_blurred": 0.02450547458750965,
-          "objective": 0.649504927480509,
+          "artifact_penalty": 0.0073944091796875,
+          "detail_gain": 0.11393106499873595,
+          "deviation_from_blurred": 0.02448293529950067,
+          "objective": 0.6494241872016956,
           "reference_available": false
         },
-        "runtime_seconds": 0.41393370897276327
+        "runtime_seconds": 0.43258520803647116
       },
       {
         "config": {
@@ -129,6 +135,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -139,13 +148,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.0080810546875,
-          "detail_gain": 0.15074537702320878,
-          "deviation_from_blurred": 0.0267451883256212,
-          "objective": 0.6586099155494634,
+          "artifact_penalty": 0.008153279622395834,
+          "detail_gain": 0.15038456985821086,
+          "deviation_from_blurred": 0.02695588712840491,
+          "objective": 0.6594625485005152,
           "reference_available": false
         },
-        "runtime_seconds": 0.38268729200353846
+        "runtime_seconds": 0.46760358300525695
       }
     ],
     "fine": [
@@ -174,6 +183,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -184,13 +196,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.008506266276041667,
-          "detail_gain": 0.15598340104352082,
-          "deviation_from_blurred": 0.0273873733967403,
-          "objective": 0.6611368626231368,
+          "artifact_penalty": 0.008412679036458334,
+          "detail_gain": 0.15439999834883694,
+          "deviation_from_blurred": 0.027269360264957368,
+          "objective": 0.660677896774562,
           "reference_available": false
         },
-        "runtime_seconds": 0.39411187497898936
+        "runtime_seconds": 0.5855950420373119
       },
       {
         "config": {
@@ -217,6 +229,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -227,30 +242,40 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.008302815755208333,
-          "detail_gain": 0.16005207959081225,
-          "deviation_from_blurred": 0.027474289521532136,
-          "objective": 0.6615702208253944,
+          "artifact_penalty": 0.008394368489583333,
+          "detail_gain": 0.1599224187522582,
+          "deviation_from_blurred": 0.02759383870120587,
+          "objective": 0.662036298950337,
           "reference_available": false
         },
-        "runtime_seconds": 0.3685441669658758
+        "runtime_seconds": 0.509818708000239
       }
     ],
     "max_dimension": 256,
-    "selected_objective": 0.6615702208253944
+    "selected_objective": 0.662036298950337
   },
   "id": "01_df2_object_motion",
   "input_checksums": {
     "blurred": "5609ebfe7fa73a6cb71d9519fff3e489a6f6df38798bd050f250f2c343af083c",
-    "noisy": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
+    "noisy": "e147c50227ac588d99a2f5053d7fa044883f9a0ec1facb9e05d593d9860cde4a"
+  },
+  "input_processing": {
+    "noisy": {
+      "operation": "deterministic zero-mean RGB Gaussian noise augmentation",
+      "seed": 20260715,
+      "sigma": 0.02,
+      "source": "01_df2_object_motion/noisy-original.png",
+      "source_sha256": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
+    }
   },
   "metrics": {
-    "artifact_penalty": 0.0048405965169270836,
-    "detail_gain": 0.09211791030588562,
-    "deviation_from_blurred": 0.020109052997605854,
-    "objective": 0.6320935120424332,
+    "artifact_penalty": 0.004873148600260417,
+    "detail_gain": 0.09271851067076808,
+    "deviation_from_blurred": 0.020245223912771476,
+    "objective": 0.6326494976264567,
     "reference_available": false
   },
+  "noisy_label": "Noisy (deterministic noise boost)",
   "objective_type": "no-reference-proxy",
   "original_size": {
     "height": 512,
@@ -261,7 +286,7 @@
     "width": 512
   },
   "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-  "runtime_seconds": 1.8783872919739224,
+  "runtime_seconds": 2.8053742079646327,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
@@ -286,6 +311,9 @@
     "max_regions": 4,
     "minimum_disparity_features": 1,
     "minimum_region_fraction": 0.01,
+    "noisy_structure_blend": 0.0,
+    "noisy_structure_sigma": 3.0,
+    "noisy_structure_tolerance": 0.12,
     "patch_size": 128,
     "random_seed": 20260715,
     "ransac_threshold": 2.5,
@@ -295,6 +323,8 @@
     "unsharp_sigma": 1.0,
     "unsharp_threshold": 0.0
   },
-  "source_hashes": {},
+  "source_hashes": {
+    "historical_noisy_original.png": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
+  },
   "visibility": "public"
 }

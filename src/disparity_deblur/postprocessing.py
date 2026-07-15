@@ -34,22 +34,8 @@ def guided_noisy_detail_fusion(
 ) -> np.ndarray:
     if amount == 0:
         return restored.copy()
-    if restored.shape != registered_noisy.shape:
-        raise ValueError("restored and registered noisy image shapes differ")
-    if valid_mask.shape != restored.shape[:2]:
-        raise ValueError("registration mask shape differs from image shape")
-
-    noisy_u8 = np.rint(np.clip(registered_noisy, 0.0, 1.0) * 255.0).astype(
-        np.uint8
-    )
-    denoised = cv2.fastNlMeansDenoisingColored(
-        noisy_u8,
-        None,
-        denoise_strength,
-        denoise_strength,
-        7,
-        21,
-    ).astype(np.float32) / 255.0
+    _validate_guided_inputs(restored, registered_noisy, valid_mask)
+    denoised = _denoise_registered_noisy(registered_noisy, denoise_strength)
 
     restored_ycrcb = cv2.cvtColor(restored.astype(np.float32), cv2.COLOR_RGB2YCrCb)
     restored_y = restored_ycrcb[..., 0]
@@ -74,3 +60,79 @@ def guided_noisy_detail_fusion(
         0.0,
         1.0,
     )
+
+
+def guided_noisy_structure_fusion(
+    restored: np.ndarray,
+    registered_noisy: np.ndarray,
+    valid_mask: np.ndarray,
+    *,
+    denoise_strength: float,
+    sigma: float,
+    amount: float,
+    tolerance: float,
+) -> np.ndarray:
+    """Replace ringing-prone structure with tone-matched noisy-image structure."""
+    if amount == 0:
+        return restored.copy()
+    if not 0 <= amount <= 1:
+        raise ValueError("noisy structure fusion amount must be in [0, 1]")
+    if sigma <= 0 or tolerance <= 0:
+        raise ValueError("noisy structure fusion parameters must be positive")
+    _validate_guided_inputs(restored, registered_noisy, valid_mask)
+
+    denoised = _denoise_registered_noisy(registered_noisy, denoise_strength)
+    restored_base = cv2.GaussianBlur(restored, (0, 0), sigma)
+    noisy_base = cv2.GaussianBlur(denoised, (0, 0), sigma)
+    tone_matched_noisy = np.clip(
+        denoised + restored_base - noisy_base,
+        0.0,
+        1.0,
+    )
+
+    restored_luma = cv2.cvtColor(restored_base.astype(np.float32), cv2.COLOR_RGB2GRAY)
+    noisy_luma = cv2.cvtColor(noisy_base.astype(np.float32), cv2.COLOR_RGB2GRAY)
+    confidence = np.exp(-((restored_luma - noisy_luma) / tolerance) ** 2)
+    valid = np.clip(valid_mask.astype(np.float32), 0.0, 1.0)
+    confidence = cv2.GaussianBlur(confidence * valid, (0, 0), 1.0) * valid
+    weight = (amount * np.clip(confidence, 0.0, 1.0))[..., None]
+    return np.clip(
+        restored * (1.0 - weight) + tone_matched_noisy * weight,
+        0.0,
+        1.0,
+    )
+
+
+def _denoise_registered_noisy(
+    registered_noisy: np.ndarray,
+    denoise_strength: float,
+) -> np.ndarray:
+    if denoise_strength < 0:
+        raise ValueError("denoise strength cannot be negative")
+    if denoise_strength == 0:
+        return registered_noisy.astype(np.float32).copy()
+    noisy_u8 = np.rint(np.clip(registered_noisy, 0.0, 1.0) * 255.0).astype(
+        np.uint8
+    )
+    return (
+        cv2.fastNlMeansDenoisingColored(
+            noisy_u8,
+            None,
+            denoise_strength,
+            denoise_strength,
+            7,
+            21,
+        ).astype(np.float32)
+        / 255.0
+    )
+
+
+def _validate_guided_inputs(
+    restored: np.ndarray,
+    registered_noisy: np.ndarray,
+    valid_mask: np.ndarray,
+) -> None:
+    if restored.shape != registered_noisy.shape:
+        raise ValueError("restored and registered noisy image shapes differ")
+    if valid_mask.shape != restored.shape[:2]:
+        raise ValueError("registration mask shape differs from image shape")

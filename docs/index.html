@@ -118,12 +118,13 @@
         <h2 id="gallery">Public benchmark gallery</h2>
         <div class="gallery">
           <article>
-            <img src="assets/01-df2-object-motion-comparison.webp" alt="Historical object-motion photograph comparison: blurred, noisy, and restored images.">
+            <img src="assets/01-df2-object-motion-comparison.webp" alt="Historical object-motion photograph comparison: blurred, explicitly noise-amplified auxiliary, and restored images.">
             <h3>Historical photograph: object motion</h3>
             <dl>
               <div><dt>Metric</dt><dd>No-reference proxy</dd></div>
-              <div><dt>Objective (full-resolution)</dt><dd>0.632094</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.632649</dd></div>
             </dl>
+            <p class="card-note">The middle panel adds deterministic σ=0.02 Gaussian noise for visible separation; the original historical auxiliary remains archived.</p>
           </article>
           <article>
             <img src="assets/02-building-low-light-comparison.webp" alt="Historical low-light building photograph comparison: blurred, noisy, and restored images.">
@@ -138,8 +139,9 @@
             <h3>Historical photograph: parking</h3>
             <dl>
               <div><dt>Metric</dt><dd>No-reference proxy</dd></div>
-              <div><dt>Objective (full-resolution)</dt><dd>0.750229</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.707996</dd></div>
             </dl>
+            <p class="card-note">Ringing-aware result: 35% regional restoration plus up to 65% confidence-guided, denoised noisy-image structure.</p>
           </article>
           <article>
             <img src="assets/gopro-flower-comparison.webp" alt="Derived GoPro Flower comparison: blurred, noisy, restored, and reference images.">

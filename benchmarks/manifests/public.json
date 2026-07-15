@@ -25,7 +25,7 @@
     },
     {
       "id": "01_df2_object_motion",
-      "description": "Historical photograph by Hyeon Sang Jeon: object-motion pair.",
+      "description": "Historical photograph by Hyeon Sang Jeon: object-motion pair with an explicitly labeled deterministic noise-amplified auxiliary.",
       "visibility": "public",
       "rights": "Copyright © 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
       "blurred": {
@@ -34,7 +34,20 @@
       },
       "noisy": {
         "path": "01_df2_object_motion/noisy.png",
-        "sha256": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
+        "sha256": "e147c50227ac588d99a2f5053d7fa044883f9a0ec1facb9e05d593d9860cde4a"
+      },
+      "noisy_label": "Noisy (deterministic noise boost)",
+      "input_processing": {
+        "noisy": {
+          "operation": "deterministic zero-mean RGB Gaussian noise augmentation",
+          "source": "01_df2_object_motion/noisy-original.png",
+          "source_sha256": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576",
+          "seed": 20260715,
+          "sigma": 0.02
+        }
+      },
+      "source_hashes": {
+        "historical_noisy_original.png": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
       }
     },
     {
@@ -63,6 +76,12 @@
       "noisy": {
         "path": "05_new1_parking/noisy.png",
         "sha256": "ed091cf035beed202c4e44966b2a7a81dfc93002d9b3f8215603efe01e56aa73"
+      },
+      "config_overrides": {
+        "detail_denoise_strength": 7.0,
+        "noisy_structure_blend": 0.65,
+        "noisy_structure_sigma": 3.0,
+        "noisy_structure_tolerance": 0.16
       }
     }
   ],

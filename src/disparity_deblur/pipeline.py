@@ -8,7 +8,11 @@ from .config import PipelineConfig
 from .image_io import read_input_image
 from .kernel_estimation import estimate_region_kernels
 from .models import DeblurResult, InputSpec
-from .postprocessing import guided_noisy_detail_fusion, luminance_unsharp
+from .postprocessing import (
+    guided_noisy_detail_fusion,
+    guided_noisy_structure_fusion,
+    luminance_unsharp,
+)
 from .registration import identity_registration, register_noisy_to_blur
 from .restoration import restore_regions
 from .segmentation import disparity_segmentation
@@ -82,6 +86,15 @@ class DisparityDeblurPipeline:
             amount=config.detail_fusion_amount,
             tolerance=config.detail_fusion_tolerance,
             threshold=config.detail_fusion_threshold,
+        )
+        restored = guided_noisy_structure_fusion(
+            restored,
+            registration.registered_noisy,
+            registration.valid_mask,
+            denoise_strength=config.detail_denoise_strength,
+            sigma=config.noisy_structure_sigma,
+            amount=config.noisy_structure_blend,
+            tolerance=config.noisy_structure_tolerance,
         )
         if config.input_detail_blend:
             input_detail = luminance_unsharp(

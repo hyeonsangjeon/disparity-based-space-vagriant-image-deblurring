@@ -49,6 +49,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -66,7 +69,7 @@
           "reference_available": true,
           "ssim": 0.9125754613668374
         },
-        "runtime_seconds": 0.33005154196871445
+        "runtime_seconds": 0.42157800000859424
       },
       {
         "config": {
@@ -93,6 +96,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -110,7 +116,7 @@
           "reference_available": true,
           "ssim": 0.9037800184952562
         },
-        "runtime_seconds": 0.24028366600396112
+        "runtime_seconds": 0.2633425000240095
       },
       {
         "config": {
@@ -137,6 +143,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -154,7 +163,7 @@
           "reference_available": true,
           "ssim": 0.8813576264870657
         },
-        "runtime_seconds": 0.2508271670085378
+        "runtime_seconds": 0.2623045839718543
       }
     ],
     "fine": [
@@ -183,6 +192,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -200,7 +212,7 @@
           "reference_available": true,
           "ssim": 0.9194181030691152
         },
-        "runtime_seconds": 0.23772154102334753
+        "runtime_seconds": 0.2560536250239238
       },
       {
         "config": {
@@ -227,6 +239,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -244,7 +259,7 @@
           "reference_available": true,
           "ssim": 0.91102319675768
         },
-        "runtime_seconds": 0.3941999999806285
+        "runtime_seconds": 0.24257104203570634
       }
     ],
     "max_dimension": 256,
@@ -274,7 +289,7 @@
     "width": 384
   },
   "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
-  "runtime_seconds": 0.6493751659872942,
+  "runtime_seconds": 0.4745227500097826,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
@@ -299,6 +314,9 @@
     "max_regions": 4,
     "minimum_disparity_features": 1,
     "minimum_region_fraction": 0.01,
+    "noisy_structure_blend": 0.0,
+    "noisy_structure_sigma": 3.0,
+    "noisy_structure_tolerance": 0.12,
     "patch_size": 128,
     "random_seed": 20260715,
     "ransac_threshold": 2.5,

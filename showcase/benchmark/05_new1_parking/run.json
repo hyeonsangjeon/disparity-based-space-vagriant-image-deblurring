@@ -1,10 +1,10 @@
 {
   "asset_checksums": {
     "blurred": "62fe98fc30b6c18bd612ecaf0acf8f2fcf6424b48f52e505a30ef9e661691275",
-    "comparison": "8c1ad7cdc389efe4aeea57c52aa8fbc394ec561f8f320378b97e2539d705a5fb",
+    "comparison": "84407c9c91d15ce682de4d7f88917427647046bf81dcef82e8c3a6bf961c3e08",
     "noisy": "a5ce9a6513d2a485512800180483cf148c9edf7e4e471bceb92cdecd99099e12",
-    "result": "bb7928274c42496744ba85744d610c2e2d46445fd462834c7bf807285ad5e0ab",
-    "thumbnail": "b34987e08f4595dba87a05b7fad34ae889d38fc4214ac6fc1fdf918a75a455b7"
+    "result": "4c81e5915b1c227a6d2a113c09aad0d80a42ce62ea626cebd876fec5857d6917",
+    "thumbnail": "c654b64362e47e77d7bdcd4ef708b1ee30541b686c3f0dc5ba572a6525b12809"
   },
   "assets": {
     "blurred": "05_new1_parking/blurred.png",
@@ -15,6 +15,12 @@
     "thumbnail": "05_new1_parking/thumbnail.webp"
   },
   "baseline_metrics": null,
+  "config_overrides": {
+    "detail_denoise_strength": 7.0,
+    "noisy_structure_blend": 0.65,
+    "noisy_structure_sigma": 3.0,
+    "noisy_structure_tolerance": 0.16
+  },
   "description": "Historical photograph by Hyeon Sang Jeon: parking scene pair.",
   "hpo": {
     "coarse": [
@@ -43,6 +49,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -59,7 +68,7 @@
           "objective": 0.6951282021969443,
           "reference_available": false
         },
-        "runtime_seconds": 0.4275100830127485
+        "runtime_seconds": 0.602970666019246
       },
       {
         "config": {
@@ -86,6 +95,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -102,7 +114,7 @@
           "objective": 0.7012735496515679,
           "reference_available": false
         },
-        "runtime_seconds": 0.4019748750142753
+        "runtime_seconds": 0.7384811659576371
       },
       {
         "config": {
@@ -129,6 +141,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -145,7 +160,7 @@
           "objective": 0.7086241082638723,
           "reference_available": false
         },
-        "runtime_seconds": 0.3848564590443857
+        "runtime_seconds": 0.7013469999656081
       }
     ],
     "fine": [
@@ -174,6 +189,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -190,7 +208,7 @@
           "objective": 0.7132620463367817,
           "reference_available": false
         },
-        "runtime_seconds": 0.44700045802164823
+        "runtime_seconds": 0.497152250027284
       },
       {
         "config": {
@@ -217,6 +235,9 @@
           "max_regions": 4,
           "minimum_disparity_features": 1,
           "minimum_region_fraction": 0.01,
+          "noisy_structure_blend": 0.0,
+          "noisy_structure_sigma": 3.0,
+          "noisy_structure_tolerance": 0.12,
           "patch_size": 128,
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
@@ -233,7 +254,7 @@
           "objective": 0.7137720786094272,
           "reference_available": false
         },
-        "runtime_seconds": 0.40201245801290497
+        "runtime_seconds": 0.42836433299817145
       }
     ],
     "max_dimension": 256,
@@ -245,10 +266,10 @@
     "noisy": "ed091cf035beed202c4e44966b2a7a81dfc93002d9b3f8215603efe01e56aa73"
   },
   "metrics": {
-    "artifact_penalty": 0.01418126424153646,
-    "detail_gain": 0.06321845512294894,
-    "deviation_from_blurred": 0.04924614512051617,
-    "objective": 0.7502288288509464,
+    "artifact_penalty": 0.0024884541829427085,
+    "detail_gain": 0.044574796877946965,
+    "deviation_from_blurred": 0.038128077189375616,
+    "objective": 0.7079960293250351,
     "reference_available": false
   },
   "objective_type": "no-reference-proxy",
@@ -261,13 +282,13 @@
     "width": 512
   },
   "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-  "runtime_seconds": 2.9829340410069562,
+  "runtime_seconds": 3.7159926670137793,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
     "color_labels": 8,
     "data_weight": 345.0,
-    "detail_denoise_strength": 5.0,
+    "detail_denoise_strength": 7.0,
     "detail_fusion_amount": 0.05,
     "detail_fusion_sigma": 1.5,
     "detail_fusion_threshold": 0.015,
@@ -286,6 +307,9 @@
     "max_regions": 4,
     "minimum_disparity_features": 1,
     "minimum_region_fraction": 0.01,
+    "noisy_structure_blend": 0.65,
+    "noisy_structure_sigma": 3.0,
+    "noisy_structure_tolerance": 0.16,
     "patch_size": 128,
     "random_seed": 20260715,
     "ransac_threshold": 2.5,
