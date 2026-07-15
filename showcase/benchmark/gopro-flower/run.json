@@ -26,6 +26,7 @@
     "coarse": [
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -69,10 +70,11 @@
           "reference_available": true,
           "ssim": 0.9125754613668374
         },
-        "runtime_seconds": 0.42157800000859424
+        "runtime_seconds": 0.396291583951097
       },
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -116,10 +118,11 @@
           "reference_available": true,
           "ssim": 0.9037800184952562
         },
-        "runtime_seconds": 0.2633425000240095
+        "runtime_seconds": 0.2899711250211112
       },
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -163,12 +166,13 @@
           "reference_available": true,
           "ssim": 0.8813576264870657
         },
-        "runtime_seconds": 0.2623045839718543
+        "runtime_seconds": 0.3353807919775136
       }
     ],
     "fine": [
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -212,10 +216,11 @@
           "reference_available": true,
           "ssim": 0.9194181030691152
         },
-        "runtime_seconds": 0.2560536250239238
+        "runtime_seconds": 0.3276441670022905
       },
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -259,7 +264,7 @@
           "reference_available": true,
           "ssim": 0.91102319675768
         },
-        "runtime_seconds": 0.24257104203570634
+        "runtime_seconds": 0.37512887502089143
       }
     ],
     "max_dimension": 256,
@@ -289,8 +294,9 @@
     "width": 384
   },
   "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
-  "runtime_seconds": 0.4745227500097826,
+  "runtime_seconds": 0.5831305829924531,
   "selected_config": {
+    "backend": "numpy",
     "beta_max": 24.0,
     "boundary_padding": null,
     "color_labels": 8,

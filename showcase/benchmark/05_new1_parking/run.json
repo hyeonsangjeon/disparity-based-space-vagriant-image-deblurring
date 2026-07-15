@@ -26,6 +26,7 @@
     "coarse": [
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -68,10 +69,11 @@
           "objective": 0.6951282021969443,
           "reference_available": false
         },
-        "runtime_seconds": 0.602970666019246
+        "runtime_seconds": 0.4259745830204338
       },
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -114,10 +116,11 @@
           "objective": 0.7012735496515679,
           "reference_available": false
         },
-        "runtime_seconds": 0.7384811659576371
+        "runtime_seconds": 0.4197291249874979
       },
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -160,12 +163,13 @@
           "objective": 0.7086241082638723,
           "reference_available": false
         },
-        "runtime_seconds": 0.7013469999656081
+        "runtime_seconds": 0.43169429199770093
       }
     ],
     "fine": [
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -208,10 +212,11 @@
           "objective": 0.7132620463367817,
           "reference_available": false
         },
-        "runtime_seconds": 0.497152250027284
+        "runtime_seconds": 0.4924174589687027
       },
       {
         "config": {
+          "backend": "numpy",
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
@@ -254,7 +259,7 @@
           "objective": 0.7137720786094272,
           "reference_available": false
         },
-        "runtime_seconds": 0.42836433299817145
+        "runtime_seconds": 0.5257394999498501
       }
     ],
     "max_dimension": 256,
@@ -282,8 +287,9 @@
     "width": 512
   },
   "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-  "runtime_seconds": 3.7159926670137793,
+  "runtime_seconds": 2.10159824998118,
   "selected_config": {
+    "backend": "numpy",
     "beta_max": 24.0,
     "boundary_padding": null,
     "color_labels": 8,

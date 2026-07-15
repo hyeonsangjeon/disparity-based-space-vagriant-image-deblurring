@@ -18,6 +18,8 @@ NOISE_SIGMA = 0.02
 
 
 def main() -> None:
+    """Generate the deterministic DF2 noisy auxiliary from its archived source."""
+
     parser = argparse.ArgumentParser(
         description="Add reproducible Gaussian sensor noise to the preserved DF2 auxiliary."
     )

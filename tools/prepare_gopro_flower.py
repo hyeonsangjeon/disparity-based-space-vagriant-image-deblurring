@@ -26,6 +26,8 @@ MAX_DIMENSION = 384
 
 
 def main() -> None:
+    """Prepare the licensed GoPro Flower benchmark assets and provenance."""
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--source-dir",

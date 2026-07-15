@@ -90,6 +90,15 @@ class BenchmarkTest(unittest.TestCase):
         building = json.loads(
             Path("showcase/benchmark/02_building_low_light/run.json").read_text()
         )
+        committed = json.loads(
+            Path("showcase/benchmark/benchmark.json").read_text()
+        )
+        self.assertTrue(
+            all(
+                dataset["selected_config"]["backend"] == "numpy"
+                for dataset in committed["datasets"]
+            )
+        )
         self.assertNotEqual(
             building["output_size"]["width"],
             building["output_size"]["height"],
@@ -243,6 +252,7 @@ class BenchmarkTest(unittest.TestCase):
             self.assertEqual(record["objective_type"], "reference")
             self.assertEqual(record["hpo"]["max_dimension"], 64)
             self.assertIn("baseline_metrics", record)
+            self.assertEqual(record["selected_config"]["backend"], "numpy")
             self.assertEqual(record["selected_config"]["noisy_structure_blend"], 0.2)
             self.assertEqual(record["config_overrides"]["noisy_structure_blend"], 0.2)
             self.assertIn("asset_checksums", record)

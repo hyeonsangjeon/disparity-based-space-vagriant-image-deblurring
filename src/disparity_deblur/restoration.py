@@ -3,6 +3,8 @@ from typing import Sequence
 import cv2
 import numpy as np
 
+from .backends import deconvolve_channels
+
 
 def restore_regions(
     blurred: np.ndarray,
@@ -11,6 +13,7 @@ def restore_regions(
     *,
     data_weight: float = 200.0,
     beta_max: float = 32.0,
+    backend: str = "numpy",
     feather_sigma: float = 5.0,
     boundary_padding: int | None = None,
 ) -> np.ndarray:
@@ -30,6 +33,7 @@ def restore_regions(
                 contiguous,
                 data_weight=data_weight,
                 beta_max=beta_max,
+                backend=backend,
                 boundary_padding=boundary_padding,
             )
         restored.append(restored_by_kernel[key])
@@ -42,6 +46,7 @@ def tv_l1_deconvolve(
     *,
     data_weight: float,
     beta_max: float,
+    backend: str = "numpy",
     boundary_padding: int | None = None,
 ) -> np.ndarray:
     """Restore a 2D or HxWxC image with half-quadratic TV/L1 FFT updates."""
@@ -68,6 +73,39 @@ def tv_l1_deconvolve(
             ((padding, padding), (padding, padding), (0, 0)),
             mode="reflect",
         )
+
+    if backend == "numpy":
+        output = _tv_l1_deconvolve_numpy(
+            channels,
+            kernel,
+            data_weight=data_weight,
+            beta_max=beta_max,
+        )
+    else:
+        output = deconvolve_channels(
+            channels,
+            kernel,
+            data_weight=data_weight,
+            beta_max=beta_max,
+            backend=backend,
+        )
+    if output.shape != channels.shape or not np.isfinite(output).all():
+        raise RuntimeError(
+            f"{backend} backend returned invalid output shape or non-finite values"
+        )
+    if padding:
+        output = output[padding:-padding, padding:-padding]
+    return output[..., 0] if squeeze else output
+
+
+def _tv_l1_deconvolve_numpy(
+    channels: np.ndarray,
+    kernel: np.ndarray,
+    *,
+    data_weight: float,
+    beta_max: float,
+) -> np.ndarray:
+    """Execute the canonical NumPy FFT implementation on an HxWxC array."""
 
     height, width = channels.shape[:2]
     kernel_otf = psf_to_otf(kernel, (height, width))
@@ -105,9 +143,7 @@ def tv_l1_deconvolve(
             image = np.fft.ifft2(numerator / denominator).real
             beta *= 2.0
         output[..., channel] = np.clip(image, 0.0, 1.0)
-    if padding:
-        output = output[padding:-padding, padding:-padding]
-    return output[..., 0] if squeeze else output
+    return output
 
 
 def normalized_region_merge(

@@ -74,6 +74,7 @@ class DisparityDeblurPipeline:
             [estimate.kernel for estimate in kernels],
             data_weight=config.data_weight,
             beta_max=config.beta_max,
+            backend=config.backend,
             feather_sigma=config.feather_sigma,
             boundary_padding=config.boundary_padding,
         )

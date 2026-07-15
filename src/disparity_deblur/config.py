@@ -22,6 +22,7 @@ class PipelineConfig:
     kurtosis_max: float = 300.0
     data_weight: float = 200.0
     beta_max: float = 32.0
+    backend: str = "numpy"
     feather_sigma: float = 5.0
     boundary_padding: int | None = None
     unsharp_sigma: float = 1.0
@@ -73,6 +74,8 @@ class PipelineConfig:
             raise ValueError("data_weight must be positive")
         if self.beta_max < 1:
             raise ValueError("beta_max must be at least 1")
+        if self.backend not in {"numpy", "native-cpp", "cuda"}:
+            raise ValueError("backend must be numpy, native-cpp, or cuda")
         if self.feather_sigma < 0:
             raise ValueError("feather_sigma cannot be negative")
         if self.boundary_padding is not None and self.boundary_padding < 0:

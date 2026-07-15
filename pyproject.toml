@@ -10,6 +10,13 @@ dependencies = [
     "scipy>=1.11,<2",
 ]
 
+[dependency-groups]
+native = [
+    "cmake>=3.28,<5",
+    "ninja>=1.11,<2",
+    "pybind11>=2.13,<4",
+]
+
 [project.scripts]
 disparity-deblur = "disparity_deblur.cli:main"
 disparity-deblur-benchmark = "disparity_deblur.benchmark:main"

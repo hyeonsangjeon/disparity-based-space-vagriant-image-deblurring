@@ -180,6 +180,8 @@ def _sha256(path: Path) -> str:
 
 
 def main() -> None:
+    """Prepare public-safe Mat3 walkthrough assets and checksummed metadata."""
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input-dir", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)

@@ -35,6 +35,11 @@ remains square by definition, while registration, segmentation, rectangular patc
 selection, FFT restoration, feather merging, artifacts, and benchmark thumbnails all
 track image height and width separately.
 
+The default NumPy implementation is canonical. Optional `native-cpp` and `cuda`
+deconvolution backends are documented in
+[`ACCELERATION.md`](ACCELERATION.md), including installation, honest performance
+tradeoffs, numerical-parity checks, and reproducible benchmark commands.
+
 Reproduce the public manifest-driven showcase in a separate output directory:
 
 ```sh

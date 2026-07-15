@@ -36,6 +36,12 @@ def main() -> None:
     parser.add_argument("--kurtosis-max", type=float, default=300.0)
     parser.add_argument("--data-weight", type=float, default=200.0)
     parser.add_argument("--beta-max", type=float, default=32.0)
+    parser.add_argument(
+        "--backend",
+        choices=("numpy", "native-cpp", "cuda"),
+        default="numpy",
+        help="explicit deconvolution backend; optional backends never silently fall back",
+    )
     parser.add_argument("--feather-sigma", type=float, default=5.0)
     parser.add_argument("--boundary-padding", type=int)
     parser.add_argument("--unsharp-sigma", type=float, default=1.0)
@@ -70,6 +76,7 @@ def main() -> None:
         kurtosis_max=args.kurtosis_max,
         data_weight=args.data_weight,
         beta_max=args.beta_max,
+        backend=args.backend,
         feather_sigma=args.feather_sigma,
         boundary_padding=args.boundary_padding,
         unsharp_sigma=args.unsharp_sigma,

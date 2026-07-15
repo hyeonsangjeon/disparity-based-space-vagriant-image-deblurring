@@ -124,6 +124,10 @@ local.properties
 *.egg-info/
 dist/
 output/
+build/
+src/disparity_deblur/_native*.so
+src/disparity_deblur/_native*.dylib
+src/disparity_deblur/_native*.pyd
 
 # Never publish private benchmark inputs, historical outputs, RAW captures, or HPO caches.
 benchmarks/private-output/

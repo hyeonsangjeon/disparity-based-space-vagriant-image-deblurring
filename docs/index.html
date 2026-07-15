@@ -52,6 +52,7 @@
               <li>Regional Tikhonov kernels and TV/L1 FFT deconvolution</li>
               <li>Normalized feather blending</li>
               <li>Aspect-ratio-safe portrait, landscape, and odd-size processing</li>
+              <li>Optional C++17 and CUDA/cuFFT deconvolution backends</li>
               <li>Optional guided noisy-detail fusion</li>
             </ol>
             <p class="card-note">Guided noisy-detail fusion is a 2026 enhancement, not a claim about the deleted 2013 code. This reconstruction is not bit-identical to historical outputs.</p>
@@ -170,6 +171,7 @@ uv run disparity-deblur-benchmark \
   --manifest benchmarks/manifests/public.json \
   --dataset-root benchmarks/public-assets \
   --output-dir output/showcase</code></pre>
+        <p class="card-note">NumPy remains the canonical backend. See the <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/ACCELERATION.md">optional C++ and CUDA acceleration manual</a> for explicit native builds, cuFFT usage, limitations, and reproducible timing.</p>
       </section>
 
       <aside aria-label="Optional historical article">

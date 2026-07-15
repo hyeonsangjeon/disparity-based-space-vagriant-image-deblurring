@@ -28,6 +28,7 @@
         "coarse": [
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -71,10 +72,11 @@
               "reference_available": true,
               "ssim": 0.9125754613668374
             },
-            "runtime_seconds": 0.42157800000859424
+            "runtime_seconds": 0.396291583951097
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -118,10 +120,11 @@
               "reference_available": true,
               "ssim": 0.9037800184952562
             },
-            "runtime_seconds": 0.2633425000240095
+            "runtime_seconds": 0.2899711250211112
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -165,12 +168,13 @@
               "reference_available": true,
               "ssim": 0.8813576264870657
             },
-            "runtime_seconds": 0.2623045839718543
+            "runtime_seconds": 0.3353807919775136
           }
         ],
         "fine": [
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -214,10 +218,11 @@
               "reference_available": true,
               "ssim": 0.9194181030691152
             },
-            "runtime_seconds": 0.2560536250239238
+            "runtime_seconds": 0.3276441670022905
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -261,7 +266,7 @@
               "reference_available": true,
               "ssim": 0.91102319675768
             },
-            "runtime_seconds": 0.24257104203570634
+            "runtime_seconds": 0.37512887502089143
           }
         ],
         "max_dimension": 256,
@@ -291,8 +296,9 @@
         "width": 384
       },
       "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
-      "runtime_seconds": 0.4745227500097826,
+      "runtime_seconds": 0.5831305829924531,
       "selected_config": {
+        "backend": "numpy",
         "beta_max": 24.0,
         "boundary_padding": null,
         "color_labels": 8,
@@ -356,6 +362,7 @@
         "coarse": [
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -398,10 +405,11 @@
               "objective": 0.6415601003491714,
               "reference_available": false
             },
-            "runtime_seconds": 0.4715968749951571
+            "runtime_seconds": 0.5248216670006514
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -444,10 +452,11 @@
               "objective": 0.6494241872016956,
               "reference_available": false
             },
-            "runtime_seconds": 0.43258520803647116
+            "runtime_seconds": 0.45612920803250745
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -490,12 +499,13 @@
               "objective": 0.6594625485005152,
               "reference_available": false
             },
-            "runtime_seconds": 0.46760358300525695
+            "runtime_seconds": 0.456151916005183
           }
         ],
         "fine": [
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -538,10 +548,11 @@
               "objective": 0.660677896774562,
               "reference_available": false
             },
-            "runtime_seconds": 0.5855950420373119
+            "runtime_seconds": 0.4608443329925649
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -584,7 +595,7 @@
               "objective": 0.662036298950337,
               "reference_available": false
             },
-            "runtime_seconds": 0.509818708000239
+            "runtime_seconds": 0.44326658302452415
           }
         ],
         "max_dimension": 256,
@@ -622,8 +633,9 @@
         "width": 512
       },
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 2.8053742079646327,
+      "runtime_seconds": 2.4469883340061642,
       "selected_config": {
+        "backend": "numpy",
         "beta_max": 24.0,
         "boundary_padding": null,
         "color_labels": 8,
@@ -686,6 +698,7 @@
         "coarse": [
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -728,10 +741,11 @@
               "objective": 0.6509865394673353,
               "reference_available": false
             },
-            "runtime_seconds": 0.3596793750184588
+            "runtime_seconds": 0.3979923750157468
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -774,10 +788,11 @@
               "objective": 0.6614578915753471,
               "reference_available": false
             },
-            "runtime_seconds": 0.38339195802109316
+            "runtime_seconds": 0.36086183303268626
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -820,12 +835,13 @@
               "objective": 0.6768737836340418,
               "reference_available": false
             },
-            "runtime_seconds": 0.6048444170155562
+            "runtime_seconds": 0.38991137500852346
           }
         ],
         "fine": [
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -868,10 +884,11 @@
               "objective": 0.6779606881615939,
               "reference_available": false
             },
-            "runtime_seconds": 0.4240901669836603
+            "runtime_seconds": 0.378500625025481
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -914,7 +931,7 @@
               "objective": 0.6825899741766348,
               "reference_available": false
             },
-            "runtime_seconds": 0.8056299580493942
+            "runtime_seconds": 0.36806629196507856
           }
         ],
         "max_dimension": 256,
@@ -942,8 +959,9 @@
         "width": 512
       },
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 1.7621420419891365,
+      "runtime_seconds": 0.9476369170006365,
       "selected_config": {
+        "backend": "numpy",
         "beta_max": 24.0,
         "boundary_padding": null,
         "color_labels": 8,
@@ -1010,6 +1028,7 @@
         "coarse": [
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -1052,10 +1071,11 @@
               "objective": 0.6951282021969443,
               "reference_available": false
             },
-            "runtime_seconds": 0.602970666019246
+            "runtime_seconds": 0.4259745830204338
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -1098,10 +1118,11 @@
               "objective": 0.7012735496515679,
               "reference_available": false
             },
-            "runtime_seconds": 0.7384811659576371
+            "runtime_seconds": 0.4197291249874979
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -1144,12 +1165,13 @@
               "objective": 0.7086241082638723,
               "reference_available": false
             },
-            "runtime_seconds": 0.7013469999656081
+            "runtime_seconds": 0.43169429199770093
           }
         ],
         "fine": [
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -1192,10 +1214,11 @@
               "objective": 0.7132620463367817,
               "reference_available": false
             },
-            "runtime_seconds": 0.497152250027284
+            "runtime_seconds": 0.4924174589687027
           },
           {
             "config": {
+              "backend": "numpy",
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
@@ -1238,7 +1261,7 @@
               "objective": 0.7137720786094272,
               "reference_available": false
             },
-            "runtime_seconds": 0.42836433299817145
+            "runtime_seconds": 0.5257394999498501
           }
         ],
         "max_dimension": 256,
@@ -1266,8 +1289,9 @@
         "width": 512
       },
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 3.7159926670137793,
+      "runtime_seconds": 2.10159824998118,
       "selected_config": {
+        "backend": "numpy",
         "beta_max": 24.0,
         "boundary_padding": null,
         "color_labels": 8,

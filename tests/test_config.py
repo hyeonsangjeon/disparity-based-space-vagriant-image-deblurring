@@ -15,6 +15,10 @@ class PipelineConfigTest(unittest.TestCase):
             8,
         )
 
+    def test_rejects_unknown_backend(self) -> None:
+        with self.assertRaisesRegex(ValueError, "backend"):
+            PipelineConfig(backend="automatic")
+
 
 if __name__ == "__main__":
     unittest.main()
