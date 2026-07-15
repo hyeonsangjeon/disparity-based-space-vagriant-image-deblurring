@@ -5,7 +5,7 @@ The source code and project-authored documentation are distributed under the
 MIT License in LICENSE.
 
 The public showcase is not covered by the MIT License. The GOPRO_Large Flower
-derivative and project-owned procedural-depth images are licensed under CC BY
-4.0; see benchmarks/public-assets/LICENSE.txt and
-benchmarks/ATTRIBUTION.json. Private historical images, RAW captures, and
-local HPO output are intentionally not distributed.
+derivative is licensed under CC BY 4.0; see
+benchmarks/public-assets/LICENSE.txt and benchmarks/ATTRIBUTION.json. Private
+historical images, RAW captures, and local HPO output are intentionally not
+distributed.

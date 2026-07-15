@@ -3,5 +3,4 @@ Attribution 4.0 International (CC BY 4.0):
 https://creativecommons.org/licenses/by/4.0/
 
 Attribution, source URLs, checksums, citations, and transformations are recorded
-in ../ATTRIBUTION.json. The project-owned procedural-depth images are copyright
-2026 hyeonsangjeon and are released under CC BY 4.0.
+in ../ATTRIBUTION.json.

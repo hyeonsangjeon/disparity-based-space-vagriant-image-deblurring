@@ -37,16 +37,16 @@ The committed public showcase was generated from `benchmarks/manifests/public.js
 | Public dataset | PSNR | SSIM | Objective (full-resolution) |
 | --- | ---: | ---: | ---: |
 | Derived GOPRO_Large Flower | 26.3248 | 0.8998 | 0.713320 |
-| Project-owned procedural depth | 15.6261 | 0.4389 | 0.375687 |
 
 See [showcase/benchmark/SUMMARY.md](showcase/benchmark/SUMMARY.md), [showcase/benchmark/benchmark.json](showcase/benchmark/benchmark.json), and the framework-free [GitHub Pages site](docs/index.html) for the complete public gallery. These results are reference-reconstruction measurements, not claims about the deleted historical code.
 
 ## Data and licenses
 
-The code is available under the [MIT License](LICENSE). The small public asset subset in `benchmarks/public-assets/` is licensed separately under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). It contains only:
-
-* a 384 px derivative of the GOPRO_Large Flower example, credited to Seungjun Nah, Tae Hyun Kim, and Kyoung Mu Lee; and
-* project-owned procedural-depth artwork.
+The code is available under the [MIT License](LICENSE). The small public asset
+subset in `benchmarks/public-assets/` is licensed separately under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). It contains only a
+384 px derivative of the GOPRO_Large Flower example, credited to Seungjun Nah,
+Tae Hyun Kim, and Kyoung Mu Lee.
 
 `benchmarks/ATTRIBUTION.json` records official source URLs, the CC BY 4.0 license, the CVPR 2017 citation, original and derived SHA-256 checksums, downscaling, and deterministic noisy-auxiliary seed and sigma. The original GOPRO_Large images remain third-party material; this project does not claim ownership of them. Do not add private, RAW, or large source datasets to this repository.
 
