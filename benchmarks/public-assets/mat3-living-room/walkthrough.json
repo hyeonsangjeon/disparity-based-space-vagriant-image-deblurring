@@ -1,0 +1,109 @@
+{
+  "asset_checksums": {
+    "blurred.png": "1c167388cfd628ff498cff9b8fbf799cb4c7586d35f591f9e5cac537019b72ff",
+    "deconvolved.png": "7940647d7dfcf97ce95200a96f138d90dd91531d68336dab3c176e907eeb5845",
+    "features.png": "a36a1e0276a49ff4c81016400fa4f47f4784bf348e4f28074ad1b79ae6d87604",
+    "initial_regions.png": "3d3e1d6b33f337d75d4dc39eff05524235b11a56bdbd0d72b21e4c7800d11a0a",
+    "kernels.png": "3b2a5d6b5e985be59e0e15303503a22647f4e732a786c6343f7f50d020f7a7bf",
+    "merged_regions.png": "7e2bdcbd9859224f11845981bf45ef6b375de4a05c143135302f2bbd6f33e8ae",
+    "noisy.png": "1d0da87a57fe3c0843fa66c3e340a9a436368a42534ee48e5cd4b786dbed766b",
+    "registered_noisy.png": "93d1ce42ea39bfa5c5e6c28dde6f3c16b6a6268a04fa093445225c3f678fef88",
+    "restored.png": "9e55419bf483a6c3462079e3ef00b94a7e4c79f0174873f16daab3592d735970"
+  },
+  "comparison_checksum": "ef0364cf1058710159d50cb846ee0282fdb376f1834a652e00d5224c1fa4c435",
+  "id": "mat3-living-room-walkthrough",
+  "intermediate_assets": [
+    "blurred",
+    "noisy",
+    "registered_noisy",
+    "features",
+    "initial_regions",
+    "merged_regions",
+    "kernels",
+    "deconvolved",
+    "restored"
+  ],
+  "metric_note": "No clean ground truth is available. The HPO reference is the RANSAC-registered, non-local-means-denoised noisy auxiliary; PSNR is not reported.",
+  "metric_type": "no-reference-proxy",
+  "proxy_metrics": {
+    "detail_correlation": 0.788287,
+    "edge_correlation": 0.833025,
+    "edge_ratio": 0.914827,
+    "score": 0.874256,
+    "smooth_hf_ratio": 1.350247,
+    "ssim": 0.919059
+  },
+  "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Repository demonstration/archive only; no reuse/redistribution/derivatives.",
+  "schema_version": 1,
+  "selected_hpo": {
+    "guided_detail_fusion": {
+      "amount": 0.5,
+      "denoise_strength": 5,
+      "sigma": 1.5,
+      "threshold": 0.015,
+      "tolerance": 0.08
+    },
+    "kernel": {
+      "kernel_size": 17,
+      "kurtosis_min": 5.3,
+      "patch_size": 192,
+      "tikhonov": 0.001
+    },
+    "restoration": {
+      "beta_max": 8,
+      "data_weight": 60,
+      "feather_sigma": 12
+    },
+    "segmentation": {
+      "color_labels": 12,
+      "disparity_threshold": 1.0,
+      "graph_cut_smoothness": 0.35,
+      "max_regions": 8,
+      "minimum_region_fraction": 0.005
+    },
+    "unsharp": {
+      "amount": 0.3,
+      "sigma": 1.2,
+      "threshold": 0.015
+    }
+  },
+  "source_sizes": {
+    "blurred": {
+      "height": 1024,
+      "width": 1024
+    },
+    "deconvolved": {
+      "height": 1024,
+      "width": 1024
+    },
+    "features": {
+      "height": 1024,
+      "width": 1024
+    },
+    "initial_regions": {
+      "height": 1024,
+      "width": 1024
+    },
+    "kernels": {
+      "height": 384,
+      "width": 576
+    },
+    "merged_regions": {
+      "height": 1024,
+      "width": 1024
+    },
+    "noisy": {
+      "height": 1024,
+      "width": 1024
+    },
+    "registered_noisy": {
+      "height": 1024,
+      "width": 1024
+    },
+    "restored": {
+      "height": 1024,
+      "width": 1024
+    }
+  },
+  "web_max_dimension": 512
+}

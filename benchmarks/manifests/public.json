@@ -89,5 +89,30 @@
         "masks/near.png": "5852e527e4067bcc3bfef29b7916e50ca4d5b846d8c2b00805978e4ab34493b9"
       }
     }
+  ],
+  "walkthroughs": [
+    {
+      "id": "mat3-living-room-walkthrough",
+      "description": "Featured HPO-optimized living-room restoration walkthrough with public-safe intermediate outputs.",
+      "visibility": "public",
+      "rights": "Copyright © 2026 Hyeon Sang Jeon. All rights reserved. Repository demonstration/archive only; no reuse/redistribution/derivatives.",
+      "metric_type": "no-reference-proxy",
+      "metadata": {
+        "path": "mat3-living-room/walkthrough.json",
+        "sha256": "81d8bd410866641365d1f116749a48bb5605d238cb8323dc9a800e4a144c831b"
+      },
+      "assets": {
+        "blurred.png": "1c167388cfd628ff498cff9b8fbf799cb4c7586d35f591f9e5cac537019b72ff",
+        "noisy.png": "1d0da87a57fe3c0843fa66c3e340a9a436368a42534ee48e5cd4b786dbed766b",
+        "registered_noisy.png": "93d1ce42ea39bfa5c5e6c28dde6f3c16b6a6268a04fa093445225c3f678fef88",
+        "features.png": "a36a1e0276a49ff4c81016400fa4f47f4784bf348e4f28074ad1b79ae6d87604",
+        "initial_regions.png": "3d3e1d6b33f337d75d4dc39eff05524235b11a56bdbd0d72b21e4c7800d11a0a",
+        "merged_regions.png": "7e2bdcbd9859224f11845981bf45ef6b375de4a05c143135302f2bbd6f33e8ae",
+        "kernels.png": "3b2a5d6b5e985be59e0e15303503a22647f4e732a786c6343f7f50d020f7a7bf",
+        "deconvolved.png": "7940647d7dfcf97ce95200a96f138d90dd91531d68336dab3c176e907eeb5845",
+        "restored.png": "9e55419bf483a6c3462079e3ef00b94a7e4c79f0174873f16daab3592d735970",
+        "comparison.webp": "ef0364cf1058710159d50cb846ee0282fdb376f1834a652e00d5224c1fa4c435"
+      }
+    }
   ]
 }

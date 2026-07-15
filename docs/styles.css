@@ -99,6 +99,44 @@ dd {
   font-size: .9rem;
 }
 
+.method-grid,
+.walkthrough-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.method-grid article {
+  padding: 0 1rem 1rem;
+}
+
+.method-grid li {
+  margin-bottom: .4rem;
+}
+
+.walkthrough-grid figure {
+  background: #1a222d;
+  border: 1px solid #2a3a4b;
+  border-radius: .75rem;
+  margin: 0;
+  overflow: hidden;
+}
+
+.walkthrough-grid img {
+  display: block;
+  width: 100%;
+}
+
+.walkthrough-grid figcaption {
+  color: #c0ccda;
+  font-size: .9rem;
+  padding: .65rem .8rem;
+}
+
+.walkthrough-comparison {
+  grid-column: 1 / -1;
+}
+
 pre {
   background: #080c11;
   border: 1px solid #2a3a4b;
