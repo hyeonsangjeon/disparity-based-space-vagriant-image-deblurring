@@ -1,21 +1,20 @@
 {
   "asset_checksums": {
-    "blurred": "63bae6a313400d2eb9e5833e35bfa0ab3270d60cc2dca3969c231feb71842e2e",
-    "comparison": "196e1a6a809f92219c36447738cb9981598707822b8e715eae862a3d23639cd6",
-    "noisy": "ee85d7ba70b1d217cd24bbc6fbf12a493484fbf9dc913fedc94ef20bbe6e3521",
-    "reference": "343ed58159c070a1239e4c4bc4f20129506998a22b09627852e349519106c690",
-    "result": "9cac6f48d03ab707be98565b5d657a12a17ae3e63df737c6848d1194e5ff2b17",
-    "thumbnail": "7b8290c19e0223ddd85a6c6e5697402965ead1b9920a0866cd2b74ab3d41a3dd"
+    "blurred": "56e4227ea344b3feba80bcdc2ec95b927e38ab7d67f3cc787f09646a893044c3",
+    "comparison": "7a69de4d06859dd85800bf88a5e1c3383a11f9b68fb422c36e5c345161ecf620",
+    "noisy": "8ea1955cf8570711ca02c07be97b5d692845fb764d979a787d2f60f03378725e",
+    "result": "7589d02d675e58cf8ca2bdb7b7108a2cdf91da60f2cf5c9b34f48540e33b7347",
+    "thumbnail": "88c984386a6edb8f14e3d23c3bba4ea35fa56b2ef0106140c32951e2a31cdbb7"
   },
   "assets": {
-    "blurred": "gopro-flower/blurred.png",
-    "comparison": "gopro-flower/comparison.webp",
-    "noisy": "gopro-flower/noisy.png",
-    "reference": "gopro-flower/reference.png",
-    "result": "gopro-flower/result.png",
-    "thumbnail": "gopro-flower/thumbnail.webp"
+    "blurred": "01_df2_object_motion/blurred.png",
+    "comparison": "01_df2_object_motion/comparison.webp",
+    "noisy": "01_df2_object_motion/noisy.png",
+    "reference": null,
+    "result": "01_df2_object_motion/result.png",
+    "thumbnail": "01_df2_object_motion/thumbnail.webp"
   },
-  "description": "External GoPro-derived Flower benchmark with a deterministic noisy auxiliary.",
+  "description": "Historical photograph by Hyeon Sang Jeon: object-motion pair.",
   "hpo": {
     "coarse": [
       {
@@ -31,7 +30,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -50,14 +49,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.004049117476851852,
-          "edge_fidelity": 0.8632076782615925,
-          "objective": 0.7181815256379411,
-          "psnr": 26.337982536504974,
-          "reference_available": true,
-          "ssim": 0.9125754613668374
+          "artifact_penalty": 0.0065979003906250005,
+          "detail_gain": 0.07259264463421783,
+          "deviation_from_blurred": 0.022332875063960533,
+          "objective": 0.6407443809631169,
+          "reference_available": false
         },
-        "runtime_seconds": 0.368461332982406
+        "runtime_seconds": 0.5773976659984328
       },
       {
         "config": {
@@ -72,7 +70,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -91,14 +89,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.004694733796296297,
-          "edge_fidelity": 0.8378146350437221,
-          "objective": 0.7025055110611883,
-          "psnr": 25.488850353091152,
-          "reference_available": true,
-          "ssim": 0.9037800184952562
+          "artifact_penalty": 0.0074320475260416675,
+          "detail_gain": 0.11567035826358252,
+          "deviation_from_blurred": 0.02450547458750965,
+          "objective": 0.649504927480509,
+          "reference_available": false
         },
-        "runtime_seconds": 0.3048007090110332
+        "runtime_seconds": 0.4170188329881057
       },
       {
         "config": {
@@ -113,7 +110,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -132,14 +129,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.005349392361111111,
-          "edge_fidelity": 0.7965129671281466,
-          "objective": 0.6755873388381076,
-          "psnr": 24.24737954459083,
-          "reference_available": true,
-          "ssim": 0.8813576264870657
+          "artifact_penalty": 0.0080810546875,
+          "detail_gain": 0.15074537702320878,
+          "deviation_from_blurred": 0.0267451883256212,
+          "objective": 0.6586099155494634,
+          "reference_available": false
         },
-        "runtime_seconds": 0.28541412501363084
+        "runtime_seconds": 0.4555283330264501
       }
     ],
     "fine": [
@@ -148,7 +144,7 @@
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
-          "data_weight": 160.0,
+          "data_weight": 300.0,
           "detail_denoise_strength": 5.0,
           "detail_fusion_amount": 0.020000000000000004,
           "detail_fusion_sigma": 1.5,
@@ -156,7 +152,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -169,27 +165,26 @@
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
           "skip_registration": false,
-          "tikhonov": 0.0006666666666666666,
-          "unsharp_amount": 0.0,
+          "tikhonov": 0.0026666666666666666,
+          "unsharp_amount": 0.18,
           "unsharp_sigma": 1.0,
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.0039044415509259262,
-          "edge_fidelity": 0.8717991466213879,
-          "objective": 0.7264201596257668,
-          "psnr": 26.791547597513095,
-          "reference_available": true,
-          "ssim": 0.9194181030691152
+          "artifact_penalty": 0.008506266276041667,
+          "detail_gain": 0.15598340104352082,
+          "deviation_from_blurred": 0.0273873733967403,
+          "objective": 0.6611368626231368,
+          "reference_available": false
         },
-        "runtime_seconds": 0.28980758402030915
+        "runtime_seconds": 0.620562374999281
       },
       {
         "config": {
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
-          "data_weight": 184.0,
+          "data_weight": 345.0,
           "detail_denoise_strength": 5.0,
           "detail_fusion_amount": 0.05,
           "detail_fusion_sigma": 1.5,
@@ -197,7 +192,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -210,63 +205,60 @@
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
           "skip_registration": false,
-          "tikhonov": 0.0015,
-          "unsharp_amount": 0.0,
+          "tikhonov": 0.006,
+          "unsharp_amount": 0.18,
           "unsharp_sigma": 1.0,
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.004179325810185186,
-          "edge_fidelity": 0.8591552582849376,
-          "objective": 0.715390505170659,
-          "psnr": 26.178318495736328,
-          "reference_available": true,
-          "ssim": 0.91102319675768
+          "artifact_penalty": 0.008302815755208333,
+          "detail_gain": 0.16005207959081225,
+          "deviation_from_blurred": 0.027474289521532136,
+          "objective": 0.6615702208253944,
+          "reference_available": false
         },
-        "runtime_seconds": 0.4035497499862686
+        "runtime_seconds": 0.6580715000163764
       }
     ],
     "max_dimension": 256,
-    "selected_objective": 0.7264201596257668
+    "selected_objective": 0.6615702208253944
   },
-  "id": "gopro-flower",
+  "id": "01_df2_object_motion",
   "input_checksums": {
-    "blurred": "63bae6a313400d2eb9e5833e35bfa0ab3270d60cc2dca3969c231feb71842e2e",
-    "noisy": "ee85d7ba70b1d217cd24bbc6fbf12a493484fbf9dc913fedc94ef20bbe6e3521",
-    "reference": "343ed58159c070a1239e4c4bc4f20129506998a22b09627852e349519106c690"
+    "blurred": "5609ebfe7fa73a6cb71d9519fff3e489a6f6df38798bd050f250f2c343af083c",
+    "noisy": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
   },
   "metrics": {
-    "artifact_penalty": 0.004149787808641976,
-    "edge_fidelity": 0.843063539088625,
-    "objective": 0.6946034376860574,
-    "psnr": 25.370464308965957,
-    "reference_available": true,
-    "ssim": 0.8815889606761327
+    "artifact_penalty": 0.0048405965169270836,
+    "detail_gain": 0.09211791030588562,
+    "deviation_from_blurred": 0.020109052997605854,
+    "objective": 0.6320935120424332,
+    "reference_available": false
   },
-  "objective_type": "reference",
+  "objective_type": "no-reference-proxy",
   "original_size": {
-    "height": 216,
-    "width": 384
+    "height": 512,
+    "width": 512
   },
   "output_size": {
-    "height": 216,
-    "width": 384
+    "height": 512,
+    "width": 512
   },
-  "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
-  "runtime_seconds": 0.5988997079548426,
+  "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
+  "runtime_seconds": 2.6365440409863368,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
     "color_labels": 8,
-    "data_weight": 160.0,
+    "data_weight": 345.0,
     "detail_denoise_strength": 5.0,
-    "detail_fusion_amount": 0.020000000000000004,
+    "detail_fusion_amount": 0.05,
     "detail_fusion_sigma": 1.5,
     "detail_fusion_threshold": 0.015,
     "detail_fusion_tolerance": 0.08,
     "disparity_threshold": 1.5,
     "feather_sigma": 5.0,
-    "graph_cut_size": 144,
+    "graph_cut_size": 160,
     "graph_cut_smoothness": 0.35,
     "kernel_size": 15,
     "kurtosis_max": 300.0,
@@ -279,14 +271,11 @@
     "random_seed": 20260715,
     "ransac_threshold": 2.5,
     "skip_registration": false,
-    "tikhonov": 0.0006666666666666666,
-    "unsharp_amount": 0.0,
+    "tikhonov": 0.006,
+    "unsharp_amount": 0.18,
     "unsharp_sigma": 1.0,
     "unsharp_threshold": 0.0
   },
-  "source_hashes": {
-    "Flower_blur1.png": "86826c4ae9dbc803792e8ba990235341f31318f505bf5bf9f4835a4da8a23796",
-    "Flower_sharp1.png": "1a3cb51a9c6ddafe812811573dda8e1b7cc645c93add5d1dc3832ebf6b4561ce"
-  },
+  "source_hashes": {},
   "visibility": "public"
 }

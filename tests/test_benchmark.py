@@ -46,6 +46,32 @@ class BenchmarkTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "safe relative path"):
                 load_manifest(path)
 
+    def test_public_manifest_lists_only_the_four_authorized_datasets(self) -> None:
+        manifest = load_manifest(Path("benchmarks/manifests/public.json"))
+        self.assertEqual(
+            [dataset.identifier for dataset in manifest.datasets],
+            [
+                "gopro-flower",
+                "01_df2_object_motion",
+                "02_building_low_light",
+                "05_new1_parking",
+            ],
+        )
+        historical = manifest.datasets[1:]
+        self.assertTrue(all(dataset.reference is None for dataset in historical))
+        self.assertTrue(
+            all(
+                dataset.rights
+                == (
+                    "Copyright © 2026 Hyeon Sang Jeon. All rights reserved. "
+                    "Included in this repository for demonstration and archival "
+                    "presentation only. No reuse, redistribution, or derivative use "
+                    "is granted."
+                )
+                for dataset in historical
+            )
+        )
+
     def test_noise_is_repeatable_and_seeded(self) -> None:
         image = np.full((12, 12, 3), 0.5, dtype=np.float32)
         first = deterministic_noise(image, seed=12, sigma=0.05)
@@ -122,8 +148,13 @@ class BenchmarkTest(unittest.TestCase):
             ).run()
             record = json.loads(index.read_text(encoding="utf-8"))["datasets"][0]
             self.assertEqual(record["objective_type"], "reference")
+            self.assertEqual(record["hpo"]["max_dimension"], 64)
+            self.assertIn("asset_checksums", record)
+            for role, checksum in record["asset_checksums"].items():
+                self.assertEqual(checksum, _digest(output / record["assets"][role]))
             self.assertTrue((output / "fixture" / "comparison.webp").is_file())
             self.assertTrue((output / "fixture" / "thumbnail.webp").is_file())
+            self.assertFalse((output / "fixture" / "comparison.png").exists())
             self.assertTrue((output / "SUMMARY.md").is_file())
             self.assertNotIn(str(assets), (output / "fixture" / "run.json").read_text())
 

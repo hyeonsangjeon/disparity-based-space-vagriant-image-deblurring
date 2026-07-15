@@ -1,21 +1,20 @@
 {
   "asset_checksums": {
-    "blurred": "63bae6a313400d2eb9e5833e35bfa0ab3270d60cc2dca3969c231feb71842e2e",
-    "comparison": "196e1a6a809f92219c36447738cb9981598707822b8e715eae862a3d23639cd6",
-    "noisy": "ee85d7ba70b1d217cd24bbc6fbf12a493484fbf9dc913fedc94ef20bbe6e3521",
-    "reference": "343ed58159c070a1239e4c4bc4f20129506998a22b09627852e349519106c690",
-    "result": "9cac6f48d03ab707be98565b5d657a12a17ae3e63df737c6848d1194e5ff2b17",
-    "thumbnail": "7b8290c19e0223ddd85a6c6e5697402965ead1b9920a0866cd2b74ab3d41a3dd"
+    "blurred": "6db312c68f745dc569a780d2baf5d3fd4bbb0cbe51297689befe47020b70c2ad",
+    "comparison": "15b8c78a33cfbde4f847dd248c58e62ced6a271859b50d9d3bbe5ccf0069563e",
+    "noisy": "80586792ae100b30cee61b0dbb240df4dff47a4ac4145afd047727b783976548",
+    "result": "597108ce76b182ebe24546ec5ed657cabce4f7ecf951f53a61fc3793ebe12ec7",
+    "thumbnail": "3bda042f4153b4b15ae251893b9f20ddb6453399f75f93056859d6e8b5de2110"
   },
   "assets": {
-    "blurred": "gopro-flower/blurred.png",
-    "comparison": "gopro-flower/comparison.webp",
-    "noisy": "gopro-flower/noisy.png",
-    "reference": "gopro-flower/reference.png",
-    "result": "gopro-flower/result.png",
-    "thumbnail": "gopro-flower/thumbnail.webp"
+    "blurred": "02_building_low_light/blurred.png",
+    "comparison": "02_building_low_light/comparison.webp",
+    "noisy": "02_building_low_light/noisy.png",
+    "reference": null,
+    "result": "02_building_low_light/result.png",
+    "thumbnail": "02_building_low_light/thumbnail.webp"
   },
-  "description": "External GoPro-derived Flower benchmark with a deterministic noisy auxiliary.",
+  "description": "Historical photograph by Hyeon Sang Jeon: low-light building pair.",
   "hpo": {
     "coarse": [
       {
@@ -31,7 +30,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -50,14 +49,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.004049117476851852,
-          "edge_fidelity": 0.8632076782615925,
-          "objective": 0.7181815256379411,
-          "psnr": 26.337982536504974,
-          "reference_available": true,
-          "ssim": 0.9125754613668374
+          "artifact_penalty": 0.019435237794612797,
+          "detail_gain": 0.05866537466041655,
+          "deviation_from_blurred": 0.025869329446907945,
+          "objective": 0.6509865394673353,
+          "reference_available": false
         },
-        "runtime_seconds": 0.368461332982406
+        "runtime_seconds": 0.40305866702692583
       },
       {
         "config": {
@@ -72,7 +70,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -91,14 +89,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.004694733796296297,
-          "edge_fidelity": 0.8378146350437221,
-          "objective": 0.7025055110611883,
-          "psnr": 25.488850353091152,
-          "reference_available": true,
-          "ssim": 0.9037800184952562
+          "artifact_penalty": 0.021230534511784513,
+          "detail_gain": 0.1089125112579788,
+          "deviation_from_blurred": 0.028533258877073184,
+          "objective": 0.6614578915753471,
+          "reference_available": false
         },
-        "runtime_seconds": 0.3048007090110332
+        "runtime_seconds": 0.48024845897452906
       },
       {
         "config": {
@@ -113,7 +110,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -132,14 +129,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.005349392361111111,
-          "edge_fidelity": 0.7965129671281466,
-          "objective": 0.6755873388381076,
-          "psnr": 24.24737954459083,
-          "reference_available": true,
-          "ssim": 0.8813576264870657
+          "artifact_penalty": 0.022599694865319868,
+          "detail_gain": 0.15168004986026717,
+          "deviation_from_blurred": 0.032348082440856886,
+          "objective": 0.6768737836340418,
+          "reference_available": false
         },
-        "runtime_seconds": 0.28541412501363084
+        "runtime_seconds": 0.476884167001117
       }
     ],
     "fine": [
@@ -148,7 +144,7 @@
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
-          "data_weight": 160.0,
+          "data_weight": 300.0,
           "detail_denoise_strength": 5.0,
           "detail_fusion_amount": 0.020000000000000004,
           "detail_fusion_sigma": 1.5,
@@ -156,7 +152,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -169,27 +165,26 @@
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
           "skip_registration": false,
-          "tikhonov": 0.0006666666666666666,
-          "unsharp_amount": 0.0,
+          "tikhonov": 0.0026666666666666666,
+          "unsharp_amount": 0.18,
           "unsharp_sigma": 1.0,
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.0039044415509259262,
-          "edge_fidelity": 0.8717991466213879,
-          "objective": 0.7264201596257668,
-          "psnr": 26.791547597513095,
-          "reference_available": true,
-          "ssim": 0.9194181030691152
+          "artifact_penalty": 0.022899568602693605,
+          "detail_gain": 0.15550702301262298,
+          "deviation_from_blurred": 0.032634128921408795,
+          "objective": 0.6779606881615939,
+          "reference_available": false
         },
-        "runtime_seconds": 0.28980758402030915
+        "runtime_seconds": 0.40264004201162606
       },
       {
         "config": {
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
-          "data_weight": 184.0,
+          "data_weight": 345.0,
           "detail_denoise_strength": 5.0,
           "detail_fusion_amount": 0.05,
           "detail_fusion_sigma": 1.5,
@@ -197,7 +192,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 144,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -210,63 +205,60 @@
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
           "skip_registration": false,
-          "tikhonov": 0.0015,
-          "unsharp_amount": 0.0,
+          "tikhonov": 0.006,
+          "unsharp_amount": 0.18,
           "unsharp_sigma": 1.0,
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.004179325810185186,
-          "edge_fidelity": 0.8591552582849376,
-          "objective": 0.715390505170659,
-          "psnr": 26.178318495736328,
-          "reference_available": true,
-          "ssim": 0.91102319675768
+          "artifact_penalty": 0.023027146464646465,
+          "detail_gain": 0.16369517508844578,
+          "deviation_from_blurred": 0.03375587410542263,
+          "objective": 0.6825899741766348,
+          "reference_available": false
         },
-        "runtime_seconds": 0.4035497499862686
+        "runtime_seconds": 0.37672949995612726
       }
     ],
     "max_dimension": 256,
-    "selected_objective": 0.7264201596257668
+    "selected_objective": 0.6825899741766348
   },
-  "id": "gopro-flower",
+  "id": "02_building_low_light",
   "input_checksums": {
-    "blurred": "63bae6a313400d2eb9e5833e35bfa0ab3270d60cc2dca3969c231feb71842e2e",
-    "noisy": "ee85d7ba70b1d217cd24bbc6fbf12a493484fbf9dc913fedc94ef20bbe6e3521",
-    "reference": "343ed58159c070a1239e4c4bc4f20129506998a22b09627852e349519106c690"
+    "blurred": "08196e6b4f0b259b497fb731a15511533b01f98359b8e85a8a8e37c1fd194ddc",
+    "noisy": "3314e453da5e87610d2e182d8b705fce468521370e56d052a97cb06b0ecbc1f9"
   },
   "metrics": {
-    "artifact_penalty": 0.004149787808641976,
-    "edge_fidelity": 0.843063539088625,
-    "objective": 0.6946034376860574,
-    "psnr": 25.370464308965957,
-    "reference_available": true,
-    "ssim": 0.8815889606761327
+    "artifact_penalty": 0.020238846801346803,
+    "detail_gain": 0.1140054268025831,
+    "deviation_from_blurred": 0.02351696192054868,
+    "objective": 0.6409037449551481,
+    "reference_available": false
   },
-  "objective_type": "reference",
+  "objective_type": "no-reference-proxy",
   "original_size": {
-    "height": 216,
-    "width": 384
+    "height": 396,
+    "width": 512
   },
   "output_size": {
-    "height": 216,
-    "width": 384
+    "height": 396,
+    "width": 512
   },
-  "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
-  "runtime_seconds": 0.5988997079548426,
+  "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
+  "runtime_seconds": 0.905001082981471,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
     "color_labels": 8,
-    "data_weight": 160.0,
+    "data_weight": 345.0,
     "detail_denoise_strength": 5.0,
-    "detail_fusion_amount": 0.020000000000000004,
+    "detail_fusion_amount": 0.05,
     "detail_fusion_sigma": 1.5,
     "detail_fusion_threshold": 0.015,
     "detail_fusion_tolerance": 0.08,
     "disparity_threshold": 1.5,
     "feather_sigma": 5.0,
-    "graph_cut_size": 144,
+    "graph_cut_size": 160,
     "graph_cut_smoothness": 0.35,
     "kernel_size": 15,
     "kurtosis_max": 300.0,
@@ -279,14 +271,11 @@
     "random_seed": 20260715,
     "ransac_threshold": 2.5,
     "skip_registration": false,
-    "tikhonov": 0.0006666666666666666,
-    "unsharp_amount": 0.0,
+    "tikhonov": 0.006,
+    "unsharp_amount": 0.18,
     "unsharp_sigma": 1.0,
     "unsharp_threshold": 0.0
   },
-  "source_hashes": {
-    "Flower_blur1.png": "86826c4ae9dbc803792e8ba990235341f31318f505bf5bf9f4835a4da8a23796",
-    "Flower_sharp1.png": "1a3cb51a9c6ddafe812811573dda8e1b7cc645c93add5d1dc3832ebf6b4561ce"
-  },
+  "source_hashes": {},
   "visibility": "public"
 }

@@ -1,6 +1,11 @@
-The public showcase assets in this directory are licensed under Creative Commons
-Attribution 4.0 International (CC BY 4.0):
-https://creativecommons.org/licenses/by/4.0/
+The source code is MIT licensed; the public showcase assets are separately licensed.
 
-Attribution, source URLs, checksums, citations, and transformations are recorded
-in ../ATTRIBUTION.json.
+The `gopro-flower/` external benchmark derivative is licensed under Creative
+Commons Attribution 4.0 International (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+Its attribution, source URLs, checksums, citation, and transformations are in
+../ATTRIBUTION.json and ../../THIRD_PARTY_LICENSES.md.
+
+The `01_df2_object_motion/`, `02_building_low_light/`, and
+`05_new1_parking/` historical photographs are all rights reserved by Hyeon Sang
+Jeon. See each directory's RIGHTS.txt.

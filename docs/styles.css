@@ -69,7 +69,8 @@ article img {
 }
 
 article h3,
-article dl {
+article dl,
+.card-note {
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -92,6 +93,10 @@ dd {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   margin: 0;
+}
+
+.card-note {
+  font-size: .9rem;
 }
 
 pre {

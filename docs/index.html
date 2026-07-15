@@ -12,9 +12,9 @@
       <p class="eyebrow">2013 paper record · 2026 reference reconstruction</p>
       <h1>Blurred + noisy <span aria-hidden="true">→</span> restored</h1>
       <p class="lede">
-        A framework-free public gallery for a disparity-guided regional restoration
-        reference implementation. Each comparison is ordered blurred, noisy auxiliary,
-        restored, then optional reference.
+        A framework-free gallery for the preserved paper archive and a disparity-guided
+        regional restoration reference implementation. Each comparison is ordered blurred,
+        noisy auxiliary, restored, then optional reference.
       </p>
 
       <section aria-labelledby="status">
@@ -32,18 +32,44 @@
         <div class="gallery">
           <article>
             <img src="assets/gopro-flower-comparison.webp" alt="Derived GOPRO Large Flower comparison: blurred, noisy, restored, and reference images.">
-            <h3>Derived GOPRO_Large Flower</h3>
+            <h3>External GoPro-derived benchmark</h3>
             <dl>
-              <div><dt>PSNR</dt><dd>26.3248</dd></div>
-              <div><dt>SSIM</dt><dd>0.8998</dd></div>
-              <div><dt>Objective (full-resolution)</dt><dd>0.713320</dd></div>
+              <div><dt>PSNR</dt><dd>25.3705</dd></div>
+              <div><dt>SSIM</dt><dd>0.8816</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.694603</dd></div>
+            </dl>
+            <p class="card-note"><a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/THIRD_PARTY_LICENSES.md">Attribution and license</a></p>
+          </article>
+          <article>
+            <img src="assets/01-df2-object-motion-comparison.webp" alt="Historical object-motion photograph comparison: blurred, noisy, and restored images.">
+            <h3>Historical photograph: object motion</h3>
+            <dl>
+              <div><dt>Metric</dt><dd>No-reference proxy</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.632094</dd></div>
+            </dl>
+          </article>
+          <article>
+            <img src="assets/02-building-low-light-comparison.webp" alt="Historical low-light building photograph comparison: blurred, noisy, and restored images.">
+            <h3>Historical photograph: low-light building</h3>
+            <dl>
+              <div><dt>Metric</dt><dd>No-reference proxy</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.640904</dd></div>
+            </dl>
+          </article>
+          <article>
+            <img src="assets/05-new1-parking-comparison.webp" alt="Historical parking photograph comparison: blurred, noisy, and restored images.">
+            <h3>Historical photograph: parking</h3>
+            <dl>
+              <div><dt>Metric</dt><dd>No-reference proxy</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.750229</dd></div>
             </dl>
           </article>
         </div>
         <p class="fine-print">
           Metrics and selected HPO configurations are from the committed
           <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/showcase/benchmark/benchmark.json">public benchmark manifest output</a>.
-          They are measurements of this reference reconstruction.
+          The historical-photograph values are conservative no-reference proxy objectives,
+          not PSNR or SSIM.
         </p>
       </section>
 
@@ -59,17 +85,14 @@ uv run disparity-deblur-benchmark \
       <section aria-labelledby="data-license">
         <h2 id="data-license">Data, license, and citation</h2>
         <p>
-          The Flower images are a minimal derived GOPRO_Large subset, credited to
-          Seungjun Nah, Tae Hyun Kim, and Kyoung Mu Lee and licensed
-          <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-          The original images remain third-party material. Source URLs, CVPR 2017
-          citation, original and derived checksums, downscaling, and fixed-seed noise
-          details are recorded in <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/benchmarks/ATTRIBUTION.json">ATTRIBUTION.json</a>.
-        </p>
-        <p>
-          Code is <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/LICENSE">MIT licensed</a>. Cite this reconstruction via
-          <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/CITATION.cff">CITATION.cff</a>; cite the historical work via the
-          preserved paper PDF.
+          Code is <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/LICENSE">MIT licensed</a>.
+          Historical photographs are © Hyeon Sang Jeon, all rights reserved. The external
+          GoPro-derived benchmark is CC BY 4.0; detailed attribution is in
+          <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/THIRD_PARTY_LICENSES.md">THIRD_PARTY_LICENSES.md</a>
+          and <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/benchmarks/ATTRIBUTION.json">ATTRIBUTION.json</a>.
+          Cite the reconstruction via
+          <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/CITATION.cff">CITATION.cff</a>
+          and the historical work via the preserved paper PDF.
         </p>
       </section>
     </main>

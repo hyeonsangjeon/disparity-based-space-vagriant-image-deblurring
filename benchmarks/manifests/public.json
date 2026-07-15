@@ -3,8 +3,9 @@
   "datasets": [
     {
       "id": "gopro-flower",
-      "description": "Minimal 384 px derived GOPRO_Large Flower pair with a deterministic noisy auxiliary.",
+      "description": "External GoPro-derived Flower benchmark with a deterministic noisy auxiliary.",
       "visibility": "public",
+      "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
       "blurred": {
         "path": "gopro-flower/blurred.png",
         "sha256": "63bae6a313400d2eb9e5833e35bfa0ab3270d60cc2dca3969c231feb71842e2e"
@@ -20,6 +21,48 @@
       "source_hashes": {
         "Flower_blur1.png": "86826c4ae9dbc803792e8ba990235341f31318f505bf5bf9f4835a4da8a23796",
         "Flower_sharp1.png": "1a3cb51a9c6ddafe812811573dda8e1b7cc645c93add5d1dc3832ebf6b4561ce"
+      }
+    },
+    {
+      "id": "01_df2_object_motion",
+      "description": "Historical photograph by Hyeon Sang Jeon: object-motion pair.",
+      "visibility": "public",
+      "rights": "Copyright © 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
+      "blurred": {
+        "path": "01_df2_object_motion/blurred.png",
+        "sha256": "5609ebfe7fa73a6cb71d9519fff3e489a6f6df38798bd050f250f2c343af083c"
+      },
+      "noisy": {
+        "path": "01_df2_object_motion/noisy.png",
+        "sha256": "67e9e68e41b679dcd120a5ceb47983098e955cbf44ab1912e78c5867807ef576"
+      }
+    },
+    {
+      "id": "02_building_low_light",
+      "description": "Historical photograph by Hyeon Sang Jeon: low-light building pair.",
+      "visibility": "public",
+      "rights": "Copyright © 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
+      "blurred": {
+        "path": "02_building_low_light/blurred.png",
+        "sha256": "08196e6b4f0b259b497fb731a15511533b01f98359b8e85a8a8e37c1fd194ddc"
+      },
+      "noisy": {
+        "path": "02_building_low_light/noisy.png",
+        "sha256": "3314e453da5e87610d2e182d8b705fce468521370e56d052a97cb06b0ecbc1f9"
+      }
+    },
+    {
+      "id": "05_new1_parking",
+      "description": "Historical photograph by Hyeon Sang Jeon: parking scene pair.",
+      "visibility": "public",
+      "rights": "Copyright © 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
+      "blurred": {
+        "path": "05_new1_parking/blurred.png",
+        "sha256": "453d2bbb1b588e0e8436fffd141b4ee9fc5a28c535f00d9c10ab19a3a50ed092"
+      },
+      "noisy": {
+        "path": "05_new1_parking/noisy.png",
+        "sha256": "ed091cf035beed202c4e44966b2a7a81dfc93002d9b3f8215603efe01e56aa73"
       }
     }
   ]

@@ -30,6 +30,7 @@ class Dataset:
     identifier: str
     description: str
     visibility: str
+    rights: str | None
     blurred: InputFile
     noisy: InputFile
     reference: InputFile | None = None
@@ -85,6 +86,7 @@ def load_manifest(path: str | Path) -> BenchmarkManifest:
                 identifier=identifier,
                 description=_required_string(raw, "description"),
                 visibility=visibility,
+                rights=_optional_string(raw, "rights"),
                 blurred=_parse_input(raw, identifier, "blurred"),
                 noisy=_parse_input(raw, identifier, "noisy"),
                 reference=(
@@ -292,14 +294,31 @@ class BenchmarkRunner:
         if final_reference is not None:
             write_png(dataset_dir / "reference.png", final_reference)
         comparison = _comparison(final_blurred, final_noisy, result, final_reference)
-        write_png(dataset_dir / "comparison.png", comparison)
         _write_webp(dataset_dir / "comparison.webp", comparison)
         _write_webp(dataset_dir / "thumbnail.webp", _thumbnail(comparison))
+        assets: dict[str, str | None] = {
+            "blurred": f"{dataset.identifier}/blurred.png",
+            "noisy": f"{dataset.identifier}/noisy.png",
+            "result": f"{dataset.identifier}/result.png",
+            "reference": (
+                f"{dataset.identifier}/reference.png"
+                if final_reference is not None
+                else None
+            ),
+            "comparison": f"{dataset.identifier}/comparison.webp",
+            "thumbnail": f"{dataset.identifier}/thumbnail.webp",
+        }
+        asset_checksums = {
+            role: _sha256(self.output_dir / path)
+            for role, path in assets.items()
+            if path is not None
+        }
 
         record: dict[str, object] = {
             "id": dataset.identifier,
             "description": dataset.description,
             "visibility": dataset.visibility,
+            "rights": dataset.rights,
             "objective_type": "reference" if reference is not None else "no-reference-proxy",
             "source_hashes": dict(dataset.source_hashes or {}),
             "input_checksums": {
@@ -313,22 +332,13 @@ class BenchmarkRunner:
             "metrics": metrics,
             "runtime_seconds": final_runtime,
             "hpo": {
+                "max_dimension": self.hpo_max_dimension,
                 "coarse": [_candidate_record(candidate) for candidate in coarse],
                 "fine": [_candidate_record(candidate) for candidate in fine],
                 "selected_objective": float(best.metrics["objective"]),
             },
-            "assets": {
-                "blurred": f"{dataset.identifier}/blurred.png",
-                "noisy": f"{dataset.identifier}/noisy.png",
-                "result": f"{dataset.identifier}/result.png",
-                "reference": (
-                    f"{dataset.identifier}/reference.png"
-                    if final_reference is not None
-                    else None
-                ),
-                "comparison": f"{dataset.identifier}/comparison.webp",
-                "thumbnail": f"{dataset.identifier}/thumbnail.webp",
-            },
+            "assets": assets,
+            "asset_checksums": asset_checksums,
         }
         _write_json(dataset_dir / "run.json", record)
         return record
@@ -387,16 +397,17 @@ class BenchmarkRunner:
             "",
             "Comparisons are ordered **blurred + noisy -> result**, followed by a reference when available.",
             "",
-            "| Dataset | Objective | PSNR | SSIM | Runtime (s) |",
+            "| Dataset | Objective type | Full-resolution objective | PSNR | SSIM | Runtime (s) |",
             "| --- | --- | ---: | ---: | ---: |",
         ]
         for entry in entries:
             metrics = entry["metrics"]
             assert isinstance(metrics, Mapping)
             lines.append(
-                "| {id} | {objective} | {psnr} | {ssim} | {runtime:.3f} |".format(
+                "| {id} | {objective_type} | {objective:.6f} | {psnr} | {ssim} | {runtime:.3f} |".format(
                     id=entry["id"],
-                    objective=entry["objective_type"],
+                    objective_type=entry["objective_type"],
+                    objective=float(metrics["objective"]),
                     psnr=f"{metrics['psnr']:.3f}" if "psnr" in metrics else "N/A",
                     ssim=f"{metrics['ssim']:.4f}" if "ssim" in metrics else "N/A",
                     runtime=float(entry["runtime_seconds"]),
@@ -405,8 +416,8 @@ class BenchmarkRunner:
         lines.extend(
             [
                 "",
-                "Private dataset output is intentionally local-only and must not be published.",
-                "No-reference results use a conservative proxy objective, not a noisy-input similarity objective.",
+                "Reference-backed entries report PSNR and SSIM against their published reference.",
+                "No-reference-proxy entries use a conservative full-resolution proxy objective, not PSNR, SSIM, or noisy-input similarity.",
                 "",
             ]
         )
@@ -431,6 +442,15 @@ def _required_string(raw: Mapping[str, object], key: str) -> str:
     value = raw.get(key)
     if not isinstance(value, str) or not value:
         raise ValueError(f"manifest value {key!r} must be a non-empty string")
+    return value
+
+
+def _optional_string(raw: Mapping[str, object], key: str) -> str | None:
+    value = raw.get(key)
+    if value is None:
+        return None
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"manifest value {key!r} must be a non-empty string when present")
     return value
 
 
