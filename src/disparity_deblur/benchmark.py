@@ -30,6 +30,7 @@ class Dataset:
     identifier: str
     description: str
     visibility: str
+    rights: str | None
     blurred: InputFile
     noisy: InputFile
     reference: InputFile | None = None
@@ -85,6 +86,7 @@ def load_manifest(path: str | Path) -> BenchmarkManifest:
                 identifier=identifier,
                 description=_required_string(raw, "description"),
                 visibility=visibility,
+                rights=_optional_string(raw, "rights"),
                 blurred=_parse_input(raw, identifier, "blurred"),
                 noisy=_parse_input(raw, identifier, "noisy"),
                 reference=(
@@ -280,10 +282,16 @@ class BenchmarkRunner:
             blurred, noisy, reference, self.output_max_dimension
         )
         final_config = _fit_config_to_image(best.config, final_blurred.shape)
+        _validate_public_reference_config(dataset, final_config)
         started = perf_counter()
         result = self.processor(final_blurred, final_noisy, final_config)
         final_runtime = perf_counter() - started
         metrics = _evaluate(result, final_blurred, final_reference)
+        baseline_metrics = (
+            image_metrics(final_blurred, final_reference)
+            if final_reference is not None
+            else None
+        )
         dataset_dir = self.output_dir / dataset.identifier
         dataset_dir.mkdir(parents=True, exist_ok=True)
         write_png(dataset_dir / "blurred.png", final_blurred)
@@ -292,14 +300,31 @@ class BenchmarkRunner:
         if final_reference is not None:
             write_png(dataset_dir / "reference.png", final_reference)
         comparison = _comparison(final_blurred, final_noisy, result, final_reference)
-        write_png(dataset_dir / "comparison.png", comparison)
         _write_webp(dataset_dir / "comparison.webp", comparison)
         _write_webp(dataset_dir / "thumbnail.webp", _thumbnail(comparison))
+        assets: dict[str, str | None] = {
+            "blurred": f"{dataset.identifier}/blurred.png",
+            "noisy": f"{dataset.identifier}/noisy.png",
+            "result": f"{dataset.identifier}/result.png",
+            "reference": (
+                f"{dataset.identifier}/reference.png"
+                if final_reference is not None
+                else None
+            ),
+            "comparison": f"{dataset.identifier}/comparison.webp",
+            "thumbnail": f"{dataset.identifier}/thumbnail.webp",
+        }
+        asset_checksums = {
+            role: _sha256(self.output_dir / path)
+            for role, path in assets.items()
+            if path is not None
+        }
 
         record: dict[str, object] = {
             "id": dataset.identifier,
             "description": dataset.description,
             "visibility": dataset.visibility,
+            "rights": dataset.rights,
             "objective_type": "reference" if reference is not None else "no-reference-proxy",
             "source_hashes": dict(dataset.source_hashes or {}),
             "input_checksums": {
@@ -311,24 +336,16 @@ class BenchmarkRunner:
             "output_size": _size_record(final_blurred),
             "selected_config": asdict(final_config),
             "metrics": metrics,
+            "baseline_metrics": baseline_metrics,
             "runtime_seconds": final_runtime,
             "hpo": {
+                "max_dimension": self.hpo_max_dimension,
                 "coarse": [_candidate_record(candidate) for candidate in coarse],
                 "fine": [_candidate_record(candidate) for candidate in fine],
                 "selected_objective": float(best.metrics["objective"]),
             },
-            "assets": {
-                "blurred": f"{dataset.identifier}/blurred.png",
-                "noisy": f"{dataset.identifier}/noisy.png",
-                "result": f"{dataset.identifier}/result.png",
-                "reference": (
-                    f"{dataset.identifier}/reference.png"
-                    if final_reference is not None
-                    else None
-                ),
-                "comparison": f"{dataset.identifier}/comparison.webp",
-                "thumbnail": f"{dataset.identifier}/thumbnail.webp",
-            },
+            "assets": assets,
+            "asset_checksums": asset_checksums,
         }
         _write_json(dataset_dir / "run.json", record)
         return record
@@ -387,16 +404,22 @@ class BenchmarkRunner:
             "",
             "Comparisons are ordered **blurred + noisy -> result**, followed by a reference when available.",
             "",
-            "| Dataset | Objective | PSNR | SSIM | Runtime (s) |",
-            "| --- | --- | ---: | ---: | ---: |",
+            "| Dataset | Objective type | Full-resolution objective | Blurred PSNR | Result PSNR | Result SSIM | Runtime (s) |",
+            "| --- | --- | ---: | ---: | ---: | ---: |",
         ]
         for entry in entries:
             metrics = entry["metrics"]
             assert isinstance(metrics, Mapping)
             lines.append(
-                "| {id} | {objective} | {psnr} | {ssim} | {runtime:.3f} |".format(
+                "| {id} | {objective_type} | {objective:.6f} | {baseline_psnr} | {psnr} | {ssim} | {runtime:.3f} |".format(
                     id=entry["id"],
-                    objective=entry["objective_type"],
+                    objective_type=entry["objective_type"],
+                    objective=float(metrics["objective"]),
+                    baseline_psnr=(
+                        f"{baseline['psnr']:.3f}"
+                        if isinstance((baseline := entry.get("baseline_metrics")), Mapping)
+                        else "N/A"
+                    ),
                     psnr=f"{metrics['psnr']:.3f}" if "psnr" in metrics else "N/A",
                     ssim=f"{metrics['ssim']:.4f}" if "ssim" in metrics else "N/A",
                     runtime=float(entry["runtime_seconds"]),
@@ -405,8 +428,8 @@ class BenchmarkRunner:
         lines.extend(
             [
                 "",
-                "Private dataset output is intentionally local-only and must not be published.",
-                "No-reference results use a conservative proxy objective, not a noisy-input similarity objective.",
+                "Reference-backed entries report PSNR and SSIM against their published reference.",
+                "No-reference-proxy entries use a conservative full-resolution proxy objective, not PSNR, SSIM, or noisy-input similarity.",
                 "",
             ]
         )
@@ -431,6 +454,15 @@ def _required_string(raw: Mapping[str, object], key: str) -> str:
     value = raw.get(key)
     if not isinstance(value, str) or not value:
         raise ValueError(f"manifest value {key!r} must be a non-empty string")
+    return value
+
+
+def _optional_string(raw: Mapping[str, object], key: str) -> str | None:
+    value = raw.get(key)
+    if value is None:
+        return None
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"manifest value {key!r} must be a non-empty string when present")
     return value
 
 
@@ -476,6 +508,18 @@ def _coarse_overrides() -> tuple[dict[str, float], ...]:
         {"tikhonov": 0.002, "data_weight": 220.0, "unsharp_amount": 0.1},
         {"tikhonov": 0.004, "data_weight": 300.0, "unsharp_amount": 0.18},
     )
+
+
+def _validate_public_reference_config(dataset: Dataset, config: PipelineConfig) -> None:
+    if (
+        dataset.visibility == "public"
+        and dataset.reference is not None
+        and config.input_detail_blend > 0.25
+    ):
+        raise ValueError(
+            "public reference-backed benchmarks cannot replace regional deconvolution "
+            "with an input-detail blend above 0.25"
+        )
 
 
 def _fine_configs(best: PipelineConfig) -> tuple[PipelineConfig, ...]:

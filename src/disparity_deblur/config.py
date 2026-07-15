@@ -30,6 +30,9 @@ class PipelineConfig:
     detail_fusion_amount: float = 0.0
     detail_fusion_tolerance: float = 0.08
     detail_fusion_threshold: float = 0.015
+    input_detail_sigma: float = 1.0
+    input_detail_amount: float = 0.0
+    input_detail_blend: float = 0.0
     skip_registration: bool = False
 
     def __post_init__(self) -> None:
@@ -77,6 +80,10 @@ class PipelineConfig:
             raise ValueError("detail fusion parameters are invalid")
         if self.detail_fusion_tolerance <= 0 or self.detail_fusion_threshold < 0:
             raise ValueError("detail fusion confidence parameters are invalid")
+        if self.input_detail_sigma <= 0 or self.input_detail_amount < 0:
+            raise ValueError("input detail parameters are invalid")
+        if not 0 <= self.input_detail_blend <= 1:
+            raise ValueError("input detail blend must be in [0, 1]")
 
     @property
     def effective_boundary_padding(self) -> int:

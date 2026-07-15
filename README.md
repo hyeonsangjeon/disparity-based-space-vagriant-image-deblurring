@@ -9,6 +9,14 @@ This repository preserves three distinct records:
 * **Historical 2009–2011 figures and evidence.** The figures below are retained at their original `readme_pic/` paths as historical research evidence. They are not a newly generated benchmark.
 * **2026 modern reference reconstruction.** `src/disparity_deblur` is a clean, reproducible reference implementation inspired by the paper. It is **not** the exact deleted original implementation and is not bit-identical to historical outputs.
 
+## 2013 paper record · 2026 reference reconstruction
+
+| 2013 paper record | 2026 reference reconstruction |
+| --- | --- |
+| Blurred/noisy capture pair → Harris/LK disparity → color graph-cut over-segmentation → adjacent disparity-region merge → regional gradient-domain Tikhonov PSF → kurtosis validation/replacement → L1/FFT regional restoration → region merge. | Deterministic Python reconstruction with RANSAC homography, graph-cut/disparity-median merge, regional Tikhonov kernels, TV/L1 FFT deconvolution, normalized feather blending, and optional guided noisy-detail fusion. |
+
+The reconstruction maps these stages visibly in the featured Mat3 walkthrough below. Guided noisy-detail fusion is a 2026 reconstruction enhancement; it is not claimed as part of the deleted 2013 implementation and outputs are not bit-identical to historical results.
+
 ## Quickstart
 
 Python 3.11+ and [uv](https://docs.astral.sh/uv/) are required.
@@ -30,25 +38,45 @@ uv run disparity-deblur-benchmark \
   --output-dir output/showcase
 ```
 
+## Featured living-room restoration walkthrough
+
+The authorized Mat3 living-room scene is a step-by-step record of the modern reconstruction:
+blurred and noisy inputs, RANSAC registration, feature/disparity vectors, graph-cut
+regions, disparity-merged regions, regional kernels, deconvolution, and the selected
+HPO final restoration. Web-sized intermediates, checksums, and selected HPO settings are
+in [`benchmarks/public-assets/mat3-living-room/walkthrough.json`](benchmarks/public-assets/mat3-living-room/walkthrough.json);
+the visual walkthrough is on the [project site](docs/index.html).
+
+Mat3 has no clean ground truth. Its selected final proxy score is **0.874256** and proxy
+SSIM is **0.919059**, measured against the registered, non-local-means-denoised noisy
+auxiliary; these are not PSNR claims. The selected HPO uses 12 color labels, disparity
+threshold 1.0, 17px kernels, 192px patches, Tikhonov 0.001, data weight 60, beta 8,
+feather sigma 12, unsharp amount 0.3, and guided detail-fusion amount 0.5.
+
 ## Reproducibility and public benchmark gallery
 
 The committed public showcase was generated from `benchmarks/manifests/public.json`; its `benchmark.json` records relative asset paths, checksums, selected HPO configuration, and metrics without recording local dataset paths. Comparisons are ordered **blurred + noisy -> restored -> reference**.
 
-| Public dataset | PSNR | SSIM | Objective (full-resolution) |
-| --- | ---: | ---: | ---: |
-| Derived GOPRO_Large Flower | 26.3248 | 0.8998 | 0.713320 |
-| Project-owned procedural depth | 15.6261 | 0.4389 | 0.375687 |
+| Public dataset | Metric type | PSNR | SSIM | Objective (full-resolution) |
+| --- | --- | ---: | ---: | ---: |
+| Hyeon Sang Jeon historical: object motion | no-reference proxy | N/A | N/A | 0.632094 |
+| Hyeon Sang Jeon historical: low-light building | no-reference proxy | N/A | N/A | 0.640904 |
+| Hyeon Sang Jeon historical: parking | no-reference proxy | N/A | N/A | 0.750229 |
+| External GoPro-derived benchmark | reference-backed | 25.3705 | 0.8816 | 0.694603 |
 
 See [showcase/benchmark/SUMMARY.md](showcase/benchmark/SUMMARY.md), [showcase/benchmark/benchmark.json](showcase/benchmark/benchmark.json), and the framework-free [GitHub Pages site](docs/index.html) for the complete public gallery. These results are reference-reconstruction measurements, not claims about the deleted historical code.
 
 ## Data and licenses
 
-The code is available under the [MIT License](LICENSE). The small public asset subset in `benchmarks/public-assets/` is licensed separately under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). It contains only:
+Code is MIT licensed. Historical photographs are © Hyeon Sang Jeon, all rights
+reserved. The external GoPro-derived benchmark
+is CC BY 4.0; detailed attribution is in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) and
+[ATTRIBUTION.json](benchmarks/ATTRIBUTION.json). Cite the reconstruction via
+[CITATION.cff](CITATION.cff) and the historical work via the [paper
+PDF](Disparity_Based_Space_Variant_Image_Deblurring.pdf).
 
-* a 384 px derivative of the GOPRO_Large Flower example, credited to Seungjun Nah, Tae Hyun Kim, and Kyoung Mu Lee; and
-* project-owned procedural-depth artwork.
-
-`benchmarks/ATTRIBUTION.json` records official source URLs, the CC BY 4.0 license, the CVPR 2017 citation, original and derived SHA-256 checksums, downscaling, and deterministic noisy-auxiliary seed and sigma. The original GOPRO_Large images remain third-party material; this project does not claim ownership of them. Do not add private, RAW, or large source datasets to this repository.
+The gallery contains web-sized PNG inputs and generated WebP comparisons only;
+RAW captures are not distributed.
 
 ## Citation
 

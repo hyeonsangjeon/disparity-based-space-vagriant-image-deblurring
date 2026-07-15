@@ -10,6 +10,9 @@ import numpy as np
 from disparity_deblur.benchmark import (
     BenchmarkRunner,
     CandidateEvaluation,
+    Dataset,
+    InputFile,
+    _validate_public_reference_config,
     deterministic_noise,
     load_manifest,
     select_hpo_candidate,
@@ -46,6 +49,32 @@ class BenchmarkTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "safe relative path"):
                 load_manifest(path)
 
+    def test_public_manifest_lists_only_the_four_authorized_datasets(self) -> None:
+        manifest = load_manifest(Path("benchmarks/manifests/public.json"))
+        self.assertEqual(
+            [dataset.identifier for dataset in manifest.datasets],
+            [
+                "gopro-flower",
+                "01_df2_object_motion",
+                "02_building_low_light",
+                "05_new1_parking",
+            ],
+        )
+        historical = manifest.datasets[1:]
+        self.assertTrue(all(dataset.reference is None for dataset in historical))
+        self.assertTrue(
+            all(
+                dataset.rights
+                == (
+                    "Copyright © 2026 Hyeon Sang Jeon. All rights reserved. "
+                    "Included in this repository for demonstration and archival "
+                    "presentation only. No reuse, redistribution, or derivative use "
+                    "is granted."
+                )
+                for dataset in historical
+            )
+        )
+
     def test_noise_is_repeatable_and_seeded(self) -> None:
         image = np.full((12, 12, 3), 0.5, dtype=np.float32)
         first = deterministic_noise(image, seed=12, sigma=0.05)
@@ -53,6 +82,26 @@ class BenchmarkTest(unittest.TestCase):
         different_seed = deterministic_noise(image, seed=13, sigma=0.05)
         np.testing.assert_array_equal(first, second)
         self.assertFalse(np.array_equal(first, different_seed))
+
+    def test_public_reference_blend_is_capped(self) -> None:
+        dataset = Dataset(
+            identifier="reference-fixture",
+            description="reference-backed fixture",
+            visibility="public",
+            rights=None,
+            blurred=InputFile("blurred.png", "0" * 64),
+            noisy=InputFile("noisy.png", "0" * 64),
+            reference=InputFile("reference.png", "0" * 64),
+        )
+        with self.assertRaisesRegex(ValueError, "above 0.25"):
+            _validate_public_reference_config(
+                dataset,
+                PipelineConfig(
+                    kernel_size=7,
+                    patch_size=32,
+                    input_detail_blend=0.26,
+                ),
+            )
 
     def test_hpo_selection_uses_objective(self) -> None:
         base = PipelineConfig(kernel_size=7, patch_size=32)
@@ -122,8 +171,14 @@ class BenchmarkTest(unittest.TestCase):
             ).run()
             record = json.loads(index.read_text(encoding="utf-8"))["datasets"][0]
             self.assertEqual(record["objective_type"], "reference")
+            self.assertEqual(record["hpo"]["max_dimension"], 64)
+            self.assertIn("baseline_metrics", record)
+            self.assertIn("asset_checksums", record)
+            for role, checksum in record["asset_checksums"].items():
+                self.assertEqual(checksum, _digest(output / record["assets"][role]))
             self.assertTrue((output / "fixture" / "comparison.webp").is_file())
             self.assertTrue((output / "fixture" / "thumbnail.webp").is_file())
+            self.assertFalse((output / "fixture" / "comparison.png").exists())
             self.assertTrue((output / "SUMMARY.md").is_file())
             self.assertNotIn(str(assets), (output / "fixture" / "run.json").read_text())
 

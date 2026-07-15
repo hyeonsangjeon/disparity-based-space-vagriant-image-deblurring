@@ -12,9 +12,9 @@
       <p class="eyebrow">2013 paper record · 2026 reference reconstruction</p>
       <h1>Blurred + noisy <span aria-hidden="true">→</span> restored</h1>
       <p class="lede">
-        A framework-free public gallery for a disparity-guided regional restoration
-        reference implementation. Each comparison is ordered blurred, noisy auxiliary,
-        restored, then optional reference.
+        A framework-free gallery for the preserved paper archive and a disparity-guided
+        regional restoration reference implementation. Each comparison is ordered blurred,
+        noisy auxiliary, restored, then optional reference.
       </p>
 
       <section aria-labelledby="status">
@@ -27,32 +27,134 @@
         </p>
       </section>
 
+      <section aria-labelledby="method">
+        <h2 id="method">2013 paper record · 2026 reference reconstruction</h2>
+        <div class="method-grid">
+          <article>
+            <h3>2013 paper record</h3>
+            <ol>
+              <li>Blurred/noisy capture pair</li>
+              <li>Harris/LK disparity</li>
+              <li>Color graph-cut over-segmentation</li>
+              <li>Adjacent disparity-region merge</li>
+              <li>Regional gradient-domain Tikhonov PSF</li>
+              <li>Kurtosis validation and replacement</li>
+              <li>L1/FFT regional restoration and merge</li>
+            </ol>
+          </article>
+          <article>
+            <h3>2026 reference reconstruction</h3>
+            <ol>
+              <li>Deterministic RANSAC homography registration</li>
+              <li>Graph-cut and disparity-median region merge</li>
+              <li>Regional Tikhonov kernels and TV/L1 FFT deconvolution</li>
+              <li>Normalized feather blending</li>
+              <li>Optional guided noisy-detail fusion</li>
+            </ol>
+            <p class="card-note">Guided noisy-detail fusion is a 2026 enhancement, not a claim about the deleted 2013 code. This reconstruction is not bit-identical to historical outputs.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="mat3">
+        <h2 id="mat3">Living-room restoration walkthrough</h2>
+        <p class="lede">
+          Mat3 is an authorized Hyeon Sang Jeon living-room photograph rendered with the
+          selected HPO preset. It has no clean ground truth: the 0.874256 proxy score and
+          0.919059 proxy SSIM use the registered, denoised noisy auxiliary, not PSNR.
+        </p>
+        <p class="fine-print">
+          Selected HPO: 12 color labels, disparity threshold 1.0, 17px kernels, 192px
+          patches, Tikhonov 0.001, data weight 60, beta 8, feather sigma 12, unsharp
+          amount 0.3, and guided detail-fusion amount 0.5.
+        </p>
+        <div class="walkthrough-grid">
+          <figure>
+            <img loading="lazy" src="assets/mat3-living-room/blurred.webp" alt="Mat3 living-room blurred input photograph.">
+            <figcaption>1. Blurred input</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" src="assets/mat3-living-room/noisy.webp" alt="Mat3 short-exposure noisy auxiliary photograph.">
+            <figcaption>2. Noisy auxiliary</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" src="assets/mat3-living-room/registered_noisy.webp" alt="Noisy auxiliary after RANSAC homography registration to the blurred image.">
+            <figcaption>3. Registered noisy image</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" src="assets/mat3-living-room/features.webp" alt="Harris feature and disparity-vector visualization over the Mat3 scene.">
+            <figcaption>4. Feature/disparity vectors</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" src="assets/mat3-living-room/initial_regions.webp" alt="Initial color graph-cut over-segmentation regions.">
+            <figcaption>5. Initial graph-cut regions</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" src="assets/mat3-living-room/merged_regions.webp" alt="Regions merged by adjacent disparity medians.">
+            <figcaption>6. Disparity-merged regions</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" src="assets/mat3-living-room/kernels.webp" alt="Regional point-spread-function kernel visualization.">
+            <figcaption>7. Regional PSF kernels</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" src="assets/mat3-living-room/deconvolved.webp" alt="Regional TV L1 FFT deconvolution intermediate.">
+            <figcaption>8. Deconvolved intermediate</figcaption>
+          </figure>
+          <figure>
+            <img loading="lazy" src="assets/mat3-living-room/restored.webp" alt="Final HPO-optimized Mat3 living-room restoration.">
+            <figcaption>9. Final HPO restored result</figcaption>
+          </figure>
+          <figure class="walkthrough-comparison">
+            <img loading="lazy" src="assets/mat3-living-room/comparison.webp" alt="Compact Mat3 comparison ordered blurred, noisy auxiliary, and final restored image.">
+            <figcaption>Blurred + noisy → restored</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section aria-labelledby="gallery">
         <h2 id="gallery">Public benchmark gallery</h2>
         <div class="gallery">
           <article>
-            <img src="assets/gopro-flower-comparison.webp" alt="Derived GOPRO Large Flower comparison: blurred, noisy, restored, and reference images.">
-            <h3>Derived GOPRO_Large Flower</h3>
+            <img src="assets/01-df2-object-motion-comparison.webp" alt="Historical object-motion photograph comparison: blurred, noisy, and restored images.">
+            <h3>Historical photograph: object motion</h3>
             <dl>
-              <div><dt>PSNR</dt><dd>26.3248</dd></div>
-              <div><dt>SSIM</dt><dd>0.8998</dd></div>
-              <div><dt>Objective (full-resolution)</dt><dd>0.713320</dd></div>
+              <div><dt>Metric</dt><dd>No-reference proxy</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.632094</dd></div>
             </dl>
           </article>
           <article>
-            <img src="assets/procedural-depth-comparison.webp" alt="Procedural depth comparison: blurred, noisy, restored, and reference images.">
-            <h3>Project-owned procedural depth</h3>
+            <img src="assets/02-building-low-light-comparison.webp" alt="Historical low-light building photograph comparison: blurred, noisy, and restored images.">
+            <h3>Historical photograph: low-light building</h3>
             <dl>
-              <div><dt>PSNR</dt><dd>15.6261</dd></div>
-              <div><dt>SSIM</dt><dd>0.4389</dd></div>
-              <div><dt>Objective (full-resolution)</dt><dd>0.375687</dd></div>
+              <div><dt>Metric</dt><dd>No-reference proxy</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.640904</dd></div>
             </dl>
+          </article>
+          <article>
+            <img src="assets/05-new1-parking-comparison.webp" alt="Historical parking photograph comparison: blurred, noisy, and restored images.">
+            <h3>Historical photograph: parking</h3>
+            <dl>
+              <div><dt>Metric</dt><dd>No-reference proxy</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.750229</dd></div>
+            </dl>
+          </article>
+          <article>
+            <img src="assets/gopro-flower-comparison.webp" alt="Derived GoPro Flower comparison: blurred, noisy, restored, and reference images.">
+            <h3>External GoPro-derived benchmark</h3>
+            <dl>
+              <div><dt>PSNR</dt><dd>25.3705</dd></div>
+              <div><dt>SSIM</dt><dd>0.8816</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.694603</dd></div>
+            </dl>
+            <p class="card-note"><a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/THIRD_PARTY_LICENSES.md">Attribution and license</a></p>
           </article>
         </div>
         <p class="fine-print">
           Metrics and selected HPO configurations are from the committed
           <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/showcase/benchmark/benchmark.json">public benchmark manifest output</a>.
-          They are measurements of this reference reconstruction.
+          The historical-photograph values are conservative no-reference proxy objectives,
+          not PSNR or SSIM.
         </p>
       </section>
 
