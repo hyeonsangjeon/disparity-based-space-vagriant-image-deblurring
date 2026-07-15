@@ -58,50 +58,6 @@
         </div>
       </section>
 
-      <section aria-labelledby="historical-block-flow">
-        <h2 id="historical-block-flow">Historical block-boundary blending</h2>
-        <p class="lede">
-          Before the journal moved from fixed blocks to disparity-defined regions, the
-          2011 work documented a PSF-aware way to suppress FFT block ringing and merge
-          restored patches without visible seams.
-        </p>
-        <figure class="historical-flow">
-          <img loading="lazy" src="assets/historical-block-mask-flow.svg" alt="Historical block restoration flow: overlapping blocks, boundary interpolation, regional restoration, separable two-dimensional masks, nine position masks, and normalized overlap-add.">
-          <figcaption>PSF-aware boundary conditioning and 2D-mask overlap-add, reconstructed from the 2011 poster, presentation, and preserved source.</figcaption>
-        </figure>
-        <div class="method-grid">
-          <article>
-            <h3>Boundary conditioning</h3>
-            <p>Blocks were 256 or 512 pixels. The overlap followed the estimated PSF width, while a PSF-half-width dead zone removed the pixels altered only to satisfy FFT periodicity.</p>
-          </article>
-          <article>
-            <h3>2D mask composition</h3>
-            <p>Horizontal and vertical 1D ramps were multiplied into corner masks. Four corner, four edge, and one interior mask then accumulated restored patches so overlapping weights summed to one.</p>
-          </article>
-        </div>
-        <details class="historical-record">
-          <summary>Historical contribution record and implementation evidence</summary>
-          <p>
-            The 2011 IPIU poster <cite>Efficient Boundary Artifact Removal in a
-            Block-Based Deblurring Algorithm Using Multiple Images</cite> lists
-            Hyeon Sang Jeon first, followed by Chang-Hwan Son and Hyung-Min Park.
-            Its sections 2.2 and Figures 3-5 document linear edge interpolation,
-            a PSF-adaptive dead zone, separable 2D masks, and overlap-based image
-            composition. The preserved 2011 presentation repeats this flow, and
-            the recovered C++ records <code>BoundaryEdgeSmoothing_LinerInterpolation</code>,
-            nine block-position masks, and weighted <code>BlockSumImage</code>
-            accumulation.
-          </p>
-          <p>
-            This block method is a documented predecessor, not a claim that the
-            2026 implementation is the deleted original. The 2013 paper's central
-            contribution replaces fixed rectangular blocks with disparity-guided
-            content regions; the modern reference implementation generalizes the
-            merge with normalized feather blending.
-          </p>
-        </details>
-      </section>
-
       <section aria-labelledby="mat3">
         <h2 id="mat3">Living-room restoration walkthrough</h2>
         <p class="lede">
@@ -212,6 +168,50 @@ uv run disparity-deblur-benchmark \
   --dataset-root benchmarks/public-assets \
   --output-dir output/showcase</code></pre>
       </section>
+
+      <aside aria-label="Optional historical article">
+        <details class="optional-article">
+          <summary>Optional historical article · Block-boundary blending (2011)</summary>
+          <p class="lede">
+            Before the journal moved from fixed blocks to disparity-defined regions, the
+            2011 work documented a PSF-aware way to suppress FFT block ringing and merge
+            restored patches without visible seams.
+          </p>
+          <figure class="historical-flow">
+            <img loading="lazy" src="assets/historical-block-mask-flow.svg" alt="Historical block restoration flow: overlapping blocks, boundary interpolation, regional restoration, separable two-dimensional masks, nine position masks, and normalized overlap-add.">
+            <figcaption>PSF-aware boundary conditioning and 2D-mask overlap-add, reconstructed from the 2011 poster, presentation, and preserved source.</figcaption>
+          </figure>
+          <div class="method-grid">
+            <article>
+              <h3>Boundary conditioning</h3>
+              <p>Blocks were 256 or 512 pixels. The overlap followed the estimated PSF width, while a PSF-half-width dead zone removed the pixels altered only to satisfy FFT periodicity.</p>
+            </article>
+            <article>
+              <h3>2D mask composition</h3>
+              <p>Horizontal and vertical 1D ramps were multiplied into corner masks. Four corner, four edge, and one interior mask then accumulated restored patches so overlapping weights summed to one.</p>
+            </article>
+          </div>
+          <h3>Historical contribution record and implementation evidence</h3>
+          <p>
+            The 2011 IPIU poster <cite>Efficient Boundary Artifact Removal in a
+            Block-Based Deblurring Algorithm Using Multiple Images</cite> lists
+            Hyeon Sang Jeon first, followed by Chang-Hwan Son and Hyung-Min Park.
+            Its sections 2.2 and Figures 3-5 document linear edge interpolation,
+            a PSF-adaptive dead zone, separable 2D masks, and overlap-based image
+            composition. The preserved 2011 presentation repeats this flow, and
+            the recovered C++ records <code>BoundaryEdgeSmoothing_LinerInterpolation</code>,
+            nine block-position masks, and weighted <code>BlockSumImage</code>
+            accumulation.
+          </p>
+          <p>
+            This block method is a documented predecessor, not a claim that the
+            2026 implementation is the deleted original. The 2013 paper's central
+            contribution replaces fixed rectangular blocks with disparity-guided
+            content regions; the modern reference implementation generalizes the
+            merge with normalized feather blending.
+          </p>
+        </details>
+      </aside>
 
       <footer class="fine-print">
         <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/LICENSE">MIT code</a>

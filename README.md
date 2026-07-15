@@ -17,29 +17,6 @@ This repository preserves three distinct records:
 
 The reconstruction maps these stages visibly in the featured Mat3 walkthrough below. Guided noisy-detail fusion is a 2026 reconstruction enhancement; it is not claimed as part of the deleted 2013 implementation and outputs are not bit-identical to historical results.
 
-## Historical block-boundary blending (2011)
-
-The 2011 IPIU poster **“다중영상을 이용한 블록기반 디블러링 알고리즘에서 효율적
-경계면 결함제거방법”** lists **Hyeon Sang Jeon first**, followed by Chang-Hwan Son
-and Hyung-Min Park. It documents the implementation path that preceded the journal's
-disparity-defined regions:
-
-1. split the blurred/noisy pair into overlapping 256 or 512 pixel FFT blocks;
-2. linearly condition a PSF-width boundary band to reduce periodic-boundary ringing;
-3. restore each block with its estimated PSF;
-4. discard the conditioned-only pixels with a PSF-half-width dead zone;
-5. multiply horizontal and vertical 1D ramps into 2D corner masks; and
-6. combine four corner, four edge, and one interior mask with normalized overlap-add.
-
-![Historical block-boundary restoration flow](docs/assets/historical-block-mask-flow.svg)
-
-The recovered C++ preserves the same lineage in
-`BoundaryEdgeSmoothing_LinerInterpolation`, the nine block-position masks, and
-weighted `BlockSumImage` accumulation. This is a historical implementation record,
-not a claim that the 2026 reference reconstruction is the deleted original. The
-modern pipeline uses normalized feather blending to generalize the same merge
-principle to disparity-defined content regions.
-
 ## Quickstart
 
 Python 3.11+ and [uv](https://docs.astral.sh/uv/) are required.
@@ -88,6 +65,32 @@ The committed public showcase was generated from `benchmarks/manifests/public.js
 | External GoPro-derived benchmark | reference-backed | 25.3705 | 0.8816 | 0.694603 |
 
 See [showcase/benchmark/SUMMARY.md](showcase/benchmark/SUMMARY.md), [showcase/benchmark/benchmark.json](showcase/benchmark/benchmark.json), and the framework-free [GitHub Pages site](docs/index.html) for the complete public gallery. These results are reference-reconstruction measurements, not claims about the deleted historical code.
+
+<details>
+<summary><strong>Optional historical article · Block-boundary blending (2011)</strong></summary>
+
+The 2011 IPIU poster **“다중영상을 이용한 블록기반 디블러링 알고리즘에서 효율적
+경계면 결함제거방법”** lists **Hyeon Sang Jeon first**, followed by Chang-Hwan Son
+and Hyung-Min Park. It documents the implementation path that preceded the journal's
+disparity-defined regions:
+
+1. split the blurred/noisy pair into overlapping 256 or 512 pixel FFT blocks;
+2. linearly condition a PSF-width boundary band to reduce periodic-boundary ringing;
+3. restore each block with its estimated PSF;
+4. discard the conditioned-only pixels with a PSF-half-width dead zone;
+5. multiply horizontal and vertical 1D ramps into 2D corner masks; and
+6. combine four corner, four edge, and one interior mask with normalized overlap-add.
+
+![Historical block-boundary restoration flow](docs/assets/historical-block-mask-flow.svg)
+
+The recovered C++ preserves the same lineage in
+`BoundaryEdgeSmoothing_LinerInterpolation`, the nine block-position masks, and
+weighted `BlockSumImage` accumulation. This is a historical implementation record,
+not a claim that the 2026 reference reconstruction is the deleted original. The
+modern pipeline uses normalized feather blending to generalize the same merge
+principle to disparity-defined content regions.
+
+</details>
 
 ## Data and licenses
 

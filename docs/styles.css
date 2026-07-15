@@ -133,21 +133,26 @@ dd {
   padding: .7rem .9rem;
 }
 
-.historical-record {
+.optional-article {
   background: #141d27;
   border: 1px solid #2a3a4b;
   border-radius: .65rem;
-  margin-top: 1rem;
+  margin-top: 3.5rem;
   padding: .8rem 1rem;
 }
 
-.historical-record summary {
+.optional-article summary {
   color: #9bc5ff;
   cursor: pointer;
+  font-size: 1.15rem;
   font-weight: 700;
 }
 
-.historical-record p:last-child {
+.optional-article[open] summary {
+  margin-bottom: 1.2rem;
+}
+
+.optional-article p:last-child {
   margin-bottom: .2rem;
 }
 
