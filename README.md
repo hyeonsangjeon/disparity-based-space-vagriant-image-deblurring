@@ -72,7 +72,7 @@ The committed public showcase was generated from `benchmarks/manifests/public.js
 
 See [showcase/benchmark/SUMMARY.md](showcase/benchmark/SUMMARY.md), [showcase/benchmark/benchmark.json](showcase/benchmark/benchmark.json), and the framework-free [GitHub Pages site](docs/index.html) for the complete public gallery. These results are reference-reconstruction measurements, not claims about the deleted historical code.
 
-<details>
+<details open>
 <summary><strong>Optional historical article · Block-boundary blending (2011)</strong></summary>
 
 The 2011 IPIU poster **“다중영상을 이용한 블록기반 디블러링 알고리즘에서 효율적
