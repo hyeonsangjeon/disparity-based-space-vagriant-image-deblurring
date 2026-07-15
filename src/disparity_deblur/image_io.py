@@ -12,6 +12,8 @@ def read_input_image(
     height: int | None = None,
     width: int | None = None,
 ) -> np.ndarray:
+    """Read a standard raster or explicitly sized RGB24 RAW image as float RGB."""
+
     path = Path(path)
     if not path.is_file():
         raise FileNotFoundError(
@@ -42,6 +44,8 @@ def read_input_image(
 
 
 def read_rgb24(path: str | Path, height: int, width: int) -> np.ndarray:
+    """Read headerless row-major RGB24 using independent height and width."""
+
     path = Path(path)
     if not path.is_file():
         raise FileNotFoundError(
@@ -59,12 +63,16 @@ def read_rgb24(path: str | Path, height: int, width: int) -> np.ndarray:
 
 
 def write_rgb24(path: str | Path, image: np.ndarray) -> None:
+    """Write normalized RGB data as headerless row-major RGB24."""
+
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     _to_uint8(image).tofile(path)
 
 
 def write_png(path: str | Path, image: np.ndarray) -> None:
+    """Write normalized RGB data as a lossless PNG."""
+
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     rgb = _to_uint8(image)
@@ -73,6 +81,8 @@ def write_png(path: str | Path, image: np.ndarray) -> None:
 
 
 def _to_uint8(image: np.ndarray) -> np.ndarray:
+    """Validate HxWx3 RGB data and quantize it to unsigned 8-bit values."""
+
     if image.ndim != 3 or image.shape[2] != 3:
         raise ValueError(f"expected HxWx3 RGB image, got {image.shape}")
     return np.rint(np.clip(image, 0.0, 1.0) * 255.0).astype(np.uint8)

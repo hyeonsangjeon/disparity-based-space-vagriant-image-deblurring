@@ -5,6 +5,8 @@ from .pipeline import run_pipeline
 
 
 def main() -> None:
+    """Parse CLI arguments and run the aspect-ratio-independent pipeline."""
+
     parser = argparse.ArgumentParser(
         description="Restore RAW or standard RGB images using disparity-based regional deblurring.",
         epilog=(
@@ -44,6 +46,9 @@ def main() -> None:
     parser.add_argument("--detail-fusion-amount", type=float, default=0.0)
     parser.add_argument("--detail-fusion-tolerance", type=float, default=0.08)
     parser.add_argument("--detail-fusion-threshold", type=float, default=0.015)
+    parser.add_argument("--noisy-structure-blend", type=float, default=0.0)
+    parser.add_argument("--noisy-structure-sigma", type=float, default=3.0)
+    parser.add_argument("--noisy-structure-tolerance", type=float, default=0.12)
     parser.add_argument("--skip-registration", action="store_true")
     args = parser.parse_args()
 
@@ -75,6 +80,9 @@ def main() -> None:
         detail_fusion_amount=args.detail_fusion_amount,
         detail_fusion_tolerance=args.detail_fusion_tolerance,
         detail_fusion_threshold=args.detail_fusion_threshold,
+        noisy_structure_blend=args.noisy_structure_blend,
+        noisy_structure_sigma=args.noisy_structure_sigma,
+        noisy_structure_tolerance=args.noisy_structure_tolerance,
         skip_registration=args.skip_registration,
     )
     metadata = run_pipeline(

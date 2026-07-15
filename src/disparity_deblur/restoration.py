@@ -1,3 +1,5 @@
+from typing import Sequence
+
 import cv2
 import numpy as np
 
@@ -5,26 +7,32 @@ import numpy as np
 def restore_regions(
     blurred: np.ndarray,
     labels: np.ndarray,
-    kernels: list[np.ndarray],
+    kernels: Sequence[np.ndarray],
     *,
     data_weight: float = 200.0,
     beta_max: float = 32.0,
     feather_sigma: float = 5.0,
     boundary_padding: int | None = None,
 ) -> np.ndarray:
+    """Restore each unique regional PSF once, then feather regions together."""
+
     region_count = int(labels.max()) + 1
     if len(kernels) != region_count:
         raise ValueError(f"received {len(kernels)} kernels for {region_count} regions")
-    restored = [
-        tv_l1_deconvolve(
-            blurred,
-            kernel,
-            data_weight=data_weight,
-            beta_max=beta_max,
-            boundary_padding=boundary_padding,
-        )
-        for kernel in kernels
-    ]
+    restored_by_kernel: dict[tuple[tuple[int, ...], str, bytes], np.ndarray] = {}
+    restored = []
+    for kernel in kernels:
+        contiguous = np.ascontiguousarray(kernel)
+        key = (contiguous.shape, contiguous.dtype.str, contiguous.tobytes())
+        if key not in restored_by_kernel:
+            restored_by_kernel[key] = tv_l1_deconvolve(
+                blurred,
+                contiguous,
+                data_weight=data_weight,
+                beta_max=beta_max,
+                boundary_padding=boundary_padding,
+            )
+        restored.append(restored_by_kernel[key])
     return normalized_region_merge(restored, labels, feather_sigma=feather_sigma)
 
 
@@ -36,6 +44,8 @@ def tv_l1_deconvolve(
     beta_max: float,
     boundary_padding: int | None = None,
 ) -> np.ndarray:
+    """Restore a 2D or HxWxC image with half-quadratic TV/L1 FFT updates."""
+
     if blurred.ndim == 2:
         channels = blurred[..., None]
         squeeze = True
@@ -44,6 +54,8 @@ def tv_l1_deconvolve(
         squeeze = False
     else:
         raise ValueError(f"unsupported image shape {blurred.shape}")
+    if min(channels.shape[:2]) < 2:
+        raise ValueError("deconvolution requires image height and width of at least 2")
 
     padding = (
         max(kernel.shape) - 1 if boundary_padding is None else boundary_padding
@@ -104,11 +116,20 @@ def normalized_region_merge(
     *,
     feather_sigma: float,
 ) -> np.ndarray:
+    """Blend full-frame regional restorations with normalized feather weights."""
+
     if not restored:
         raise ValueError("at least one restored image is required")
     shape = restored[0].shape
     if any(image.shape != shape for image in restored):
         raise ValueError("restored image shapes differ")
+    if labels.shape != shape[:2]:
+        raise ValueError("region labels must match restored image height and width")
+    region_count = int(labels.max()) + 1
+    if len(restored) != region_count:
+        raise ValueError(
+            f"received {len(restored)} restored images for {region_count} regions"
+        )
 
     numerator = np.zeros(shape, dtype=np.float64)
     denominator = np.zeros(labels.shape, dtype=np.float64)
@@ -135,6 +156,8 @@ def normalized_region_merge(
 
 
 def psf_to_otf(kernel: np.ndarray, shape: tuple[int, int]) -> np.ndarray:
+    """Embed a centered PSF in a rectangular FFT domain."""
+
     if kernel.shape[0] > shape[0] or kernel.shape[1] > shape[1]:
         raise ValueError(f"kernel {kernel.shape} is larger than target {shape}")
     padded = np.zeros(shape, dtype=np.float64)
@@ -145,4 +168,6 @@ def psf_to_otf(kernel: np.ndarray, shape: tuple[int, int]) -> np.ndarray:
 
 
 def _soft_threshold(values: np.ndarray, threshold: float) -> np.ndarray:
+    """Apply element-wise soft thresholding."""
+
     return np.sign(values) * np.maximum(np.abs(values) - threshold, 0.0)

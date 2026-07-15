@@ -11,6 +11,8 @@ def register_noisy_to_blur(
     max_corners: int = 2500,
     ransac_threshold: float = 2.5,
 ) -> RegistrationResult:
+    """Register the noisy exposure to the blurred frame with Harris, LK, and RANSAC."""
+
     if blurred.shape != noisy.shape:
         raise ValueError(f"image shapes differ: {blurred.shape} vs {noisy.shape}")
 
@@ -40,14 +42,20 @@ def register_noisy_to_blur(
     tracked, status_forward, errors = cv2.calcOpticalFlowPyrLK(
         blur_gray, noisy_gray, points, None, **lk
     )
+    if tracked is None or status_forward is None or errors is None:
+        raise RuntimeError("forward LK optical flow failed")
     backward, status_backward, _ = cv2.calcOpticalFlowPyrLK(
         noisy_gray, blur_gray, tracked, None, **lk
     )
+    if backward is None or status_backward is None:
+        raise RuntimeError("backward LK optical flow failed")
 
     forward_backward = np.linalg.norm(points - backward, axis=2).ravel()
     valid_status = status_forward.ravel().astype(bool) & status_backward.ravel().astype(
         bool
     )
+    if not valid_status.any():
+        raise RuntimeError("LK optical flow produced no bidirectional matches")
     error_limit = np.percentile(errors.ravel()[valid_status], 90)
     valid = (
         valid_status
@@ -102,6 +110,8 @@ def register_noisy_to_blur(
 
 
 def identity_registration(blurred: np.ndarray, noisy: np.ndarray) -> RegistrationResult:
+    """Return a shape-preserving identity registration for pre-aligned inputs."""
+
     if blurred.shape != noisy.shape:
         raise ValueError(f"image shapes differ: {blurred.shape} vs {noisy.shape}")
     height, width = blurred.shape[:2]
@@ -116,6 +126,8 @@ def identity_registration(blurred: np.ndarray, noisy: np.ndarray) -> Registratio
 
 
 def _feature_gray(image: np.ndarray) -> np.ndarray:
+    """Build a CLAHE-enhanced grayscale image for feature tracking."""
+
     rgb = np.rint(np.clip(image, 0.0, 1.0) * 255.0).astype(np.uint8)
     gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
     return cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8)).apply(gray)

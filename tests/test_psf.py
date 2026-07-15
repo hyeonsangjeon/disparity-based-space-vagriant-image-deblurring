@@ -4,6 +4,7 @@ import unittest
 import numpy as np
 
 from disparity_deblur.kernel_estimation import (
+    _edge_rich_patch,
     estimate_region_kernels,
     estimate_tikhonov_kernel,
 )
@@ -34,6 +35,17 @@ class PsfTest(unittest.TestCase):
         vertical_variance = np.sum(estimated * (yy - center[0]) ** 2)
         self.assertAlmostEqual(float(estimated.sum()), 1.0, places=8)
         self.assertGreater(horizontal_variance, vertical_variance)
+
+    def test_patch_selection_uses_each_rectangular_axis(self) -> None:
+        for shape, expected in (
+            ((40, 120), (40, 64)),
+            ((120, 40), (64, 40)),
+        ):
+            with self.subTest(shape=shape):
+                mask = np.ones(shape, dtype=bool)
+                edge_energy = np.ones(shape, dtype=np.float32)
+                y0, y1, x0, x1 = _edge_rich_patch(mask, edge_energy, 64)
+                self.assertEqual((y1 - y0, x1 - x0), expected)
 
     def test_bad_kernel_is_replaced_from_nearest_disparity(self) -> None:
         reliable = np.arange(1, 50, dtype=np.float64).reshape(7, 7)

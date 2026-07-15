@@ -21,12 +21,16 @@ Processor = Callable[[np.ndarray, np.ndarray, PipelineConfig], np.ndarray]
 
 @dataclass(frozen=True)
 class InputFile:
+    """Manifest-relative input path and its expected SHA-256 digest."""
+
     path: str
     sha256: str
 
 
 @dataclass(frozen=True)
 class Dataset:
+    """One reproducible benchmark pair and its publication metadata."""
+
     identifier: str
     description: str
     visibility: str
@@ -42,12 +46,16 @@ class Dataset:
 
 @dataclass(frozen=True)
 class BenchmarkManifest:
+    """Validated collection of benchmark datasets."""
+
     schema_version: int
     datasets: tuple[Dataset, ...]
 
 
 @dataclass(frozen=True)
 class CandidateEvaluation:
+    """One HPO configuration with measured quality and runtime."""
+
     config: PipelineConfig
     metrics: Mapping[str, float | str | bool]
     runtime_seconds: float
@@ -204,6 +212,8 @@ def proxy_metrics(result: np.ndarray, blurred: np.ndarray) -> dict[str, float]:
 def select_hpo_candidate(
     candidates: Sequence[CandidateEvaluation],
 ) -> CandidateEvaluation:
+    """Select the highest objective with deterministic configuration tie-breaking."""
+
     if not candidates:
         raise ValueError("HPO requires at least one candidate")
     return max(
@@ -628,6 +638,8 @@ def _resize_triplet(
     reference: np.ndarray | None,
     maximum: int,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray | None]:
+    """Resize a paired dataset by its longest axis while preserving aspect ratio."""
+
     dimensions = blurred.shape[:2]
     scale = min(1.0, maximum / max(dimensions))
     if scale == 1.0:
@@ -646,6 +658,8 @@ def _comparison(
     *,
     noisy_label: str = "Noisy",
 ) -> np.ndarray:
+    """Build a labeled horizontal comparison from equal-sized images."""
+
     images = [blurred, noisy, result]
     if reference is not None:
         images.append(reference)
@@ -671,11 +685,20 @@ def _comparison(
 
 
 def _thumbnail(image: np.ndarray) -> np.ndarray:
+    """Bound the longest thumbnail axis without changing aspect ratio."""
+
     maximum = 640
-    if image.shape[1] <= maximum:
+    height, width = image.shape[:2]
+    scale = min(1.0, maximum / max(height, width))
+    if scale == 1.0:
         return image
-    height = round(image.shape[0] * maximum / image.shape[1])
-    return cv2.resize(image, (maximum, height), interpolation=cv2.INTER_AREA)
+    output_width = max(1, round(width * scale))
+    output_height = max(1, round(height * scale))
+    return cv2.resize(
+        image,
+        (output_width, output_height),
+        interpolation=cv2.INTER_AREA,
+    )
 
 
 def _write_webp(path: Path, image: np.ndarray) -> None:

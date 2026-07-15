@@ -11,7 +11,11 @@ from .models import DeblurResult, InputSpec, KernelEstimate
 
 
 class ArtifactWriter:
+    """Persist full-resolution pipeline outputs and compact diagnostics."""
+
     def __init__(self, output_dir: str | Path) -> None:
+        """Target all generated artifacts at one output directory."""
+
         self.output_dir = Path(output_dir)
 
     def write(
@@ -20,6 +24,8 @@ class ArtifactWriter:
         inputs: InputSpec,
         config: PipelineConfig,
     ) -> Path:
+        """Write RGB, label, kernel, mask, and metadata artifacts."""
+
         self.output_dir.mkdir(parents=True, exist_ok=True)
         registration = result.registration
         segmentation = result.segmentation
@@ -86,6 +92,8 @@ def _metadata(
     inputs: InputSpec,
     config: PipelineConfig,
 ) -> dict[str, object]:
+    """Build machine-readable run metadata with independent dimensions."""
+
     registration = result.registration
     segmentation = result.segmentation
     config_values = asdict(config)
@@ -126,6 +134,8 @@ def _metadata(
 
 
 def _label_preview(labels: np.ndarray) -> np.ndarray:
+    """Colorize labels and draw their boundaries in black."""
+
     count = int(labels.max()) + 1
     colors = np.empty((count, 3), dtype=np.float32)
     for label in range(count):
@@ -145,6 +155,8 @@ def _feature_preview(
     points: np.ndarray,
     disparities: np.ndarray,
 ) -> np.ndarray:
+    """Draw disparity vectors over the blurred input."""
+
     preview = np.rint(np.clip(image, 0.0, 1.0) * 255.0).astype(np.uint8)
     for point, disparity in zip(points, disparities, strict=True):
         start = tuple(np.rint(point).astype(int))
@@ -162,6 +174,8 @@ def _feature_preview(
 
 
 def _kernel_preview(estimates: tuple[KernelEstimate, ...]) -> np.ndarray:
+    """Tile normalized regional PSFs into a compact diagnostic image."""
+
     if not estimates:
         raise ValueError("no kernels to preview")
     tiles = []
@@ -179,4 +193,6 @@ def _kernel_preview(estimates: tuple[KernelEstimate, ...]) -> np.ndarray:
 
 
 def _mask_preview(mask: np.ndarray) -> np.ndarray:
+    """Convert a 2D registration mask into a three-channel preview."""
+
     return np.repeat(mask[..., None], 3, axis=2).astype(np.float32)

@@ -13,6 +13,7 @@ from disparity_deblur.benchmark import (
     Dataset,
     InputFile,
     _validate_public_reference_config,
+    _thumbnail,
     deterministic_noise,
     load_manifest,
     select_hpo_candidate,
@@ -86,6 +87,13 @@ class BenchmarkTest(unittest.TestCase):
             manifest.datasets[3].config_overrides["noisy_structure_blend"],
             0.65,
         )
+        building = json.loads(
+            Path("showcase/benchmark/02_building_low_light/run.json").read_text()
+        )
+        self.assertNotEqual(
+            building["output_size"]["width"],
+            building["output_size"]["height"],
+        )
 
     def test_noise_is_repeatable_and_seeded(self) -> None:
         image = np.full((12, 12, 3), 0.5, dtype=np.float32)
@@ -94,6 +102,12 @@ class BenchmarkTest(unittest.TestCase):
         different_seed = deterministic_noise(image, seed=13, sigma=0.05)
         np.testing.assert_array_equal(first, second)
         self.assertFalse(np.array_equal(first, different_seed))
+
+    def test_thumbnail_bounds_portrait_and_landscape_longest_axes(self) -> None:
+        portrait = np.zeros((1200, 400, 3), dtype=np.float32)
+        landscape = np.zeros((400, 1200, 3), dtype=np.float32)
+        self.assertEqual(_thumbnail(portrait).shape, (640, 213, 3))
+        self.assertEqual(_thumbnail(landscape).shape, (213, 640, 3))
 
     def test_public_reference_blend_is_capped(self) -> None:
         dataset = Dataset(

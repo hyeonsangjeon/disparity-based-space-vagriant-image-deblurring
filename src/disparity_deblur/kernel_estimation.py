@@ -17,10 +17,20 @@ def estimate_region_kernels(
     kurtosis_min: float = 20.0,
     kurtosis_max: float = 300.0,
 ) -> list[KernelEstimate]:
+    """Estimate and validate one PSF per disparity-defined image region."""
+
+    if blurred.shape != registered_noisy.shape:
+        raise ValueError("blurred and registered noisy image shapes must match")
+    if blurred.ndim != 3 or blurred.shape[2] != 3:
+        raise ValueError(f"expected HxWx3 RGB images, got {blurred.shape}")
+    if labels.shape != blurred.shape[:2]:
+        raise ValueError("region labels must match the image height and width")
     blur_gray = cv2.cvtColor(blurred, cv2.COLOR_RGB2GRAY)
     noisy_gray = cv2.cvtColor(registered_noisy, cv2.COLOR_RGB2GRAY)
     noisy_gray = cv2.GaussianBlur(noisy_gray, (0, 0), 0.8)
     region_count = int(labels.max()) + 1
+    if region_disparities.shape != (region_count, 2):
+        raise ValueError("region disparities must have shape region_count x 2")
 
     raw: list[KernelEstimate] = []
     for region in range(region_count):
@@ -98,10 +108,16 @@ def estimate_tikhonov_kernel(
     patch_size: int,
     regularization: float,
 ) -> tuple[np.ndarray, tuple[int, int, int, int]]:
-    if kernel_size % 2 != 1:
-        raise ValueError("kernel size must be odd")
+    """Estimate a centered square PSF from an aspect-aware rectangular patch."""
+
+    if kernel_size <= 0 or kernel_size % 2 != 1:
+        raise ValueError("kernel size must be a positive odd number")
+    if patch_size < kernel_size:
+        raise ValueError("patch size cannot be smaller than kernel size")
     if blurred_gray.shape != noisy_gray.shape or blurred_gray.shape != mask.shape:
         raise ValueError("blurred, noisy, and mask shapes must match")
+    if min(mask.shape) < kernel_size:
+        raise ValueError("kernel size cannot exceed the shorter image dimension")
     blurred_gray = np.asarray(blurred_gray, dtype=np.float32)
     noisy_gray = np.asarray(noisy_gray, dtype=np.float32)
 
@@ -163,6 +179,8 @@ def estimate_tikhonov_kernel(
 
 
 def kernel_kurtosis(kernel: np.ndarray) -> float:
+    """Return Pearson kurtosis of the normalized PSF samples."""
+
     values = kernel.ravel().astype(np.float64)
     centered = values - values.mean()
     variance = np.mean(centered * centered)
@@ -174,32 +192,38 @@ def kernel_kurtosis(kernel: np.ndarray) -> float:
 def _edge_rich_patch(
     mask: np.ndarray, edge_energy: np.ndarray, patch_size: int
 ) -> tuple[int, int, int, int]:
+    """Select the strongest region-supported patch with per-axis dimensions."""
+
     height, width = mask.shape
-    size = min(patch_size, height, width)
+    patch_height = min(patch_size, height)
+    patch_width = min(patch_size, width)
+    patch_area = patch_height * patch_width
     weighted_edge = edge_energy * mask.astype(np.float32)
     edge_sum = cv2.boxFilter(
         weighted_edge,
         cv2.CV_32F,
-        (size, size),
+        (patch_width, patch_height),
         normalize=False,
         borderType=cv2.BORDER_CONSTANT,
     )
     coverage = cv2.boxFilter(
         mask.astype(np.float32),
         cv2.CV_32F,
-        (size, size),
+        (patch_width, patch_height),
         normalize=False,
         borderType=cv2.BORDER_CONSTANT,
     )
-    score = edge_sum * np.sqrt(np.clip(coverage / (size * size), 0.0, 1.0))
-    score[coverage < size * size * 0.05] = -1.0
+    score = edge_sum * np.sqrt(np.clip(coverage / patch_area, 0.0, 1.0))
+    score[coverage < patch_area * 0.05] = -1.0
     center_y, center_x = np.unravel_index(np.argmax(score), score.shape)
-    y0 = int(np.clip(center_y - size // 2, 0, height - size))
-    x0 = int(np.clip(center_x - size // 2, 0, width - size))
-    return y0, y0 + size, x0, x0 + size
+    y0 = int(np.clip(center_y - patch_height // 2, 0, height - patch_height))
+    x0 = int(np.clip(center_x - patch_width // 2, 0, width - patch_width))
+    return y0, y0 + patch_height, x0, x0 + patch_width
 
 
 def _center_kernel(kernel: np.ndarray) -> np.ndarray:
+    """Translate a PSF so its center of mass lies at the array center."""
+
     yy, xx = np.indices(kernel.shape)
     center_of_mass = np.array(
         [

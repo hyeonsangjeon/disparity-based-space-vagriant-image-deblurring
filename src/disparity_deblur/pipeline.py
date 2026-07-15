@@ -19,10 +19,16 @@ from .segmentation import disparity_segmentation
 
 
 class DisparityDeblurPipeline:
+    """Coordinate registration, segmentation, PSF estimation, and restoration."""
+
     def __init__(self, config: PipelineConfig | None = None) -> None:
+        """Create a pipeline with validated immutable configuration."""
+
         self.config = config or PipelineConfig()
 
     def process(self, blurred: np.ndarray, noisy: np.ndarray) -> DeblurResult:
+        """Restore an equally sized HxWx3 pair without assuming a square frame."""
+
         _validate_images(blurred, noisy)
         config = self.config
         cv2.setRNGSeed(config.random_seed)
@@ -127,6 +133,8 @@ def run_pipeline(
     output_dir: str | Path,
     config: PipelineConfig | None = None,
 ) -> Path:
+    """Read a pair, run restoration, and persist full-resolution artifacts."""
+
     blurred_source = Path(blurred_path)
     noisy_source = Path(noisy_path)
     blurred = read_input_image(blurred_source, height, width)
@@ -144,10 +152,14 @@ def run_pipeline(
 
 
 def _validate_images(blurred: np.ndarray, noisy: np.ndarray) -> None:
+    """Validate shape, floating-point representation, and finite values."""
+
     if blurred.shape != noisy.shape:
         raise ValueError(f"image shapes differ: {blurred.shape} vs {noisy.shape}")
     if blurred.ndim != 3 or blurred.shape[2] != 3:
         raise ValueError(f"expected HxWx3 RGB images, got {blurred.shape}")
+    if min(blurred.shape[:2]) < 2:
+        raise ValueError("pipeline images must be at least 2x2 pixels")
     if not np.issubdtype(blurred.dtype, np.floating) or not np.issubdtype(
         noisy.dtype, np.floating
     ):

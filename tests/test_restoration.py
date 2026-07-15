@@ -1,3 +1,4 @@
+from unittest import mock
 import unittest
 
 import numpy as np
@@ -5,6 +6,7 @@ import numpy as np
 from disparity_deblur.restoration import (
     normalized_region_merge,
     psf_to_otf,
+    restore_regions,
     tv_l1_deconvolve,
 )
 
@@ -40,6 +42,30 @@ class RestorationTest(unittest.TestCase):
             feather_sigma=3.0,
         )
         np.testing.assert_allclose(merged, image, atol=1e-12)
+
+    def test_duplicate_regional_kernels_are_deconvolved_once(self) -> None:
+        labels = np.zeros((24, 40), dtype=np.int32)
+        labels[:, 14:28] = 1
+        labels[:, 28:] = 2
+        image = np.full((24, 40, 3), 0.4, dtype=np.float64)
+        first = np.zeros((5, 5), dtype=np.float64)
+        first[2, 2] = 1.0
+        second = np.zeros((5, 5), dtype=np.float64)
+        second[2, 1:4] = 1.0 / 3.0
+
+        with mock.patch(
+            "disparity_deblur.restoration.tv_l1_deconvolve",
+            side_effect=lambda source, _kernel, **_kwargs: source.copy(),
+        ) as deconvolve:
+            restored = restore_regions(
+                image,
+                labels,
+                [first, first.copy(), second],
+                feather_sigma=2.0,
+            )
+
+        self.assertEqual(deconvolve.call_count, 2)
+        np.testing.assert_allclose(restored, image, atol=1e-12)
 
 
 if __name__ == "__main__":

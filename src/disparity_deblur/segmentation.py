@@ -18,6 +18,16 @@ def disparity_segmentation(
     max_regions: int = 6,
     minimum_region_fraction: float = 0.01,
 ) -> SegmentationResult:
+    """Create color regions and merge adjacent regions with similar disparities."""
+
+    if blurred.ndim != 3 or blurred.shape[2] != 3:
+        raise ValueError(f"expected HxWx3 RGB image, got {blurred.shape}")
+    if (
+        feature_points.ndim != 2
+        or feature_points.shape[1:] != (2,)
+        or disparities.shape != feature_points.shape
+    ):
+        raise ValueError("feature points and disparities must both have shape Nx2")
     initial = graph_cut_oversegmentation(
         blurred,
         color_labels=color_labels,
@@ -59,6 +69,8 @@ def graph_cut_oversegmentation(
     max_size: int,
     smoothness: float,
 ) -> np.ndarray:
+    """Oversegment an RGB image while preserving its original aspect ratio."""
+
     height, width = image.shape[:2]
     scale = min(1.0, max_size / max(height, width))
     small_width = max(16, int(round(width * scale)))
@@ -115,6 +127,8 @@ def _representative_disparities(
     *,
     minimum_features: int = 1,
 ) -> tuple[np.ndarray, np.ndarray]:
+    """Assign robust median feature displacement to each content region."""
+
     region_count = int(labels.max()) + 1
     vectors = np.full((region_count, 2), np.nan, dtype=np.float64)
     counts = np.zeros(region_count, dtype=np.int32)
@@ -164,6 +178,8 @@ def _merge_by_disparity(
     max_regions: int,
     minimum_region_fraction: float,
 ) -> np.ndarray:
+    """Merge adjacent regions by disparity, color, area, and region-count limits."""
+
     region_count = int(labels.max()) + 1
     disparity_map = disparities[labels]
     parent = np.arange(region_count)
@@ -227,6 +243,8 @@ def _merge_by_disparity(
 
 
 def _split_connected_components(labels: np.ndarray) -> np.ndarray:
+    """Give disconnected components independent contiguous labels."""
+
     output = np.full(labels.shape, -1, dtype=np.int32)
     next_label = 0
     for value in np.unique(labels):
@@ -240,6 +258,8 @@ def _split_connected_components(labels: np.ndarray) -> np.ndarray:
 
 
 def _adjacent_pairs(labels: np.ndarray) -> set[tuple[int, int]]:
+    """Return unordered region pairs that share a horizontal or vertical edge."""
+
     pairs: set[tuple[int, int]] = set()
     for left, right in (
         (labels[:, :-1], labels[:, 1:]),
@@ -252,6 +272,8 @@ def _adjacent_pairs(labels: np.ndarray) -> set[tuple[int, int]]:
 
 
 def _neighbors_of(labels: np.ndarray, region: int) -> set[int]:
+    """Return all regions directly adjacent to one region."""
+
     neighbors: set[int] = set()
     for left, right in _adjacent_pairs(labels):
         if left == region:
@@ -262,6 +284,8 @@ def _neighbors_of(labels: np.ndarray, region: int) -> set[int]:
 
 
 def _region_centroids(labels: np.ndarray, count: int) -> np.ndarray:
+    """Compute region centroids in x, y coordinate order."""
+
     yy, xx = np.indices(labels.shape)
     areas = np.bincount(labels.ravel(), minlength=count).clip(min=1)
     x = np.bincount(labels.ravel(), weights=xx.ravel(), minlength=count) / areas
@@ -270,6 +294,8 @@ def _region_centroids(labels: np.ndarray, count: int) -> np.ndarray:
 
 
 def _region_mean_colors(labels: np.ndarray, image: np.ndarray) -> np.ndarray:
+    """Compute one RGB mean for each region."""
+
     count = int(labels.max()) + 1
     areas = np.bincount(labels.ravel(), minlength=count).clip(min=1)
     channels = [
@@ -283,6 +309,8 @@ def _region_mean_colors(labels: np.ndarray, image: np.ndarray) -> np.ndarray:
 
 
 def _region_mean_vectors(labels: np.ndarray, vectors: np.ndarray) -> np.ndarray:
+    """Compute one mean vector for each region."""
+
     count = int(labels.max()) + 1
     areas = np.bincount(labels.ravel(), minlength=count).clip(min=1)
     components = [
@@ -296,5 +324,7 @@ def _region_mean_vectors(labels: np.ndarray, vectors: np.ndarray) -> np.ndarray:
 
 
 def _relabel(labels: np.ndarray) -> np.ndarray:
+    """Map arbitrary labels to contiguous zero-based integers."""
+
     _, inverse = np.unique(labels, return_inverse=True)
     return inverse.reshape(labels.shape).astype(np.int32)

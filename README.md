@@ -29,6 +29,12 @@ uv run disparity-deblur \
   --output-dir output/gopro-flower
 ```
 
+Portrait, landscape, and odd-sized raster images keep their native aspect ratio. RGB24
+RAW inputs likewise use independent `--width` and `--height` values. The PSF itself
+remains square by definition, while registration, segmentation, rectangular patch
+selection, FFT restoration, feather merging, artifacts, and benchmark thumbnails all
+track image height and width separately.
+
 Reproduce the public manifest-driven showcase in a separate output directory:
 
 ```sh

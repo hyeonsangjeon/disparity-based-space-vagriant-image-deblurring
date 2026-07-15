@@ -3,6 +3,8 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class PipelineConfig:
+    """Validated controls for an aspect-ratio-independent restoration run."""
+
     random_seed: int = 0
     max_corners: int = 2500
     ransac_threshold: float = 2.5
@@ -39,6 +41,8 @@ class PipelineConfig:
     skip_registration: bool = False
 
     def __post_init__(self) -> None:
+        """Reject parameter combinations that cannot produce a valid run."""
+
         if self.max_corners < 8:
             raise ValueError("max_corners must be at least 8")
         if self.ransac_threshold <= 0:
@@ -94,6 +98,8 @@ class PipelineConfig:
 
     @property
     def effective_boundary_padding(self) -> int:
+        """Return explicit padding or the full default PSF support margin."""
+
         return (
             self.kernel_size - 1
             if self.boundary_padding is None

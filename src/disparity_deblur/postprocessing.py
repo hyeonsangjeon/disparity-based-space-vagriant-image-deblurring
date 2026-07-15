@@ -9,6 +9,8 @@ def luminance_unsharp(
     amount: float,
     threshold: float,
 ) -> np.ndarray:
+    """Sharpen luminance while preserving the source chroma channels."""
+
     if amount == 0:
         return image.copy()
     ycrcb = cv2.cvtColor(image.astype(np.float32), cv2.COLOR_RGB2YCrCb)
@@ -32,6 +34,8 @@ def guided_noisy_detail_fusion(
     tolerance: float,
     threshold: float,
 ) -> np.ndarray:
+    """Add confident high-frequency luminance detail from the registered noisy frame."""
+
     if amount == 0:
         return restored.copy()
     _validate_guided_inputs(restored, registered_noisy, valid_mask)
@@ -107,6 +111,8 @@ def _denoise_registered_noisy(
     registered_noisy: np.ndarray,
     denoise_strength: float,
 ) -> np.ndarray:
+    """Denoise the registered auxiliary without changing its dimensions."""
+
     if denoise_strength < 0:
         raise ValueError("denoise strength cannot be negative")
     if denoise_strength == 0:
@@ -132,6 +138,8 @@ def _validate_guided_inputs(
     registered_noisy: np.ndarray,
     valid_mask: np.ndarray,
 ) -> None:
+    """Validate image and registration-mask dimensions for guided fusion."""
+
     if restored.shape != registered_noisy.shape:
         raise ValueError("restored and registered noisy image shapes differ")
     if valid_mask.shape != restored.shape[:2]:
