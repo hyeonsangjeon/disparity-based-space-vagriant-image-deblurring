@@ -66,7 +66,7 @@
           "reference_available": true,
           "ssim": 0.9125754613668374
         },
-        "runtime_seconds": 0.34398908296134323
+        "runtime_seconds": 0.33005154196871445
       },
       {
         "config": {
@@ -110,7 +110,7 @@
           "reference_available": true,
           "ssim": 0.9037800184952562
         },
-        "runtime_seconds": 0.28001262503676116
+        "runtime_seconds": 0.24028366600396112
       },
       {
         "config": {
@@ -154,7 +154,7 @@
           "reference_available": true,
           "ssim": 0.8813576264870657
         },
-        "runtime_seconds": 0.28382816701196134
+        "runtime_seconds": 0.2508271670085378
       }
     ],
     "fine": [
@@ -200,7 +200,7 @@
           "reference_available": true,
           "ssim": 0.9194181030691152
         },
-        "runtime_seconds": 0.2650198749615811
+        "runtime_seconds": 0.23772154102334753
       },
       {
         "config": {
@@ -244,7 +244,7 @@
           "reference_available": true,
           "ssim": 0.91102319675768
         },
-        "runtime_seconds": 0.2592206670087762
+        "runtime_seconds": 0.3941999999806285
       }
     ],
     "max_dimension": 256,
@@ -273,9 +273,8 @@
     "height": 216,
     "width": 384
   },
-  "reconstruction_profile": null,
   "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
-  "runtime_seconds": 0.4667099170037545,
+  "runtime_seconds": 0.6493751659872942,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,

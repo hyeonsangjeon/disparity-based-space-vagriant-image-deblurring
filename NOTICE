@@ -10,8 +10,7 @@ benchmarks/public-assets/LICENSE.txt, THIRD_PARTY_LICENSES.md, and
 benchmarks/ATTRIBUTION.json.
 
 The historical photographs in `01_df2_object_motion/`,
-`02_building_low_light/`, and `05_new1_parking/`, and the project-created
-`synthetic-spatial-psf/` assets are:
+`02_building_low_light/`, and `05_new1_parking/` are:
 Copyright © 2026 Hyeon Sang Jeon. All rights reserved. Included in this
 repository for demonstration and archival presentation only. No reuse,
 redistribution, or derivative use is granted.

@@ -31,7 +31,6 @@ class Dataset:
     description: str
     visibility: str
     rights: str | None
-    reconstruction_profile: str | None
     blurred: InputFile
     noisy: InputFile
     reference: InputFile | None = None
@@ -88,7 +87,6 @@ def load_manifest(path: str | Path) -> BenchmarkManifest:
                 description=_required_string(raw, "description"),
                 visibility=visibility,
                 rights=_optional_string(raw, "rights"),
-                reconstruction_profile=_optional_string(raw, "reconstruction_profile"),
                 blurred=_parse_input(raw, identifier, "blurred"),
                 noisy=_parse_input(raw, identifier, "noisy"),
                 reference=(
@@ -266,10 +264,7 @@ class BenchmarkRunner:
             hpo_blurred,
             hpo_noisy,
             hpo_reference,
-            [
-                replace(base_config, **overrides)
-                for overrides in _coarse_overrides(dataset.reconstruction_profile)
-            ],
+            [replace(base_config, **overrides) for overrides in _coarse_overrides()],
             "coarse",
         )
         best_coarse = select_hpo_candidate(coarse)
@@ -287,6 +282,7 @@ class BenchmarkRunner:
             blurred, noisy, reference, self.output_max_dimension
         )
         final_config = _fit_config_to_image(best.config, final_blurred.shape)
+        _validate_public_reference_config(dataset, final_config)
         started = perf_counter()
         result = self.processor(final_blurred, final_noisy, final_config)
         final_runtime = perf_counter() - started
@@ -329,7 +325,6 @@ class BenchmarkRunner:
             "description": dataset.description,
             "visibility": dataset.visibility,
             "rights": dataset.rights,
-            "reconstruction_profile": dataset.reconstruction_profile,
             "objective_type": "reference" if reference is not None else "no-reference-proxy",
             "source_hashes": dict(dataset.source_hashes or {}),
             "input_checksums": {
@@ -507,27 +502,24 @@ def _base_config(shape: tuple[int, ...]) -> PipelineConfig:
     )
 
 
-def _coarse_overrides(
-    reconstruction_profile: str | None,
-) -> tuple[dict[str, float], ...]:
-    candidates: tuple[dict[str, float], ...] = (
+def _coarse_overrides() -> tuple[dict[str, float], ...]:
+    return (
         {"tikhonov": 0.001, "data_weight": 160.0, "unsharp_amount": 0.0},
         {"tikhonov": 0.002, "data_weight": 220.0, "unsharp_amount": 0.1},
         {"tikhonov": 0.004, "data_weight": 300.0, "unsharp_amount": 0.18},
     )
-    if reconstruction_profile == "input-detail-fallback":
-        candidates += (
-            {
-                "tikhonov": 0.001,
-                "data_weight": 160.0,
-                "unsharp_amount": 0.0,
-                "detail_fusion_amount": 0.0,
-                "input_detail_sigma": 0.8,
-                "input_detail_amount": 2.0,
-                "input_detail_blend": 1.0,
-            },
+
+
+def _validate_public_reference_config(dataset: Dataset, config: PipelineConfig) -> None:
+    if (
+        dataset.visibility == "public"
+        and dataset.reference is not None
+        and config.input_detail_blend > 0.25
+    ):
+        raise ValueError(
+            "public reference-backed benchmarks cannot replace regional deconvolution "
+            "with an input-detail blend above 0.25"
         )
-    return candidates
 
 
 def _fine_configs(best: PipelineConfig) -> tuple[PipelineConfig, ...]:

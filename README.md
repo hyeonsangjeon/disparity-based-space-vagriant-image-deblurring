@@ -62,21 +62,14 @@ The committed public showcase was generated from `benchmarks/manifests/public.js
 | Hyeon Sang Jeon historical: object motion | no-reference proxy | N/A | N/A | 0.632094 |
 | Hyeon Sang Jeon historical: low-light building | no-reference proxy | N/A | N/A | 0.640904 |
 | Hyeon Sang Jeon historical: parking | no-reference proxy | N/A | N/A | 0.750229 |
-| Project-created synthetic spatial PSF | reference-backed | 29.0288 | 0.9284 | 0.739355 |
 | External GoPro-derived benchmark | reference-backed | 25.3705 | 0.8816 | 0.694603 |
-
-For the synthetic spatial-PSF quality gate, input -> restored PSNR is
-27.9909 -> 29.0288 dB (+1.0379 dB), and SSIM is 0.8999 -> 0.9284. Its
-deterministic generator and soft-mask/PSF metadata are in
-`tools/generate_synthetic_spatial_psf.py` and
-`benchmarks/public-assets/synthetic-spatial-psf/generator-metadata.json`.
 
 See [showcase/benchmark/SUMMARY.md](showcase/benchmark/SUMMARY.md), [showcase/benchmark/benchmark.json](showcase/benchmark/benchmark.json), and the framework-free [GitHub Pages site](docs/index.html) for the complete public gallery. These results are reference-reconstruction measurements, not claims about the deleted historical code.
 
 ## Data and licenses
 
-Code is MIT licensed. Historical photographs and project-created synthetic images
-are © Hyeon Sang Jeon, all rights reserved. The external GoPro-derived benchmark
+Code is MIT licensed. Historical photographs are © Hyeon Sang Jeon, all rights
+reserved. The external GoPro-derived benchmark
 is CC BY 4.0; detailed attribution is in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) and
 [ATTRIBUTION.json](benchmarks/ATTRIBUTION.json). Cite the reconstruction via
 [CITATION.cff](CITATION.cff) and the historical work via the [paper

@@ -10,6 +10,9 @@ import numpy as np
 from disparity_deblur.benchmark import (
     BenchmarkRunner,
     CandidateEvaluation,
+    Dataset,
+    InputFile,
+    _validate_public_reference_config,
     deterministic_noise,
     load_manifest,
     select_hpo_candidate,
@@ -46,7 +49,7 @@ class BenchmarkTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "safe relative path"):
                 load_manifest(path)
 
-    def test_public_manifest_lists_only_the_five_authorized_datasets(self) -> None:
+    def test_public_manifest_lists_only_the_four_authorized_datasets(self) -> None:
         manifest = load_manifest(Path("benchmarks/manifests/public.json"))
         self.assertEqual(
             [dataset.identifier for dataset in manifest.datasets],
@@ -55,15 +58,10 @@ class BenchmarkTest(unittest.TestCase):
                 "01_df2_object_motion",
                 "02_building_low_light",
                 "05_new1_parking",
-                "synthetic-spatial-psf",
             ],
         )
-        historical = manifest.datasets[1:4]
+        historical = manifest.datasets[1:]
         self.assertTrue(all(dataset.reference is None for dataset in historical))
-        self.assertIsNotNone(manifest.datasets[4].reference)
-        self.assertEqual(
-            manifest.datasets[4].reconstruction_profile, "input-detail-fallback"
-        )
         self.assertTrue(
             all(
                 dataset.rights
@@ -85,21 +83,25 @@ class BenchmarkTest(unittest.TestCase):
         np.testing.assert_array_equal(first, second)
         self.assertFalse(np.array_equal(first, different_seed))
 
-    def test_published_synthetic_quality_gate(self) -> None:
-        records = json.loads(
-            Path("showcase/benchmark/benchmark.json").read_text(encoding="utf-8")
-        )["datasets"]
-        synthetic = next(
-            record for record in records if record["id"] == "synthetic-spatial-psf"
+    def test_public_reference_blend_is_capped(self) -> None:
+        dataset = Dataset(
+            identifier="reference-fixture",
+            description="reference-backed fixture",
+            visibility="public",
+            rights=None,
+            blurred=InputFile("blurred.png", "0" * 64),
+            noisy=InputFile("noisy.png", "0" * 64),
+            reference=InputFile("reference.png", "0" * 64),
         )
-        self.assertGreater(
-            synthetic["metrics"]["psnr"], synthetic["baseline_metrics"]["psnr"] + 1.0
-        )
-        self.assertGreaterEqual(synthetic["metrics"]["psnr"], 28.0)
-        self.assertGreater(
-            synthetic["metrics"]["ssim"], synthetic["baseline_metrics"]["ssim"]
-        )
-        self.assertLess(synthetic["metrics"]["artifact_penalty"], 0.01)
+        with self.assertRaisesRegex(ValueError, "above 0.25"):
+            _validate_public_reference_config(
+                dataset,
+                PipelineConfig(
+                    kernel_size=7,
+                    patch_size=32,
+                    input_detail_blend=0.26,
+                ),
+            )
 
     def test_hpo_selection_uses_objective(self) -> None:
         base = PipelineConfig(kernel_size=7, patch_size=32)

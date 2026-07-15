@@ -7,9 +7,8 @@ Its attribution, source URLs, checksums, citation, and transformations are in
 ../ATTRIBUTION.json and ../../THIRD_PARTY_LICENSES.md.
 
 The `01_df2_object_motion/`, `02_building_low_light/`, and
-`05_new1_parking/` historical photographs and project-created
-`synthetic-spatial-psf/` assets are all rights reserved by Hyeon Sang Jeon. See
-each directory's RIGHTS.txt.
+`05_new1_parking/` historical photographs are all rights reserved by Hyeon Sang
+Jeon. See each directory's RIGHTS.txt.
 
 The featured `mat3-living-room/` walkthrough is also all rights reserved by
 Hyeon Sang Jeon. Its intermediate outputs and proxy metrics are recorded in

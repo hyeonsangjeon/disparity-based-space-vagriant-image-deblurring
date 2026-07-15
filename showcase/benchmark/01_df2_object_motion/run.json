@@ -59,7 +59,7 @@
           "objective": 0.6407443809631169,
           "reference_available": false
         },
-        "runtime_seconds": 0.39295462501468137
+        "runtime_seconds": 0.4212471670471132
       },
       {
         "config": {
@@ -102,7 +102,7 @@
           "objective": 0.649504927480509,
           "reference_available": false
         },
-        "runtime_seconds": 0.40364729199791327
+        "runtime_seconds": 0.41393370897276327
       },
       {
         "config": {
@@ -145,7 +145,7 @@
           "objective": 0.6586099155494634,
           "reference_available": false
         },
-        "runtime_seconds": 0.4012648750212975
+        "runtime_seconds": 0.38268729200353846
       }
     ],
     "fine": [
@@ -190,7 +190,7 @@
           "objective": 0.6611368626231368,
           "reference_available": false
         },
-        "runtime_seconds": 0.40104279201477766
+        "runtime_seconds": 0.39411187497898936
       },
       {
         "config": {
@@ -233,7 +233,7 @@
           "objective": 0.6615702208253944,
           "reference_available": false
         },
-        "runtime_seconds": 0.43695891700917855
+        "runtime_seconds": 0.3685441669658758
       }
     ],
     "max_dimension": 256,
@@ -260,9 +260,8 @@
     "height": 512,
     "width": 512
   },
-  "reconstruction_profile": null,
   "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-  "runtime_seconds": 2.0183383749681525,
+  "runtime_seconds": 1.8783872919739224,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
