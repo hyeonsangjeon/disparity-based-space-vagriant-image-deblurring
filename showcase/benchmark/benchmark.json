@@ -41,6 +41,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 144,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -65,7 +68,7 @@
               "reference_available": true,
               "ssim": 0.9125754613668374
             },
-            "runtime_seconds": 0.36183237499790266
+            "runtime_seconds": 0.34398908296134323
           },
           {
             "config": {
@@ -82,6 +85,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 144,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -106,7 +112,7 @@
               "reference_available": true,
               "ssim": 0.9037800184952562
             },
-            "runtime_seconds": 0.27511679200688377
+            "runtime_seconds": 0.28001262503676116
           },
           {
             "config": {
@@ -123,6 +129,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 144,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -147,7 +156,7 @@
               "reference_available": true,
               "ssim": 0.8813576264870657
             },
-            "runtime_seconds": 0.262156542041339
+            "runtime_seconds": 0.28382816701196134
           }
         ],
         "fine": [
@@ -166,6 +175,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 144,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -190,7 +202,7 @@
               "reference_available": true,
               "ssim": 0.9194181030691152
             },
-            "runtime_seconds": 0.24530616699485108
+            "runtime_seconds": 0.2650198749615811
           },
           {
             "config": {
@@ -207,6 +219,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 144,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -231,7 +246,7 @@
               "reference_available": true,
               "ssim": 0.91102319675768
             },
-            "runtime_seconds": 0.3979796249768697
+            "runtime_seconds": 0.2592206670087762
           }
         ],
         "max_dimension": 256,
@@ -260,8 +275,9 @@
         "height": 216,
         "width": 384
       },
+      "reconstruction_profile": null,
       "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
-      "runtime_seconds": 0.4489172090543434,
+      "runtime_seconds": 0.4667099170037545,
       "selected_config": {
         "beta_max": 24.0,
         "boundary_padding": null,
@@ -276,6 +292,9 @@
         "feather_sigma": 5.0,
         "graph_cut_size": 144,
         "graph_cut_smoothness": 0.35,
+        "input_detail_amount": 0.0,
+        "input_detail_blend": 0.0,
+        "input_detail_sigma": 1.0,
         "kernel_size": 15,
         "kurtosis_max": 300.0,
         "kurtosis_min": 20.0,
@@ -333,6 +352,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -356,7 +378,7 @@
               "objective": 0.6407443809631169,
               "reference_available": false
             },
-            "runtime_seconds": 0.40224212501198053
+            "runtime_seconds": 0.39295462501468137
           },
           {
             "config": {
@@ -373,6 +395,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -396,7 +421,7 @@
               "objective": 0.649504927480509,
               "reference_available": false
             },
-            "runtime_seconds": 0.5445439160102978
+            "runtime_seconds": 0.40364729199791327
           },
           {
             "config": {
@@ -413,6 +438,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -436,7 +464,7 @@
               "objective": 0.6586099155494634,
               "reference_available": false
             },
-            "runtime_seconds": 0.44540750002488494
+            "runtime_seconds": 0.4012648750212975
           }
         ],
         "fine": [
@@ -455,6 +483,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -478,7 +509,7 @@
               "objective": 0.6611368626231368,
               "reference_available": false
             },
-            "runtime_seconds": 0.4481687499792315
+            "runtime_seconds": 0.40104279201477766
           },
           {
             "config": {
@@ -495,6 +526,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -518,7 +552,7 @@
               "objective": 0.6615702208253944,
               "reference_available": false
             },
-            "runtime_seconds": 0.4115973340230994
+            "runtime_seconds": 0.43695891700917855
           }
         ],
         "max_dimension": 256,
@@ -545,8 +579,9 @@
         "height": 512,
         "width": 512
       },
+      "reconstruction_profile": null,
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 2.6390470000333153,
+      "runtime_seconds": 2.0183383749681525,
       "selected_config": {
         "beta_max": 24.0,
         "boundary_padding": null,
@@ -561,6 +596,9 @@
         "feather_sigma": 5.0,
         "graph_cut_size": 160,
         "graph_cut_smoothness": 0.35,
+        "input_detail_amount": 0.0,
+        "input_detail_blend": 0.0,
+        "input_detail_sigma": 1.0,
         "kernel_size": 15,
         "kurtosis_max": 300.0,
         "kurtosis_min": 20.0,
@@ -615,6 +653,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -638,7 +679,7 @@
               "objective": 0.6509865394673353,
               "reference_available": false
             },
-            "runtime_seconds": 0.7798900839989074
+            "runtime_seconds": 0.33545504201902077
           },
           {
             "config": {
@@ -655,6 +696,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -678,7 +722,7 @@
               "objective": 0.6614578915753471,
               "reference_available": false
             },
-            "runtime_seconds": 0.4309662080486305
+            "runtime_seconds": 0.33841208298690617
           },
           {
             "config": {
@@ -695,6 +739,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -718,7 +765,7 @@
               "objective": 0.6768737836340418,
               "reference_available": false
             },
-            "runtime_seconds": 0.44087391602806747
+            "runtime_seconds": 0.3558657079702243
           }
         ],
         "fine": [
@@ -737,6 +784,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -760,7 +810,7 @@
               "objective": 0.6779606881615939,
               "reference_available": false
             },
-            "runtime_seconds": 0.49283300002571195
+            "runtime_seconds": 0.35876154201105237
           },
           {
             "config": {
@@ -777,6 +827,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -800,7 +853,7 @@
               "objective": 0.6825899741766348,
               "reference_available": false
             },
-            "runtime_seconds": 1.239030292024836
+            "runtime_seconds": 0.3663974580122158
           }
         ],
         "max_dimension": 256,
@@ -827,8 +880,9 @@
         "height": 396,
         "width": 512
       },
+      "reconstruction_profile": null,
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 1.8114323749905452,
+      "runtime_seconds": 0.7927551250322722,
       "selected_config": {
         "beta_max": 24.0,
         "boundary_padding": null,
@@ -843,6 +897,9 @@
         "feather_sigma": 5.0,
         "graph_cut_size": 160,
         "graph_cut_smoothness": 0.35,
+        "input_detail_amount": 0.0,
+        "input_detail_blend": 0.0,
+        "input_detail_sigma": 1.0,
         "kernel_size": 15,
         "kurtosis_max": 300.0,
         "kurtosis_min": 20.0,
@@ -897,6 +954,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -920,7 +980,7 @@
               "objective": 0.6951282021969443,
               "reference_available": false
             },
-            "runtime_seconds": 0.6661897089798003
+            "runtime_seconds": 0.4156324160285294
           },
           {
             "config": {
@@ -937,6 +997,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -960,7 +1023,7 @@
               "objective": 0.7012735496515679,
               "reference_available": false
             },
-            "runtime_seconds": 0.6930379169643857
+            "runtime_seconds": 0.41059858398512006
           },
           {
             "config": {
@@ -977,6 +1040,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -1000,7 +1066,7 @@
               "objective": 0.7086241082638723,
               "reference_available": false
             },
-            "runtime_seconds": 0.5550390829448588
+            "runtime_seconds": 0.4200528750079684
           }
         ],
         "fine": [
@@ -1019,6 +1085,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -1042,7 +1111,7 @@
               "objective": 0.7132620463367817,
               "reference_available": false
             },
-            "runtime_seconds": 0.9129814159823582
+            "runtime_seconds": 0.44325208297232166
           },
           {
             "config": {
@@ -1059,6 +1128,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -1082,7 +1154,7 @@
               "objective": 0.7137720786094272,
               "reference_available": false
             },
-            "runtime_seconds": 0.7856807499774732
+            "runtime_seconds": 0.5670518749975599
           }
         ],
         "max_dimension": 256,
@@ -1109,8 +1181,9 @@
         "height": 512,
         "width": 512
       },
+      "reconstruction_profile": null,
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 3.5937863340368494,
+      "runtime_seconds": 3.1230969590251334,
       "selected_config": {
         "beta_max": 24.0,
         "boundary_padding": null,
@@ -1125,6 +1198,9 @@
         "feather_sigma": 5.0,
         "graph_cut_size": 160,
         "graph_cut_smoothness": 0.35,
+        "input_detail_amount": 0.0,
+        "input_detail_blend": 0.0,
+        "input_detail_sigma": 1.0,
         "kernel_size": 15,
         "kurtosis_max": 300.0,
         "kurtosis_min": 20.0,
@@ -1146,12 +1222,12 @@
     },
     {
       "asset_checksums": {
-        "blurred": "d88dfb339fe84898b7e3f637a6285aaab9bdcf7ee73e7b534e9808fbd813696a",
-        "comparison": "cb8118341133ae9e83224aa84dcdc9a47f725e88d983185a2283fd767d7395a3",
-        "noisy": "f97e14d3c45f47ee7de1f03e602455569b5aa338e34ab834df1bafbfd38c73b1",
-        "reference": "786163b2f0bf382847d4b13349a30c7b787229cc8c051ba383e996195cf883a2",
-        "result": "0b98ea880ee9b509269027b505ae7a09286cf636138983115847ec25d0cc88ac",
-        "thumbnail": "21172dabf23b9f4b2f2df5a9f955374075369a6b2fb724408ae6e24098fb08e3"
+        "blurred": "f5a3aacd907d4ea3b0e7e45eaef8019e77ee630858619a3309e0a4da87cd99d4",
+        "comparison": "606a7828385be21824bb65257e6b7e6c0368d7adc6c008af959669b4090dad75",
+        "noisy": "cc68357f44dc826c0ce62e134da699e1fc762ce4efee57b3a4e9232c91bfabf8",
+        "reference": "40e60aa8427b232a2ba9c5d2636ffbd56015b6bfd59166f1ce1316b370230f09",
+        "result": "653d90f28125acbcb2dfc1a6133d1fc7a18b58e35d140e929f29d14618a39fc2",
+        "thumbnail": "3f5dfaa99a9fa0d19da04988f060215ab5f9ae2618004b354858ccbd519e5b3a"
       },
       "assets": {
         "blurred": "synthetic-spatial-psf/blurred.png",
@@ -1163,9 +1239,9 @@
       },
       "baseline_metrics": {
         "artifact_penalty": 0.0,
-        "edge_fidelity": 0.6785609551296625,
-        "psnr": 23.5370801089092,
-        "ssim": 0.7270896224165299
+        "edge_fidelity": 0.7369834299785265,
+        "psnr": 27.990927166324905,
+        "ssim": 0.8998706306326228
       },
       "description": "Project-created layered scene with region-specific spatially varying PSFs and translated noisy auxiliary.",
       "hpo": {
@@ -1185,6 +1261,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -1202,14 +1281,14 @@
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 6.917317708333335e-05,
-              "edge_fidelity": 0.7551519012362433,
-              "objective": 0.6386482512861681,
-              "psnr": 24.71566156868379,
+              "artifact_penalty": 7.731119791666666e-05,
+              "edge_fidelity": 0.7950453811559686,
+              "objective": 0.7227107853873915,
+              "psnr": 28.26332136027105,
               "reference_available": true,
-              "ssim": 0.780045461863026
+              "ssim": 0.9035447079195951
             },
-            "runtime_seconds": 0.322605624969583
+            "runtime_seconds": 0.2844457909814082
           },
           {
             "config": {
@@ -1226,6 +1305,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -1243,14 +1325,14 @@
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 0.00021294487847222222,
-              "edge_fidelity": 0.7727225218177728,
-              "objective": 0.646670811066114,
-              "psnr": 24.729358242308642,
+              "artifact_penalty": 0.00023464626736111112,
+              "edge_fidelity": 0.7845525311609207,
+              "objective": 0.7182184908136953,
+              "psnr": 27.982497201698436,
               "reference_available": true,
-              "ssim": 0.7941392348760689
+              "ssim": 0.9035986189528744
             },
-            "runtime_seconds": 0.37317549996078014
+            "runtime_seconds": 0.29673845798242837
           },
           {
             "config": {
@@ -1267,6 +1349,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 0.0,
+              "input_detail_blend": 0.0,
+              "input_detail_sigma": 1.0,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -1284,14 +1369,58 @@
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 0.0004408094618055556,
-              "edge_fidelity": 0.7776878478026218,
-              "objective": 0.6454294477212189,
-              "psnr": 24.446406063899406,
+              "artifact_penalty": 0.0005845811631944444,
+              "edge_fidelity": 0.7465123625177927,
+              "objective": 0.6992174406323468,
+              "psnr": 27.153025064758694,
               "reference_available": true,
-              "ssim": 0.7960719350677147
+              "ssim": 0.8907377560436501
             },
-            "runtime_seconds": 0.29593095800373703
+            "runtime_seconds": 0.2763656669994816
+          },
+          {
+            "config": {
+              "beta_max": 24.0,
+              "boundary_padding": null,
+              "color_labels": 8,
+              "data_weight": 160.0,
+              "detail_denoise_strength": 5.0,
+              "detail_fusion_amount": 0.0,
+              "detail_fusion_sigma": 1.5,
+              "detail_fusion_threshold": 0.015,
+              "detail_fusion_tolerance": 0.08,
+              "disparity_threshold": 1.5,
+              "feather_sigma": 5.0,
+              "graph_cut_size": 160,
+              "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 2.0,
+              "input_detail_blend": 1.0,
+              "input_detail_sigma": 0.8,
+              "kernel_size": 15,
+              "kurtosis_max": 300.0,
+              "kurtosis_min": 20.0,
+              "max_corners": 1200,
+              "max_regions": 4,
+              "minimum_disparity_features": 1,
+              "minimum_region_fraction": 0.01,
+              "patch_size": 128,
+              "random_seed": 20260715,
+              "ransac_threshold": 2.5,
+              "skip_registration": false,
+              "tikhonov": 0.001,
+              "unsharp_amount": 0.0,
+              "unsharp_sigma": 1.0,
+              "unsharp_threshold": 0.0
+            },
+            "metrics": {
+              "artifact_penalty": 9.494357638888889e-05,
+              "edge_fidelity": 0.773727173571869,
+              "objective": 0.7409289632403281,
+              "psnr": 29.23701945184519,
+              "reference_available": true,
+              "ssim": 0.9392541306019263
+            },
+            "runtime_seconds": 0.20991425000829622
           }
         ],
         "fine": [
@@ -1300,9 +1429,9 @@
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
-              "data_weight": 220.0,
+              "data_weight": 160.0,
               "detail_denoise_strength": 5.0,
-              "detail_fusion_amount": 0.020000000000000004,
+              "detail_fusion_amount": 0.0,
               "detail_fusion_sigma": 1.5,
               "detail_fusion_threshold": 0.015,
               "detail_fusion_tolerance": 0.08,
@@ -1310,6 +1439,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 2.0,
+              "input_detail_blend": 1.0,
+              "input_detail_sigma": 0.8,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -1321,29 +1453,29 @@
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
               "skip_registration": false,
-              "tikhonov": 0.0013333333333333333,
-              "unsharp_amount": 0.1,
+              "tikhonov": 0.0006666666666666666,
+              "unsharp_amount": 0.0,
               "unsharp_sigma": 1.0,
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 0.00016682942708333334,
-              "edge_fidelity": 0.775128671660243,
-              "objective": 0.6496011150397754,
-              "psnr": 24.864701122637776,
+              "artifact_penalty": 9.494357638888889e-05,
+              "edge_fidelity": 0.773727173571869,
+              "objective": 0.7409289632403281,
+              "psnr": 29.23701945184519,
               "reference_available": true,
-              "ssim": 0.7976042170446517
+              "ssim": 0.9392541306019263
             },
-            "runtime_seconds": 0.26672029198380187
+            "runtime_seconds": 0.2048961669788696
           },
           {
             "config": {
               "beta_max": 24.0,
               "boundary_padding": null,
               "color_labels": 8,
-              "data_weight": 252.99999999999997,
+              "data_weight": 184.0,
               "detail_denoise_strength": 5.0,
-              "detail_fusion_amount": 0.05,
+              "detail_fusion_amount": 0.0,
               "detail_fusion_sigma": 1.5,
               "detail_fusion_threshold": 0.015,
               "detail_fusion_tolerance": 0.08,
@@ -1351,6 +1483,9 @@
               "feather_sigma": 5.0,
               "graph_cut_size": 160,
               "graph_cut_smoothness": 0.35,
+              "input_detail_amount": 2.0,
+              "input_detail_blend": 1.0,
+              "input_detail_sigma": 0.8,
               "kernel_size": 15,
               "kurtosis_max": 300.0,
               "kurtosis_min": 20.0,
@@ -1362,38 +1497,38 @@
               "random_seed": 20260715,
               "ransac_threshold": 2.5,
               "skip_registration": false,
-              "tikhonov": 0.003,
-              "unsharp_amount": 0.1,
+              "tikhonov": 0.0015,
+              "unsharp_amount": 0.0,
               "unsharp_sigma": 1.0,
               "unsharp_threshold": 0.0
             },
             "metrics": {
-              "artifact_penalty": 0.00029296875000000004,
-              "edge_fidelity": 0.7753584624137072,
-              "objective": 0.6463234743147429,
-              "psnr": 24.628074361545945,
+              "artifact_penalty": 9.494357638888889e-05,
+              "edge_fidelity": 0.773727173571869,
+              "objective": 0.7409289632403281,
+              "psnr": 29.23701945184519,
               "reference_available": true,
-              "ssim": 0.7946903302387759
+              "ssim": 0.9392541306019263
             },
-            "runtime_seconds": 0.3088574999710545
+            "runtime_seconds": 0.20270066702505574
           }
         ],
         "max_dimension": 256,
-        "selected_objective": 0.6496011150397754
+        "selected_objective": 0.7409289632403281
       },
       "id": "synthetic-spatial-psf",
       "input_checksums": {
-        "blurred": "d88dfb339fe84898b7e3f637a6285aaab9bdcf7ee73e7b534e9808fbd813696a",
-        "noisy": "f97e14d3c45f47ee7de1f03e602455569b5aa338e34ab834df1bafbfd38c73b1",
-        "reference": "786163b2f0bf382847d4b13349a30c7b787229cc8c051ba383e996195cf883a2"
+        "blurred": "f5a3aacd907d4ea3b0e7e45eaef8019e77ee630858619a3309e0a4da87cd99d4",
+        "noisy": "cc68357f44dc826c0ce62e134da699e1fc762ce4efee57b3a4e9232c91bfabf8",
+        "reference": "40e60aa8427b232a2ba9c5d2636ffbd56015b6bfd59166f1ce1316b370230f09"
       },
       "metrics": {
-        "artifact_penalty": 0.00014546712239583333,
-        "edge_fidelity": 0.7240586443909174,
-        "objective": 0.6281636426368761,
-        "psnr": 24.370241747607245,
+        "artifact_penalty": 1.0172526041666667e-06,
+        "edge_fidelity": 0.7985073522108848,
+        "objective": 0.7393552522146463,
+        "psnr": 29.02882119550079,
         "reference_available": true,
-        "ssim": 0.7747098449653422
+        "ssim": 0.928378635178598
       },
       "objective_type": "reference",
       "original_size": {
@@ -1404,15 +1539,16 @@
         "height": 384,
         "width": 512
       },
+      "reconstruction_profile": "input-detail-fallback",
       "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-      "runtime_seconds": 0.9698271669913083,
+      "runtime_seconds": 0.6644449580344371,
       "selected_config": {
         "beta_max": 24.0,
         "boundary_padding": null,
         "color_labels": 8,
-        "data_weight": 220.0,
+        "data_weight": 184.0,
         "detail_denoise_strength": 5.0,
-        "detail_fusion_amount": 0.020000000000000004,
+        "detail_fusion_amount": 0.0,
         "detail_fusion_sigma": 1.5,
         "detail_fusion_threshold": 0.015,
         "detail_fusion_tolerance": 0.08,
@@ -1420,6 +1556,9 @@
         "feather_sigma": 5.0,
         "graph_cut_size": 160,
         "graph_cut_smoothness": 0.35,
+        "input_detail_amount": 2.0,
+        "input_detail_blend": 1.0,
+        "input_detail_sigma": 0.8,
         "kernel_size": 15,
         "kurtosis_max": 300.0,
         "kurtosis_min": 20.0,
@@ -1431,13 +1570,13 @@
         "random_seed": 20260715,
         "ransac_threshold": 2.5,
         "skip_registration": false,
-        "tikhonov": 0.0013333333333333333,
-        "unsharp_amount": 0.1,
+        "tikhonov": 0.0015,
+        "unsharp_amount": 0.0,
         "unsharp_sigma": 1.0,
         "unsharp_threshold": 0.0
       },
       "source_hashes": {
-        "generator-metadata.json": "1e91433b5fa016569f1fe8a7ce951cc7fb800bf0ec85be79b8af8134292b84bb",
+        "generator-metadata.json": "2af7aeab2556720c23623be02aed8d7ab77f8e18aba3d01a5cd111fb60829a5a",
         "masks/far.png": "3ec9dd37a136880c213914315df736c29d60fa5a71340cae2671ccb2b5e167a6",
         "masks/mid.png": "7dfabbcfc152ebdf55c5f3e9ab6a19fa424e8708baea347532e01bd3a2d98251",
         "masks/near.png": "5852e527e4067bcc3bfef29b7916e50ca4d5b846d8c2b00805978e4ab34493b9"

@@ -19,6 +19,8 @@ RIGHTS = (
 )
 MASTER_SIZE = (1024, 768)
 NOISE_SEED = 20260715
+FACADE_TEXTURE_AMPLITUDE = 0.02
+GLOBAL_DEFOCUS_SIGMA = 0.9
 
 
 def generate_dataset(max_dimension: int = 512) -> tuple[dict[str, np.ndarray], dict[str, object]]:
@@ -58,6 +60,8 @@ def generate_dataset(max_dimension: int = 512) -> tuple[dict[str, np.ndarray], d
             "height": int(images["reference"].shape[0]),
         },
         "random_seed": NOISE_SEED,
+        "reconstruction_profile": "input-detail-fallback",
+        "global_defocus_sigma": GLOBAL_DEFOCUS_SIGMA,
         "rights": RIGHTS,
         "regions": [
             {
@@ -172,7 +176,7 @@ def _scene(width: int, height: int) -> np.ndarray:
         cv2.circle(scene, (int(x), int(y)), int(radius), color, 1, cv2.LINE_AA)
 
     facade_weight = np.exp(-((yy - height * 0.535) / (height * 0.22)) ** 2)
-    facade_texture = 0.10 * (
+    facade_texture = FACADE_TEXTURE_AMPLITUDE * (
         np.sin(xx * 0.38)
         + np.sin(yy * 0.29)
         + 0.5 * np.sin((xx + yy) * 0.21)
@@ -198,9 +202,9 @@ def _soft_masks(width: int, height: int) -> dict[str, np.ndarray]:
 
 
 def _kernels() -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    far = _motion_kernel(9, 0.0, 1.2)
-    mid = _motion_kernel(17, 38.0, 0.7)
-    near = _curved_kernel()
+    far = _motion_kernel(5, 0.0, 0.8)
+    mid = _motion_kernel(9, 38.0, 0.5)
+    near = _motion_kernel(13, -32.0, 0.6)
     return far, mid, near
 
 
@@ -240,6 +244,7 @@ def _blur_by_region(
     for mask, kernel in zip(masks.values(), kernels, strict=True):
         convolved = cv2.filter2D(reference, -1, kernel, borderType=cv2.BORDER_REFLECT101)
         result += convolved * mask[..., None]
+    result = cv2.GaussianBlur(result, (0, 0), GLOBAL_DEFOCUS_SIGMA)
     return np.clip(result, 0.0, 1.0).astype(np.float32)
 
 

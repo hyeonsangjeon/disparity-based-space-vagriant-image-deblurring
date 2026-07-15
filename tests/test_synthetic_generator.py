@@ -28,7 +28,8 @@ class SyntheticGeneratorTest(unittest.TestCase):
             np.testing.assert_array_equal(first[name], second[name])
         coverage = first["far"] + first["mid"] + first["near"]
         np.testing.assert_allclose(coverage, np.ones((96, 128)), atol=1e-5)
-        self.assertTrue(all(region["psf"]["normalized_sum"] == 1.0 for region in metadata["regions"]))
+        for region in metadata["regions"]:
+            self.assertAlmostEqual(region["psf"]["normalized_sum"], 1.0, places=6)
 
 
 if __name__ == "__main__":

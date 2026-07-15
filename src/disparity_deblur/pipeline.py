@@ -83,6 +83,17 @@ class DisparityDeblurPipeline:
             tolerance=config.detail_fusion_tolerance,
             threshold=config.detail_fusion_threshold,
         )
+        if config.input_detail_blend:
+            input_detail = luminance_unsharp(
+                blurred,
+                sigma=config.input_detail_sigma,
+                amount=config.input_detail_amount,
+                threshold=0.0,
+            )
+            restored = (
+                (1.0 - config.input_detail_blend) * restored
+                + config.input_detail_blend * input_detail
+            )
         return DeblurResult(
             blurred=blurred,
             noisy=noisy,

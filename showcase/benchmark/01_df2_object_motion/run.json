@@ -33,6 +33,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -56,7 +59,7 @@
           "objective": 0.6407443809631169,
           "reference_available": false
         },
-        "runtime_seconds": 0.40224212501198053
+        "runtime_seconds": 0.39295462501468137
       },
       {
         "config": {
@@ -73,6 +76,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -96,7 +102,7 @@
           "objective": 0.649504927480509,
           "reference_available": false
         },
-        "runtime_seconds": 0.5445439160102978
+        "runtime_seconds": 0.40364729199791327
       },
       {
         "config": {
@@ -113,6 +119,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -136,7 +145,7 @@
           "objective": 0.6586099155494634,
           "reference_available": false
         },
-        "runtime_seconds": 0.44540750002488494
+        "runtime_seconds": 0.4012648750212975
       }
     ],
     "fine": [
@@ -155,6 +164,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -178,7 +190,7 @@
           "objective": 0.6611368626231368,
           "reference_available": false
         },
-        "runtime_seconds": 0.4481687499792315
+        "runtime_seconds": 0.40104279201477766
       },
       {
         "config": {
@@ -195,6 +207,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -218,7 +233,7 @@
           "objective": 0.6615702208253944,
           "reference_available": false
         },
-        "runtime_seconds": 0.4115973340230994
+        "runtime_seconds": 0.43695891700917855
       }
     ],
     "max_dimension": 256,
@@ -245,8 +260,9 @@
     "height": 512,
     "width": 512
   },
+  "reconstruction_profile": null,
   "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-  "runtime_seconds": 2.6390470000333153,
+  "runtime_seconds": 2.0183383749681525,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
@@ -261,6 +277,9 @@
     "feather_sigma": 5.0,
     "graph_cut_size": 160,
     "graph_cut_smoothness": 0.35,
+    "input_detail_amount": 0.0,
+    "input_detail_blend": 0.0,
+    "input_detail_sigma": 1.0,
     "kernel_size": 15,
     "kurtosis_max": 300.0,
     "kurtosis_min": 20.0,

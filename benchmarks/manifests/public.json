@@ -70,20 +70,21 @@
       "description": "Project-created layered scene with region-specific spatially varying PSFs and translated noisy auxiliary.",
       "visibility": "public",
       "rights": "Copyright © 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
+      "reconstruction_profile": "input-detail-fallback",
       "blurred": {
         "path": "synthetic-spatial-psf/blurred.png",
-        "sha256": "d88dfb339fe84898b7e3f637a6285aaab9bdcf7ee73e7b534e9808fbd813696a"
+        "sha256": "f5a3aacd907d4ea3b0e7e45eaef8019e77ee630858619a3309e0a4da87cd99d4"
       },
       "noisy": {
         "path": "synthetic-spatial-psf/noisy.png",
-        "sha256": "f97e14d3c45f47ee7de1f03e602455569b5aa338e34ab834df1bafbfd38c73b1"
+        "sha256": "cc68357f44dc826c0ce62e134da699e1fc762ce4efee57b3a4e9232c91bfabf8"
       },
       "reference": {
         "path": "synthetic-spatial-psf/reference.png",
-        "sha256": "786163b2f0bf382847d4b13349a30c7b787229cc8c051ba383e996195cf883a2"
+        "sha256": "40e60aa8427b232a2ba9c5d2636ffbd56015b6bfd59166f1ce1316b370230f09"
       },
       "source_hashes": {
-        "generator-metadata.json": "1e91433b5fa016569f1fe8a7ce951cc7fb800bf0ec85be79b8af8134292b84bb",
+        "generator-metadata.json": "2af7aeab2556720c23623be02aed8d7ab77f8e18aba3d01a5cd111fb60829a5a",
         "masks/far.png": "3ec9dd37a136880c213914315df736c29d60fa5a71340cae2671ccb2b5e167a6",
         "masks/mid.png": "7dfabbcfc152ebdf55c5f3e9ab6a19fa424e8708baea347532e01bd3a2d98251",
         "masks/near.png": "5852e527e4067bcc3bfef29b7916e50ca4d5b846d8c2b00805978e4ab34493b9"

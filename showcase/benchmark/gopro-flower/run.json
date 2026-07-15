@@ -39,6 +39,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 144,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -63,7 +66,7 @@
           "reference_available": true,
           "ssim": 0.9125754613668374
         },
-        "runtime_seconds": 0.36183237499790266
+        "runtime_seconds": 0.34398908296134323
       },
       {
         "config": {
@@ -80,6 +83,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 144,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -104,7 +110,7 @@
           "reference_available": true,
           "ssim": 0.9037800184952562
         },
-        "runtime_seconds": 0.27511679200688377
+        "runtime_seconds": 0.28001262503676116
       },
       {
         "config": {
@@ -121,6 +127,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 144,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -145,7 +154,7 @@
           "reference_available": true,
           "ssim": 0.8813576264870657
         },
-        "runtime_seconds": 0.262156542041339
+        "runtime_seconds": 0.28382816701196134
       }
     ],
     "fine": [
@@ -164,6 +173,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 144,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -188,7 +200,7 @@
           "reference_available": true,
           "ssim": 0.9194181030691152
         },
-        "runtime_seconds": 0.24530616699485108
+        "runtime_seconds": 0.2650198749615811
       },
       {
         "config": {
@@ -205,6 +217,9 @@
           "feather_sigma": 5.0,
           "graph_cut_size": 144,
           "graph_cut_smoothness": 0.35,
+          "input_detail_amount": 0.0,
+          "input_detail_blend": 0.0,
+          "input_detail_sigma": 1.0,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
           "kurtosis_min": 20.0,
@@ -229,7 +244,7 @@
           "reference_available": true,
           "ssim": 0.91102319675768
         },
-        "runtime_seconds": 0.3979796249768697
+        "runtime_seconds": 0.2592206670087762
       }
     ],
     "max_dimension": 256,
@@ -258,8 +273,9 @@
     "height": 216,
     "width": 384
   },
+  "reconstruction_profile": null,
   "rights": "CC BY 4.0; detailed attribution is in THIRD_PARTY_LICENSES.md and benchmarks/ATTRIBUTION.json.",
-  "runtime_seconds": 0.4489172090543434,
+  "runtime_seconds": 0.4667099170037545,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
@@ -274,6 +290,9 @@
     "feather_sigma": 5.0,
     "graph_cut_size": 144,
     "graph_cut_smoothness": 0.35,
+    "input_detail_amount": 0.0,
+    "input_detail_blend": 0.0,
+    "input_detail_sigma": 1.0,
     "kernel_size": 15,
     "kurtosis_max": 300.0,
     "kurtosis_min": 20.0,

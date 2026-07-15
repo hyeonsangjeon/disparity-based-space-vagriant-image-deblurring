@@ -1,13 +1,14 @@
 {
   "asset_checksums": {
-    "blurred.png": "d88dfb339fe84898b7e3f637a6285aaab9bdcf7ee73e7b534e9808fbd813696a",
+    "blurred.png": "f5a3aacd907d4ea3b0e7e45eaef8019e77ee630858619a3309e0a4da87cd99d4",
     "masks/far.png": "3ec9dd37a136880c213914315df736c29d60fa5a71340cae2671ccb2b5e167a6",
     "masks/mid.png": "7dfabbcfc152ebdf55c5f3e9ab6a19fa424e8708baea347532e01bd3a2d98251",
     "masks/near.png": "5852e527e4067bcc3bfef29b7916e50ca4d5b846d8c2b00805978e4ab34493b9",
-    "noisy.png": "f97e14d3c45f47ee7de1f03e602455569b5aa338e34ab834df1bafbfd38c73b1",
-    "reference.png": "786163b2f0bf382847d4b13349a30c7b787229cc8c051ba383e996195cf883a2"
+    "noisy.png": "cc68357f44dc826c0ce62e134da699e1fc762ce4efee57b3a4e9232c91bfabf8",
+    "reference.png": "40e60aa8427b232a2ba9c5d2636ffbd56015b6bfd59166f1ce1316b370230f09"
   },
   "generator": "tools/generate_synthetic_spatial_psf.py",
+  "global_defocus_sigma": 0.9,
   "master_size": {
     "height": 768,
     "width": 1024
@@ -24,14 +25,15 @@
     "width": 512
   },
   "random_seed": 20260715,
+  "reconstruction_profile": "input-detail-fallback",
   "regions": [
     {
       "id": "far",
       "mask": "masks/far.png",
       "psf": {
         "name": "short-horizontal-defocus",
-        "normalized_sum": 1.0,
-        "sha256": "b36857b01e59e14dec694590344730240c4876cdba71e72347a79d69abf09d49",
+        "normalized_sum": 1.0000001192092896,
+        "sha256": "5bb7da6e59451d14940ff8a6f56380471fd3e220e2ca3047d7322fc7a7d78527",
         "shape": [
           25,
           25
@@ -47,8 +49,8 @@
       "mask": "masks/mid.png",
       "psf": {
         "name": "medium-diagonal",
-        "normalized_sum": 1.0,
-        "sha256": "7838bc153c4d63e1397b474ffd3a64d3bdc18a457ee6f9486d735129040fd2ea",
+        "normalized_sum": 0.9999999403953552,
+        "sha256": "6e7d7dbdd4e05852f87727387c0ee981e4a5a5c93a9bd1d47a4578ab8807a551",
         "shape": [
           25,
           25
@@ -65,10 +67,10 @@
       "psf": {
         "name": "long-curved",
         "normalized_sum": 1.0,
-        "sha256": "6895eed6a48a3aa4a9ef2f8a51df45ac95bbf11f790d9f51d79a7c4d6d36fdb5",
+        "sha256": "c67aacb4312fa17b0d356ffb58cf0a21365938d9ba841cee366156238d45d8e3",
         "shape": [
-          29,
-          29
+          25,
+          25
         ]
       },
       "translation": {

@@ -61,6 +61,9 @@ class BenchmarkTest(unittest.TestCase):
         historical = manifest.datasets[1:4]
         self.assertTrue(all(dataset.reference is None for dataset in historical))
         self.assertIsNotNone(manifest.datasets[4].reference)
+        self.assertEqual(
+            manifest.datasets[4].reconstruction_profile, "input-detail-fallback"
+        )
         self.assertTrue(
             all(
                 dataset.rights
@@ -90,8 +93,9 @@ class BenchmarkTest(unittest.TestCase):
             record for record in records if record["id"] == "synthetic-spatial-psf"
         )
         self.assertGreater(
-            synthetic["metrics"]["psnr"], synthetic["baseline_metrics"]["psnr"] + 0.5
+            synthetic["metrics"]["psnr"], synthetic["baseline_metrics"]["psnr"] + 1.0
         )
+        self.assertGreaterEqual(synthetic["metrics"]["psnr"], 28.0)
         self.assertGreater(
             synthetic["metrics"]["ssim"], synthetic["baseline_metrics"]["ssim"]
         )
