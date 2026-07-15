@@ -14,6 +14,7 @@
     "result": "01_df2_object_motion/result.png",
     "thumbnail": "01_df2_object_motion/thumbnail.webp"
   },
+  "baseline_metrics": null,
   "description": "Historical photograph by Hyeon Sang Jeon: object-motion pair.",
   "hpo": {
     "coarse": [
@@ -55,7 +56,7 @@
           "objective": 0.6407443809631169,
           "reference_available": false
         },
-        "runtime_seconds": 0.5773976659984328
+        "runtime_seconds": 0.40224212501198053
       },
       {
         "config": {
@@ -95,7 +96,7 @@
           "objective": 0.649504927480509,
           "reference_available": false
         },
-        "runtime_seconds": 0.4170188329881057
+        "runtime_seconds": 0.5445439160102978
       },
       {
         "config": {
@@ -135,7 +136,7 @@
           "objective": 0.6586099155494634,
           "reference_available": false
         },
-        "runtime_seconds": 0.4555283330264501
+        "runtime_seconds": 0.44540750002488494
       }
     ],
     "fine": [
@@ -177,7 +178,7 @@
           "objective": 0.6611368626231368,
           "reference_available": false
         },
-        "runtime_seconds": 0.620562374999281
+        "runtime_seconds": 0.4481687499792315
       },
       {
         "config": {
@@ -217,7 +218,7 @@
           "objective": 0.6615702208253944,
           "reference_available": false
         },
-        "runtime_seconds": 0.6580715000163764
+        "runtime_seconds": 0.4115973340230994
       }
     ],
     "max_dimension": 256,
@@ -245,7 +246,7 @@
     "width": 512
   },
   "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-  "runtime_seconds": 2.6365440409863368,
+  "runtime_seconds": 2.6390470000333153,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,

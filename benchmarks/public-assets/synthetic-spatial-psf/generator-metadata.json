@@ -1,0 +1,82 @@
+{
+  "asset_checksums": {
+    "blurred.png": "d88dfb339fe84898b7e3f637a6285aaab9bdcf7ee73e7b534e9808fbd813696a",
+    "masks/far.png": "3ec9dd37a136880c213914315df736c29d60fa5a71340cae2671ccb2b5e167a6",
+    "masks/mid.png": "7dfabbcfc152ebdf55c5f3e9ab6a19fa424e8708baea347532e01bd3a2d98251",
+    "masks/near.png": "5852e527e4067bcc3bfef29b7916e50ca4d5b846d8c2b00805978e4ab34493b9",
+    "noisy.png": "f97e14d3c45f47ee7de1f03e602455569b5aa338e34ab834df1bafbfd38c73b1",
+    "reference.png": "786163b2f0bf382847d4b13349a30c7b787229cc8c051ba383e996195cf883a2"
+  },
+  "generator": "tools/generate_synthetic_spatial_psf.py",
+  "master_size": {
+    "height": 768,
+    "width": 1024
+  },
+  "noisy_auxiliary": {
+    "exposure_offset": 0.018,
+    "exposure_scale": 0.72,
+    "gaussian_read_noise_sigma": 0.012,
+    "poisson_photon_scale": 255.0,
+    "seed": 20260715
+  },
+  "output_size": {
+    "height": 384,
+    "width": 512
+  },
+  "random_seed": 20260715,
+  "regions": [
+    {
+      "id": "far",
+      "mask": "masks/far.png",
+      "psf": {
+        "name": "short-horizontal-defocus",
+        "normalized_sum": 1.0,
+        "sha256": "b36857b01e59e14dec694590344730240c4876cdba71e72347a79d69abf09d49",
+        "shape": [
+          25,
+          25
+        ]
+      },
+      "translation": {
+        "x": 1.0,
+        "y": 0.0
+      }
+    },
+    {
+      "id": "mid",
+      "mask": "masks/mid.png",
+      "psf": {
+        "name": "medium-diagonal",
+        "normalized_sum": 1.0,
+        "sha256": "7838bc153c4d63e1397b474ffd3a64d3bdc18a457ee6f9486d735129040fd2ea",
+        "shape": [
+          25,
+          25
+        ]
+      },
+      "translation": {
+        "x": 3.0,
+        "y": -2.0
+      }
+    },
+    {
+      "id": "near",
+      "mask": "masks/near.png",
+      "psf": {
+        "name": "long-curved",
+        "normalized_sum": 1.0,
+        "sha256": "6895eed6a48a3aa4a9ef2f8a51df45ac95bbf11f790d9f51d79a7c4d6d36fdb5",
+        "shape": [
+          29,
+          29
+        ]
+      },
+      "translation": {
+        "x": 6.0,
+        "y": -3.0
+      }
+    }
+  ],
+  "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
+  "schema_version": 1
+}

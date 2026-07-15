@@ -286,6 +286,11 @@ class BenchmarkRunner:
         result = self.processor(final_blurred, final_noisy, final_config)
         final_runtime = perf_counter() - started
         metrics = _evaluate(result, final_blurred, final_reference)
+        baseline_metrics = (
+            image_metrics(final_blurred, final_reference)
+            if final_reference is not None
+            else None
+        )
         dataset_dir = self.output_dir / dataset.identifier
         dataset_dir.mkdir(parents=True, exist_ok=True)
         write_png(dataset_dir / "blurred.png", final_blurred)
@@ -330,6 +335,7 @@ class BenchmarkRunner:
             "output_size": _size_record(final_blurred),
             "selected_config": asdict(final_config),
             "metrics": metrics,
+            "baseline_metrics": baseline_metrics,
             "runtime_seconds": final_runtime,
             "hpo": {
                 "max_dimension": self.hpo_max_dimension,
@@ -397,17 +403,22 @@ class BenchmarkRunner:
             "",
             "Comparisons are ordered **blurred + noisy -> result**, followed by a reference when available.",
             "",
-            "| Dataset | Objective type | Full-resolution objective | PSNR | SSIM | Runtime (s) |",
-            "| --- | --- | ---: | ---: | ---: |",
+            "| Dataset | Objective type | Full-resolution objective | Blurred PSNR | Result PSNR | Result SSIM | Runtime (s) |",
+            "| --- | --- | ---: | ---: | ---: | ---: |",
         ]
         for entry in entries:
             metrics = entry["metrics"]
             assert isinstance(metrics, Mapping)
             lines.append(
-                "| {id} | {objective_type} | {objective:.6f} | {psnr} | {ssim} | {runtime:.3f} |".format(
+                "| {id} | {objective_type} | {objective:.6f} | {baseline_psnr} | {psnr} | {ssim} | {runtime:.3f} |".format(
                     id=entry["id"],
                     objective_type=entry["objective_type"],
                     objective=float(metrics["objective"]),
+                    baseline_psnr=(
+                        f"{baseline['psnr']:.3f}"
+                        if isinstance((baseline := entry.get("baseline_metrics")), Mapping)
+                        else "N/A"
+                    ),
                     psnr=f"{metrics['psnr']:.3f}" if "psnr" in metrics else "N/A",
                     ssim=f"{metrics['ssim']:.4f}" if "ssim" in metrics else "N/A",
                     runtime=float(entry["runtime_seconds"]),

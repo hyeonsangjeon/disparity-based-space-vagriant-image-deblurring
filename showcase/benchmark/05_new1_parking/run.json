@@ -14,6 +14,7 @@
     "result": "05_new1_parking/result.png",
     "thumbnail": "05_new1_parking/thumbnail.webp"
   },
+  "baseline_metrics": null,
   "description": "Historical photograph by Hyeon Sang Jeon: parking scene pair.",
   "hpo": {
     "coarse": [
@@ -55,7 +56,7 @@
           "objective": 0.6951282021969443,
           "reference_available": false
         },
-        "runtime_seconds": 0.49142270896118134
+        "runtime_seconds": 0.6661897089798003
       },
       {
         "config": {
@@ -95,7 +96,7 @@
           "objective": 0.7012735496515679,
           "reference_available": false
         },
-        "runtime_seconds": 0.467885332996957
+        "runtime_seconds": 0.6930379169643857
       },
       {
         "config": {
@@ -135,7 +136,7 @@
           "objective": 0.7086241082638723,
           "reference_available": false
         },
-        "runtime_seconds": 0.5364575829589739
+        "runtime_seconds": 0.5550390829448588
       }
     ],
     "fine": [
@@ -177,7 +178,7 @@
           "objective": 0.7132620463367817,
           "reference_available": false
         },
-        "runtime_seconds": 0.5615637080045417
+        "runtime_seconds": 0.9129814159823582
       },
       {
         "config": {
@@ -217,7 +218,7 @@
           "objective": 0.7137720786094272,
           "reference_available": false
         },
-        "runtime_seconds": 0.5334792080102488
+        "runtime_seconds": 0.7856807499774732
       }
     ],
     "max_dimension": 256,
@@ -245,7 +246,7 @@
     "width": 512
   },
   "rights": "Copyright \u00a9 2026 Hyeon Sang Jeon. All rights reserved. Included in this repository for demonstration and archival presentation only. No reuse, redistribution, or derivative use is granted.",
-  "runtime_seconds": 3.448796875018161,
+  "runtime_seconds": 3.5937863340368494,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,

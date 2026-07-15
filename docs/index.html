@@ -31,16 +31,6 @@
         <h2 id="gallery">Public benchmark gallery</h2>
         <div class="gallery">
           <article>
-            <img src="assets/gopro-flower-comparison.webp" alt="Derived GOPRO Large Flower comparison: blurred, noisy, restored, and reference images.">
-            <h3>External GoPro-derived benchmark</h3>
-            <dl>
-              <div><dt>PSNR</dt><dd>25.3705</dd></div>
-              <div><dt>SSIM</dt><dd>0.8816</dd></div>
-              <div><dt>Objective (full-resolution)</dt><dd>0.694603</dd></div>
-            </dl>
-            <p class="card-note"><a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/THIRD_PARTY_LICENSES.md">Attribution and license</a></p>
-          </article>
-          <article>
             <img src="assets/01-df2-object-motion-comparison.webp" alt="Historical object-motion photograph comparison: blurred, noisy, and restored images.">
             <h3>Historical photograph: object motion</h3>
             <dl>
@@ -64,12 +54,31 @@
               <div><dt>Objective (full-resolution)</dt><dd>0.750229</dd></div>
             </dl>
           </article>
+          <article>
+            <img src="assets/synthetic-spatial-psf-comparison.webp" alt="Project-created synthetic spatial PSF comparison: blurred, noisy, restored, and reference images.">
+            <h3>Project-created synthetic spatial PSF</h3>
+            <dl>
+              <div><dt>PSNR</dt><dd>23.5371 → 24.3702</dd></div>
+              <div><dt>SSIM</dt><dd>0.7271 → 0.7747</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.628164</dd></div>
+            </dl>
+          </article>
+          <article>
+            <img src="assets/gopro-flower-comparison.webp" alt="Derived GoPro Flower comparison: blurred, noisy, restored, and reference images.">
+            <h3>External GoPro-derived benchmark</h3>
+            <dl>
+              <div><dt>PSNR</dt><dd>25.3705</dd></div>
+              <div><dt>SSIM</dt><dd>0.8816</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.694603</dd></div>
+            </dl>
+            <p class="card-note"><a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/THIRD_PARTY_LICENSES.md">Attribution and license</a></p>
+          </article>
         </div>
         <p class="fine-print">
           Metrics and selected HPO configurations are from the committed
           <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/showcase/benchmark/benchmark.json">public benchmark manifest output</a>.
           The historical-photograph values are conservative no-reference proxy objectives,
-          not PSNR or SSIM.
+          not PSNR or SSIM. The synthetic card reports input → restored reference metrics.
         </p>
       </section>
 
@@ -86,8 +95,8 @@ uv run disparity-deblur-benchmark \
         <h2 id="data-license">Data, license, and citation</h2>
         <p>
           Code is <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/LICENSE">MIT licensed</a>.
-          Historical photographs are © Hyeon Sang Jeon, all rights reserved. The external
-          GoPro-derived benchmark is CC BY 4.0; detailed attribution is in
+          Historical photographs and project-created synthetic images are © Hyeon Sang Jeon,
+          all rights reserved. The external GoPro-derived benchmark is CC BY 4.0; detailed attribution is in
           <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/THIRD_PARTY_LICENSES.md">THIRD_PARTY_LICENSES.md</a>
           and <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/benchmarks/ATTRIBUTION.json">ATTRIBUTION.json</a>.
           Cite the reconstruction via

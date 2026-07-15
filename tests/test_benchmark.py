@@ -46,7 +46,7 @@ class BenchmarkTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "safe relative path"):
                 load_manifest(path)
 
-    def test_public_manifest_lists_only_the_four_authorized_datasets(self) -> None:
+    def test_public_manifest_lists_only_the_five_authorized_datasets(self) -> None:
         manifest = load_manifest(Path("benchmarks/manifests/public.json"))
         self.assertEqual(
             [dataset.identifier for dataset in manifest.datasets],
@@ -55,10 +55,12 @@ class BenchmarkTest(unittest.TestCase):
                 "01_df2_object_motion",
                 "02_building_low_light",
                 "05_new1_parking",
+                "synthetic-spatial-psf",
             ],
         )
-        historical = manifest.datasets[1:]
+        historical = manifest.datasets[1:4]
         self.assertTrue(all(dataset.reference is None for dataset in historical))
+        self.assertIsNotNone(manifest.datasets[4].reference)
         self.assertTrue(
             all(
                 dataset.rights
@@ -79,6 +81,21 @@ class BenchmarkTest(unittest.TestCase):
         different_seed = deterministic_noise(image, seed=13, sigma=0.05)
         np.testing.assert_array_equal(first, second)
         self.assertFalse(np.array_equal(first, different_seed))
+
+    def test_published_synthetic_quality_gate(self) -> None:
+        records = json.loads(
+            Path("showcase/benchmark/benchmark.json").read_text(encoding="utf-8")
+        )["datasets"]
+        synthetic = next(
+            record for record in records if record["id"] == "synthetic-spatial-psf"
+        )
+        self.assertGreater(
+            synthetic["metrics"]["psnr"], synthetic["baseline_metrics"]["psnr"] + 0.5
+        )
+        self.assertGreater(
+            synthetic["metrics"]["ssim"], synthetic["baseline_metrics"]["ssim"]
+        )
+        self.assertLess(synthetic["metrics"]["artifact_penalty"], 0.01)
 
     def test_hpo_selection_uses_objective(self) -> None:
         base = PipelineConfig(kernel_size=7, patch_size=32)
@@ -149,6 +166,7 @@ class BenchmarkTest(unittest.TestCase):
             record = json.loads(index.read_text(encoding="utf-8"))["datasets"][0]
             self.assertEqual(record["objective_type"], "reference")
             self.assertEqual(record["hpo"]["max_dimension"], 64)
+            self.assertIn("baseline_metrics", record)
             self.assertIn("asset_checksums", record)
             for role, checksum in record["asset_checksums"].items():
                 self.assertEqual(checksum, _digest(output / record["assets"][role]))
