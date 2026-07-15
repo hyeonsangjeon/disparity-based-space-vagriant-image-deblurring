@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-build-showcase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync
+      - run: uv run python -m unittest discover -s tests -v
+      - run: uv build
+      - name: Public showcase smoke
+        run: |
+          uv run disparity-deblur-benchmark \
+            --manifest benchmarks/manifests/public.json \
+            --dataset-root benchmarks/public-assets \
+            --output-dir "$RUNNER_TEMP/showcase" \
+            --hpo-max-dimension 64 \
+            --output-max-dimension 64
+          test -f "$RUNNER_TEMP/showcase/benchmark.json"

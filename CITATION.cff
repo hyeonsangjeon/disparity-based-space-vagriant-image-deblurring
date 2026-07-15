@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this reference reconstruction, please cite it as below."
+title: "Disparity-based Space-Variant Image Deblurring"
+type: software
+authors:
+  - family-names: Jeon
+    given-names: Hyeon Sang
+version: 0.1.0
+date-released: 2026-07-15
+license: MIT
+repository-code: "https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring"
+abstract: "A modern reference reconstruction of a disparity-guided, regional space-variant image deblurring pipeline."
+references:
+  - type: generic
+    title: "Disparity-Based Space-Variant Image Deblurring"
+    year: 2013
+    url: "https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/Disparity_Based_Space_Variant_Image_Deblurring.pdf"

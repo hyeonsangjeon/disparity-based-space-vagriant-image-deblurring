@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    {
+      "id": "gopro-flower",
+      "description": "Minimal 384 px derived GOPRO_Large Flower pair with a deterministic noisy auxiliary.",
+      "visibility": "public",
+      "blurred": {
+        "path": "gopro-flower/blurred.png",
+        "sha256": "63bae6a313400d2eb9e5833e35bfa0ab3270d60cc2dca3969c231feb71842e2e"
+      },
+      "noisy": {
+        "path": "gopro-flower/noisy.png",
+        "sha256": "ee85d7ba70b1d217cd24bbc6fbf12a493484fbf9dc913fedc94ef20bbe6e3521"
+      },
+      "reference": {
+        "path": "gopro-flower/reference.png",
+        "sha256": "343ed58159c070a1239e4c4bc4f20129506998a22b09627852e349519106c690"
+      },
+      "source_hashes": {
+        "Flower_blur1.png": "86826c4ae9dbc803792e8ba990235341f31318f505bf5bf9f4835a4da8a23796",
+        "Flower_sharp1.png": "1a3cb51a9c6ddafe812811573dda8e1b7cc645c93add5d1dc3832ebf6b4561ce"
+      }
+    },
+    {
+      "id": "procedural-depth",
+      "description": "Project-owned spatially varying depth-layered motion blur with fixed-seed noisy auxiliary.",
+      "visibility": "public",
+      "blurred": {
+        "path": "procedural-depth/blurred.png",
+        "sha256": "e014bdf2a9f3acfcc9a69b7f00474108eb7116ea6cd0378da5257abdefc8a13e"
+      },
+      "noisy": {
+        "path": "procedural-depth/noisy.png",
+        "sha256": "be91055de626babe5c01febac644ddc9c387fb1bbeac63db4807c37ea225c187"
+      },
+      "reference": {
+        "path": "procedural-depth/reference.png",
+        "sha256": "609c544caeb4eb0ce19708c69dee0db84298e758ab6cbca75d77db82e003d2c6"
+      },
+      "source_hashes": {
+        "generator_seed": "e32b40ef03b35ceae2fb7a5452e952a756166e0a266da7dcf1c49cffbd3d8e3c"
+      }
+    }
+  ]
+}

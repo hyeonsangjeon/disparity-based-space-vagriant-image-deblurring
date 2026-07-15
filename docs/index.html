@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Public benchmark gallery for a modern disparity-guided space-variant image deblurring reference reconstruction.">
+    <title>Disparity-based Space-Variant Image Deblurring</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">2013 paper record · 2026 reference reconstruction</p>
+      <h1>Blurred + noisy <span aria-hidden="true">→</span> restored</h1>
+      <p class="lede">
+        A framework-free public gallery for a disparity-guided regional restoration
+        reference implementation. Each comparison is ordered blurred, noisy auxiliary,
+        restored, then optional reference.
+      </p>
+
+      <section aria-labelledby="status">
+        <h2 id="status">What this is</h2>
+        <p>
+          The preserved <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/Disparity_Based_Space_Variant_Image_Deblurring.pdf">2013 paper</a>
+          and historical 2009–2011 README figures are research records. The 2026 Python
+          package is a reproducible modern reference reconstruction, not the exact deleted
+          original implementation and not bit-identical to historical outputs.
+        </p>
+      </section>
+
+      <section aria-labelledby="gallery">
+        <h2 id="gallery">Public benchmark gallery</h2>
+        <div class="gallery">
+          <article>
+            <img src="assets/gopro-flower-comparison.webp" alt="Derived GOPRO Large Flower comparison: blurred, noisy, restored, and reference images.">
+            <h3>Derived GOPRO_Large Flower</h3>
+            <dl>
+              <div><dt>PSNR</dt><dd>26.3248</dd></div>
+              <div><dt>SSIM</dt><dd>0.8998</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.713320</dd></div>
+            </dl>
+          </article>
+          <article>
+            <img src="assets/procedural-depth-comparison.webp" alt="Procedural depth comparison: blurred, noisy, restored, and reference images.">
+            <h3>Project-owned procedural depth</h3>
+            <dl>
+              <div><dt>PSNR</dt><dd>15.6261</dd></div>
+              <div><dt>SSIM</dt><dd>0.4389</dd></div>
+              <div><dt>Objective (full-resolution)</dt><dd>0.375687</dd></div>
+            </dl>
+          </article>
+        </div>
+        <p class="fine-print">
+          Metrics and selected HPO configurations are from the committed
+          <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/showcase/benchmark/benchmark.json">public benchmark manifest output</a>.
+          They are measurements of this reference reconstruction.
+        </p>
+      </section>
+
+      <section aria-labelledby="reproduce">
+        <h2 id="reproduce">Reproduce</h2>
+        <pre><code>uv sync
+uv run disparity-deblur-benchmark \
+  --manifest benchmarks/manifests/public.json \
+  --dataset-root benchmarks/public-assets \
+  --output-dir output/showcase</code></pre>
+      </section>
+
+      <section aria-labelledby="data-license">
+        <h2 id="data-license">Data, license, and citation</h2>
+        <p>
+          The Flower images are a minimal derived GOPRO_Large subset, credited to
+          Seungjun Nah, Tae Hyun Kim, and Kyoung Mu Lee and licensed
+          <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+          The original images remain third-party material. The procedural scene is
+          project-owned and also CC BY 4.0. Source URLs, CVPR 2017 citation, original
+          and derived checksums, downscaling, and fixed-seed noise details are recorded
+          in <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/benchmarks/ATTRIBUTION.json">ATTRIBUTION.json</a>.
+        </p>
+        <p>
+          Code is <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/LICENSE">MIT licensed</a>. Cite this reconstruction via
+          <a href="https://github.com/hyeonsangjeon/disparity-based-space-vagriant-image-deblurring/blob/master/CITATION.cff">CITATION.cff</a>; cite the historical work via the
+          preserved paper PDF.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
