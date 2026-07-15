@@ -2,10 +2,11 @@
 
 Comparisons are ordered **blurred + noisy -> result**, followed by a reference when available.
 
-| Dataset | Objective | PSNR | SSIM | Runtime (s) |
-| --- | --- | ---: | ---: | ---: |
-| gopro-flower | reference | 26.325 | 0.8998 | 0.248 |
-| procedural-depth | reference | 15.626 | 0.4389 | 0.422 |
+| Dataset | Evaluation | Score | PSNR | SSIM | Runtime (s) |
+| --- | --- | ---: | ---: | ---: | ---: |
+| gopro-flower | reference | 0.713320 | 26.325 | 0.8998 | 0.248 |
+| 01_df2_object_motion | no-reference proxy | 0.616397 | N/A | N/A | 4.137 |
+| 02_building_low_light | no-reference proxy | 0.639017 | N/A | N/A | 2.021 |
+| 05_new1_parking | no-reference proxy | 0.713232 | N/A | N/A | 15.001 |
 
-Private dataset output is intentionally local-only and must not be published.
 No-reference results use a conservative proxy objective, not a noisy-input similarity objective.

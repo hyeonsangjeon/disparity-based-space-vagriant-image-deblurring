@@ -23,23 +23,42 @@
       }
     },
     {
-      "id": "procedural-depth",
-      "description": "Project-owned spatially varying depth-layered motion blur with fixed-seed noisy auxiliary.",
+      "id": "01_df2_object_motion",
+      "description": "Hyeon Sang Jeon historical object-motion photograph pair.",
       "visibility": "public",
       "blurred": {
-        "path": "procedural-depth/blurred.png",
-        "sha256": "e014bdf2a9f3acfcc9a69b7f00474108eb7116ea6cd0378da5257abdefc8a13e"
+        "path": "project-owned-historical/01_df2_object_motion/blurred.png",
+        "sha256": "239c7ba197d65980677619c4461fdf54f364975e449fc3e995f20bea13667595"
       },
       "noisy": {
-        "path": "procedural-depth/noisy.png",
-        "sha256": "be91055de626babe5c01febac644ddc9c387fb1bbeac63db4807c37ea225c187"
+        "path": "project-owned-historical/01_df2_object_motion/noisy.png",
+        "sha256": "b3a34bdf1974ad5039a106f75f03cb30dbd7a511deafcc5c9ef619b03c33edc4"
+      }
+    },
+    {
+      "id": "02_building_low_light",
+      "description": "Hyeon Sang Jeon historical low-light building photograph pair.",
+      "visibility": "public",
+      "blurred": {
+        "path": "project-owned-historical/02_building_low_light/blurred.png",
+        "sha256": "7c087bbd37afffe77d72613c4cea1ddc11c1feeff47a2ccfd29b3c01303af6ec"
       },
-      "reference": {
-        "path": "procedural-depth/reference.png",
-        "sha256": "609c544caeb4eb0ce19708c69dee0db84298e758ab6cbca75d77db82e003d2c6"
+      "noisy": {
+        "path": "project-owned-historical/02_building_low_light/noisy.png",
+        "sha256": "6936aae92f8dac983d9bc1bdd78f56153ef667f3a0a195a44ca1493b9d2ea95e"
+      }
+    },
+    {
+      "id": "05_new1_parking",
+      "description": "Hyeon Sang Jeon historical parking-garage photograph pair.",
+      "visibility": "public",
+      "blurred": {
+        "path": "project-owned-historical/05_new1_parking/blurred.png",
+        "sha256": "a094fcaa4a332e3a9c1bfd30c3df664d714c37bced2c5a6102f8cfb15ef6063e"
       },
-      "source_hashes": {
-        "generator_seed": "e32b40ef03b35ceae2fb7a5452e952a756166e0a266da7dcf1c49cffbd3d8e3c"
+      "noisy": {
+        "path": "project-owned-historical/05_new1_parking/noisy.png",
+        "sha256": "efb51f6b109097ea90d9bca81d4de078f9337dcb5c5a2a3b1803b3e8d12cbe35"
       }
     }
   ]

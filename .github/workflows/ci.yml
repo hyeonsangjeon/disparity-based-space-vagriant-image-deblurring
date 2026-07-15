@@ -25,3 +25,4 @@ jobs:
             --hpo-max-dimension 64 \
             --output-max-dimension 64
           test -f "$RUNNER_TEMP/showcase/benchmark.json"
+          uv run python -c 'import json, sys; assert [dataset["id"] for dataset in json.load(open(sys.argv[1], encoding="utf-8"))["datasets"]] == ["gopro-flower", "01_df2_object_motion", "02_building_low_light", "05_new1_parking"]' "$RUNNER_TEMP/showcase/benchmark.json"

@@ -1,7 +1,7 @@
-The public showcase assets in this directory are licensed under Creative Commons
+The `gopro-flower` public showcase assets are licensed under Creative Commons
 Attribution 4.0 International (CC BY 4.0):
 https://creativecommons.org/licenses/by/4.0/
 
 Attribution, source URLs, checksums, citations, and transformations are recorded
-in ../ATTRIBUTION.json. The project-owned procedural-depth images are copyright
-2026 hyeonsangjeon and are released under CC BY 4.0.
+in ../ATTRIBUTION.json. The project-owned historical photograph assets are not
+CC BY licensed; see project-owned-historical/LICENSE.txt.

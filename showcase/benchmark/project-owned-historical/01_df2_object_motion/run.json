@@ -1,13 +1,13 @@
 {
   "assets": {
-    "blurred": "procedural-depth/blurred.png",
-    "comparison": "procedural-depth/comparison.webp",
-    "noisy": "procedural-depth/noisy.png",
-    "reference": "procedural-depth/reference.png",
-    "result": "procedural-depth/result.png",
-    "thumbnail": "procedural-depth/thumbnail.webp"
+    "blurred": "project-owned-historical/01_df2_object_motion/blurred.png",
+    "comparison": "project-owned-historical/01_df2_object_motion/comparison.webp",
+    "noisy": "project-owned-historical/01_df2_object_motion/noisy.png",
+    "reference": null,
+    "result": "project-owned-historical/01_df2_object_motion/result.png",
+    "thumbnail": "project-owned-historical/01_df2_object_motion/thumbnail.webp"
   },
-  "description": "Project-owned spatially varying depth-layered motion blur with fixed-seed noisy auxiliary.",
+  "description": "Hyeon Sang Jeon historical object-motion photograph pair.",
   "hpo": {
     "coarse": [
       {
@@ -23,7 +23,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 128,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -42,14 +42,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.00643310546875,
-          "edge_fidelity": 0.6650388399890084,
-          "objective": 0.5406313929871598,
-          "psnr": 19.35524099165843,
-          "reference_available": true,
-          "ssim": 0.6944317078938784
+          "artifact_penalty": 0.006700642903645833,
+          "detail_gain": 0.07224060983140795,
+          "deviation_from_blurred": 0.022485561510814534,
+          "objective": 0.6413446146121179,
+          "reference_available": false
         },
-        "runtime_seconds": 0.13127754197921604
+        "runtime_seconds": 0.5409624999738298
       },
       {
         "config": {
@@ -64,7 +63,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 128,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -83,14 +82,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.008711751302083333,
-          "edge_fidelity": 0.6344492952929118,
-          "objective": 0.5214696875866622,
-          "psnr": 18.462029422969657,
-          "reference_available": true,
-          "ssim": 0.6803433576765008
+          "artifact_penalty": 0.0075653076171875,
+          "detail_gain": 0.11607787913682877,
+          "deviation_from_blurred": 0.02477639447665151,
+          "objective": 0.6505871193200324,
+          "reference_available": false
         },
-        "runtime_seconds": 0.10654666600748897
+        "runtime_seconds": 0.48679254099261016
       },
       {
         "config": {
@@ -105,7 +103,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 128,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -124,14 +122,13 @@
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.012381998697916667,
-          "edge_fidelity": 0.5906637989211642,
-          "objective": 0.48861676379141994,
-          "psnr": 17.23299923230372,
-          "reference_available": true,
-          "ssim": 0.6435529288122561
+          "artifact_penalty": 0.008183797200520834,
+          "detail_gain": 0.15154705109096644,
+          "deviation_from_blurred": 0.027117656338705644,
+          "objective": 0.6601259057244246,
+          "reference_available": false
         },
-        "runtime_seconds": 0.10654345899820328
+        "runtime_seconds": 0.6617448329925537
       }
     ],
     "fine": [
@@ -140,7 +137,7 @@
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
-          "data_weight": 160.0,
+          "data_weight": 300.0,
           "detail_denoise_strength": 5.0,
           "detail_fusion_amount": 0.020000000000000004,
           "detail_fusion_sigma": 1.5,
@@ -148,7 +145,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 128,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -161,27 +158,26 @@
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
           "skip_registration": false,
-          "tikhonov": 0.0006666666666666666,
-          "unsharp_amount": 0.0,
+          "tikhonov": 0.0026666666666666666,
+          "unsharp_amount": 0.18,
           "unsharp_sigma": 1.0,
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.006880696614583333,
-          "edge_fidelity": 0.6609552864392649,
-          "objective": 0.5358758337057754,
-          "psnr": 19.32302148564063,
-          "reference_available": true,
-          "ssim": 0.6839673373481916
+          "artifact_penalty": 0.008604939778645833,
+          "detail_gain": 0.15699285971765664,
+          "deviation_from_blurred": 0.027729478188633087,
+          "objective": 0.6625277635301119,
+          "reference_available": false
         },
-        "runtime_seconds": 0.10267949994886294
+        "runtime_seconds": 0.5634861660073511
       },
       {
         "config": {
           "beta_max": 24.0,
           "boundary_padding": null,
           "color_labels": 8,
-          "data_weight": 184.0,
+          "data_weight": 345.0,
           "detail_denoise_strength": 5.0,
           "detail_fusion_amount": 0.05,
           "detail_fusion_sigma": 1.5,
@@ -189,7 +185,7 @@
           "detail_fusion_tolerance": 0.08,
           "disparity_threshold": 1.5,
           "feather_sigma": 5.0,
-          "graph_cut_size": 128,
+          "graph_cut_size": 160,
           "graph_cut_smoothness": 0.35,
           "kernel_size": 15,
           "kurtosis_max": 300.0,
@@ -202,53 +198,50 @@
           "random_seed": 20260715,
           "ransac_threshold": 2.5,
           "skip_registration": false,
-          "tikhonov": 0.0015,
-          "unsharp_amount": 0.0,
+          "tikhonov": 0.006,
+          "unsharp_amount": 0.18,
           "unsharp_sigma": 1.0,
           "unsharp_threshold": 0.0
         },
         "metrics": {
-          "artifact_penalty": 0.007430013020833333,
-          "edge_fidelity": 0.6570559935607503,
-          "objective": 0.5359368882125836,
-          "psnr": 19.08125252456792,
-          "reference_available": true,
-          "ssim": 0.6929809933587734
+          "artifact_penalty": 0.008470662434895833,
+          "detail_gain": 0.160695258407209,
+          "deviation_from_blurred": 0.027874856326646547,
+          "objective": 0.663180502842147,
+          "reference_available": false
         },
-        "runtime_seconds": 0.10846966598182917
+        "runtime_seconds": 0.7898695420008153
       }
     ],
-    "selected_objective": 0.5406313929871598
+    "selected_objective": 0.663180502842147
   },
-  "id": "procedural-depth",
+  "id": "01_df2_object_motion",
   "input_checksums": {
-    "blurred": "e014bdf2a9f3acfcc9a69b7f00474108eb7116ea6cd0378da5257abdefc8a13e",
-    "noisy": "be91055de626babe5c01febac644ddc9c387fb1bbeac63db4807c37ea225c187",
-    "reference": "609c544caeb4eb0ce19708c69dee0db84298e758ab6cbca75d77db82e003d2c6"
+    "blurred": "239c7ba197d65980677619c4461fdf54f364975e449fc3e995f20bea13667595",
+    "noisy": "b3a34bdf1974ad5039a106f75f03cb30dbd7a511deafcc5c9ef619b03c33edc4"
   },
   "metrics": {
-    "artifact_penalty": 0.007080078125,
-    "edge_fidelity": 0.43221564633951126,
-    "objective": 0.3756867474283428,
-    "psnr": 15.626128088102774,
-    "reference_available": true,
-    "ssim": 0.43890078151382633
+    "artifact_penalty": 0.00398887351707176,
+    "detail_gain": 0.06868637148592119,
+    "deviation_from_blurred": 0.016270413774837577,
+    "objective": 0.6163972849975148,
+    "reference_available": false
   },
-  "objective_type": "reference",
+  "objective_type": "no-reference-proxy",
   "original_size": {
-    "height": 256,
-    "width": 256
+    "height": 768,
+    "width": 768
   },
   "output_size": {
-    "height": 256,
-    "width": 256
+    "height": 768,
+    "width": 768
   },
-  "runtime_seconds": 0.42169179202755913,
+  "runtime_seconds": 4.1371339579927735,
   "selected_config": {
     "beta_max": 24.0,
     "boundary_padding": null,
     "color_labels": 8,
-    "data_weight": 160.0,
+    "data_weight": 345.0,
     "detail_denoise_strength": 5.0,
     "detail_fusion_amount": 0.05,
     "detail_fusion_sigma": 1.5,
@@ -256,7 +249,7 @@
     "detail_fusion_tolerance": 0.08,
     "disparity_threshold": 1.5,
     "feather_sigma": 5.0,
-    "graph_cut_size": 128,
+    "graph_cut_size": 160,
     "graph_cut_smoothness": 0.35,
     "kernel_size": 15,
     "kurtosis_max": 300.0,
@@ -269,13 +262,11 @@
     "random_seed": 20260715,
     "ransac_threshold": 2.5,
     "skip_registration": false,
-    "tikhonov": 0.001,
-    "unsharp_amount": 0.0,
+    "tikhonov": 0.006,
+    "unsharp_amount": 0.18,
     "unsharp_sigma": 1.0,
     "unsharp_threshold": 0.0
   },
-  "source_hashes": {
-    "generator_seed": "c23eb1ac1682b333003f07bb364b1f72a4db78d65d24b27934ff3e351d5d9529"
-  },
+  "source_hashes": {},
   "visibility": "public"
 }

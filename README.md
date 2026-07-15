@@ -34,21 +34,24 @@ uv run disparity-deblur-benchmark \
 
 The committed public showcase was generated from `benchmarks/manifests/public.json`; its `benchmark.json` records relative asset paths, checksums, selected HPO configuration, and metrics without recording local dataset paths. Comparisons are ordered **blurred + noisy -> restored -> reference**.
 
-| Public dataset | PSNR | SSIM | Objective (full-resolution) |
-| --- | ---: | ---: | ---: |
-| Derived GOPRO_Large Flower | 26.3248 | 0.8998 | 0.713320 |
-| Project-owned procedural depth | 15.6261 | 0.4389 | 0.375687 |
+| Public dataset | Evaluation | Score | PSNR | SSIM |
+| --- | --- | ---: | ---: | ---: |
+| 01 df2 object motion | No-reference proxy | 0.616397 | N/A | N/A |
+| 02 building low light | No-reference proxy | 0.639017 | N/A | N/A |
+| 05 new1 parking | No-reference proxy | 0.713232 | N/A | N/A |
+| GoPro-derived external benchmark | Reference | 0.713320 | 26.3248 | 0.8998 |
 
-See [showcase/benchmark/SUMMARY.md](showcase/benchmark/SUMMARY.md), [showcase/benchmark/benchmark.json](showcase/benchmark/benchmark.json), and the framework-free [GitHub Pages site](docs/index.html) for the complete public gallery. These results are reference-reconstruction measurements, not claims about the deleted historical code.
+See [showcase/benchmark/SUMMARY.md](showcase/benchmark/SUMMARY.md), [showcase/benchmark/benchmark.json](showcase/benchmark/benchmark.json), and the framework-free [GitHub Pages site](docs/index.html) for the complete public gallery. No-reference proxy scores are not PSNR or SSIM and are not noisy-input similarity scores. These results are reference-reconstruction measurements, not claims about the deleted historical code.
 
 ## Data and licenses
 
-The code is available under the [MIT License](LICENSE). The small public asset subset in `benchmarks/public-assets/` is licensed separately under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). It contains only:
-
-* a 384 px derivative of the GOPRO_Large Flower example, credited to Seungjun Nah, Tae Hyun Kim, and Kyoung Mu Lee; and
-* project-owned procedural-depth artwork.
-
-`benchmarks/ATTRIBUTION.json` records official source URLs, the CC BY 4.0 license, the CVPR 2017 citation, original and derived SHA-256 checksums, downscaling, and deterministic noisy-auxiliary seed and sigma. The original GOPRO_Large images remain third-party material; this project does not claim ownership of them. Do not add private, RAW, or large source datasets to this repository.
+Code is MIT licensed. Historical photographs are © Hyeon Sang Jeon, all rights
+reserved. The external GoPro-derived benchmark is CC BY 4.0; detailed
+attribution is available in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
+and [ATTRIBUTION.json](benchmarks/ATTRIBUTION.json). Cite this reconstruction
+via [CITATION.cff](CITATION.cff) and the historical work via the
+[paper PDF](Disparity_Based_Space_Variant_Image_Deblurring.pdf). Do not add
+private, RAW, or large source datasets to this repository.
 
 ## Citation
 
