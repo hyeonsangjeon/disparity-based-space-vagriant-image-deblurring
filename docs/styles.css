@@ -114,6 +114,43 @@ dd {
   margin-bottom: .4rem;
 }
 
+.historical-flow {
+  background: #1a222d;
+  border: 1px solid #2a3a4b;
+  border-radius: .75rem;
+  margin: 1.4rem 0;
+  overflow: hidden;
+}
+
+.historical-flow img {
+  display: block;
+  width: 100%;
+}
+
+.historical-flow figcaption {
+  color: #c0ccda;
+  font-size: .9rem;
+  padding: .7rem .9rem;
+}
+
+.historical-record {
+  background: #141d27;
+  border: 1px solid #2a3a4b;
+  border-radius: .65rem;
+  margin-top: 1rem;
+  padding: .8rem 1rem;
+}
+
+.historical-record summary {
+  color: #9bc5ff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.historical-record p:last-child {
+  margin-bottom: .2rem;
+}
+
 .walkthrough-grid figure {
   background: #1a222d;
   border: 1px solid #2a3a4b;

@@ -3,7 +3,7 @@ const dialogImage = dialog.querySelector(".lightbox-image");
 const dialogCaption = dialog.querySelector(".lightbox-caption");
 const closeButton = dialog.querySelector(".lightbox-close");
 const images = document.querySelectorAll(
-  ".walkthrough-grid img, .gallery article > img",
+  ".historical-flow img, .walkthrough-grid img, .gallery article > img",
 );
 
 let activeImage = null;
